@@ -1,0 +1,184 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Group {
+  id                  String      @id @default(auto()) @map("_id") @db.ObjectId
+  groupId             String      @unique
+  subject             String
+  subjectOwnerPn      String?
+  addressingMode      String?
+  size                Int
+  creation            Int
+  owner               String?
+  ownerPn             String?
+  owner_country_code  String?
+  desc                String?
+  descOwner           String?
+  descOwnerPn         String?
+  descTime            Int?
+  linkedParent        String?
+  joinApprovalMode    Boolean?    @default(false)    
+  restrict            Boolean
+  announce            Boolean
+  isCommunity         Boolean
+  isCommunityAnnounce Boolean
+  memberAddMode       Boolean
+  participants        Participant[]
+  ephemeralDuration   Int?        @default(0)
+  settings            Settings
+}
+
+type Settings {
+  notify              Boolean     @default(false)
+  welcome             Boolean     @default(true)
+  welcomeMessage      String?
+  leave               Boolean     @default(true)
+  leaveMessage        String?
+  mute                Boolean     @default(false)
+  antilink            Antilink
+  antibot             Boolean     @default(false)
+  antidelete          Boolean     @default(false)
+  banned              String[]
+  // Per-group welcome image layout customization (drag-and-drop builder). null = default template.
+  welcomeConfig       Json?
+  // Per-group leave image layout customization. null = default template.
+  leaveConfig         Json?
+}
+
+type Participant {
+  id          String?
+  admin       String?
+  lid         String?
+  phoneNumber String?
+}
+
+model User {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String  @unique
+  name     String?
+  limit    Int         
+  role     Role    @default(free)
+  expired  Int     @default(0)
+  isBanned Boolean @default(false)
+  afk      Afk
+  level    Level?
+  stats    UserStats?
+}
+
+type Afk {
+  status Boolean @default(false)
+  reason String?
+  since  Int?    @default(0)
+}
+
+type Level {
+  level       Int @default(1)
+  xp          Int @default(0)
+  totalXp     Int @default(0)
+}
+
+type UserStats {
+  totalCommands      Int              @default(0)
+  commandsUsed       CommandUsage[]
+  lastCommandTime    Int?             @default(0)
+  joinedAt           Int?             @default(0)
+}
+
+enum Role {
+  free
+  premium
+}
+
+type Antilink {
+  status Boolean? @default(false)
+  mode   Mode     @default(kick)
+  list   AntilinkList[] @default([whatsapp])
+}
+
+enum Mode {
+  kick
+  delete
+}
+
+enum AntilinkList {
+  youtube
+  instagram
+  facebook
+  whatsapp
+  twitter
+  tiktok
+  all
+}
+
+type CommandUsage {
+  command String
+  count   Int    @default(0)
+}
+
+model Session {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  sessionId String  @unique
+  session   String?
+}
+
+model Admin {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  phoneNumber  String   @unique
+  username     String   @unique
+  password     String
+  lastActivity DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model DashboardConfig {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  key         String
+  ipWhitelist String[]
+  ipBlacklist String[]
+  updatedAt   DateTime @updatedAt
+}
+
+// Per-group audit trail for actions performed by group admins through the
+// dashboard (rename, kick, settings changes, …). Lets other admins see who
+// did what in their group.
+model GroupAuditLog {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  groupId   String
+  actorPn   String
+  actorName String?
+  action    String
+  detail    String?
+  target    String?
+  createdAt Float
+
+  @@index([groupId, createdAt])
+}
+
+
+model GameRoom {
+  id              String       @id @default(auto()) @map("_id") @db.ObjectId
+  roomId          String       @unique
+  groupId         String
+  status          String       @default("lobby") // lobby, playing, waiting_for_reply
+  currentPlayerId String?
+  currentQuestion String?
+  players         GamePlayer[]
+  createdAt       DateTime     @default(now())
+}
+
+model GamePlayer {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  roomId    String   @db.ObjectId
+  name      String
+  gender    String
+  room      GameRoom @relation(fields: [roomId], references: [id])
+}
+

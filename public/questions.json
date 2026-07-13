@@ -1,0 +1,982 @@
+[
+  {
+    "id": 1,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a one-night stand?"
+  },
+  {
+    "id": 2,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's your wildest sexual fantasy?"
+  },
+  {
+    "id": 3,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a threesome?"
+  },
+  {
+    "id": 4,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What is your most embarrassing sexual experience?"
+  },
+  {
+    "id": 5,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had sex in public?"
+  },
+  {
+    "id": 6,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "How old were you when you lost your virginity?"
+  },
+  {
+    "id": 7,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's the most adventurous place you've had sex?"
+  },
+  {
+    "id": 8,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Do you enjoy dirty talk?"
+  },
+  {
+    "id": 9,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever filmed yourself having sex?"
+  },
+  {
+    "id": 10,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's your favorite type of porn?"
+  },
+  {
+    "id": 11,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever used sex toys?"
+  },
+  {
+    "id": 12,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's the most orgasms you've had in one day?"
+  },
+  {
+    "id": 13,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever faked an orgasm?"
+  },
+  {
+    "id": 14,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's your favorite position?"
+  },
+  {
+    "id": 15,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Do you prefer to be dominant or submissive?"
+  },
+  {
+    "id": 16,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had sex with someone much older or younger than you?"
+  },
+  {
+    "id": 17,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a sexual dream about someone you shouldn't have?"
+  },
+  {
+    "id": 18,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's the longest you've gone without sex?"
+  },
+  {
+    "id": 19,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever been caught in the act?"
+  },
+  {
+    "id": 20,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a crush on a teacher or boss?"
+  },
+  {
+    "id": 21,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Send a naughty text to your partner."
+  },
+  {
+    "id": 22,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Wear no underwear tomorrow."
+  },
+  {
+    "id": 23,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Give your partner a lap dance."
+  },
+  {
+    "id": 24,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Take a nude photo of yourself."
+  },
+  {
+    "id": 25,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Share a sexual fantasy with your partner."
+  },
+  {
+    "id": 26,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Watch an erotic movie together."
+  },
+  {
+    "id": 27,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Give your partner a striptease."
+  },
+  {
+    "id": 28,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Make out with your partner for five minutes straight."
+  },
+  {
+    "id": 29,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Try a new sex position tonight."
+  },
+  {
+    "id": 30,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Send a sensual voice note to your partner."
+  },
+  {
+    "id": 31,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Use ice cubes during foreplay."
+  },
+  {
+    "id": 32,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Whisper something dirty into your partner's ear."
+  },
+  {
+    "id": 33,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Blindfold your partner and tease them."
+  },
+  {
+    "id": 34,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Give your partner a sensual massage."
+  },
+  {
+    "id": 35,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Try role-playing with your partner."
+  },
+  {
+    "id": 36,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Wear a revealing outfit under your clothes."
+  },
+  {
+    "id": 37,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Share an embarrassing sexual moment."
+  },
+  {
+    "id": 38,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Flash your partner."
+  },
+  {
+    "id": 39,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have a quickie in an unusual place."
+  },
+  {
+    "id": 40,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Use food during foreplay."
+  },
+  {
+    "id": 41,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 41 generated for the game..."
+  },
+  {
+    "id": 42,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 42 generated for the game..."
+  },
+  {
+    "id": 43,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 43 generated for the game..."
+  },
+  {
+    "id": 44,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 44 generated for the game..."
+  },
+  {
+    "id": 45,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 45 generated for the game..."
+  },
+  {
+    "id": 46,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 46 generated for the game..."
+  },
+  {
+    "id": 47,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 47 generated for the game..."
+  },
+  {
+    "id": 48,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 48 generated for the game..."
+  },
+  {
+    "id": 49,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 49 generated for the game..."
+  },
+  {
+    "id": 50,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 50 generated for the game..."
+  },
+  {
+    "id": 51,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 51 generated for the game..."
+  },
+  {
+    "id": 52,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 52 generated for the game..."
+  },
+  {
+    "id": 53,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 53 generated for the game..."
+  },
+  {
+    "id": 54,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 54 generated for the game..."
+  },
+  {
+    "id": 55,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 55 generated for the game..."
+  },
+  {
+    "id": 56,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 56 generated for the game..."
+  },
+  {
+    "id": 57,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 57 generated for the game..."
+  },
+  {
+    "id": 58,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 58 generated for the game..."
+  },
+  {
+    "id": 59,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 59 generated for the game..."
+  },
+  {
+    "id": 60,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 60 generated for the game..."
+  },
+  {
+    "id": 61,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 61 generated for the game..."
+  },
+  {
+    "id": 62,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 62 generated for the game..."
+  },
+  {
+    "id": 63,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 63 generated for the game..."
+  },
+  {
+    "id": 64,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 64 generated for the game..."
+  },
+  {
+    "id": 65,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 65 generated for the game..."
+  },
+  {
+    "id": 66,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 66 generated for the game..."
+  },
+  {
+    "id": 67,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 67 generated for the game..."
+  },
+  {
+    "id": 68,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 68 generated for the game..."
+  },
+  {
+    "id": 69,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 69 generated for the game..."
+  },
+  {
+    "id": 70,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 70 generated for the game..."
+  },
+  {
+    "id": 71,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 71 generated for the game..."
+  },
+  {
+    "id": 72,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 72 generated for the game..."
+  },
+  {
+    "id": 73,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 73 generated for the game..."
+  },
+  {
+    "id": 74,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 74 generated for the game..."
+  },
+  {
+    "id": 75,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 75 generated for the game..."
+  },
+  {
+    "id": 76,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 76 generated for the game..."
+  },
+  {
+    "id": 77,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 77 generated for the game..."
+  },
+  {
+    "id": 78,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 78 generated for the game..."
+  },
+  {
+    "id": 79,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 79 generated for the game..."
+  },
+  {
+    "id": 80,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 80 generated for the game..."
+  },
+  {
+    "id": 81,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 81 generated for the game..."
+  },
+  {
+    "id": 82,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 82 generated for the game..."
+  },
+  {
+    "id": 83,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 83 generated for the game..."
+  },
+  {
+    "id": 84,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 84 generated for the game..."
+  },
+  {
+    "id": 85,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 85 generated for the game..."
+  },
+  {
+    "id": 86,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 86 generated for the game..."
+  },
+  {
+    "id": 87,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 87 generated for the game..."
+  },
+  {
+    "id": 88,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 88 generated for the game..."
+  },
+  {
+    "id": 89,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 89 generated for the game..."
+  },
+  {
+    "id": 90,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 90 generated for the game..."
+  },
+  {
+    "id": 91,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 91 generated for the game..."
+  },
+  {
+    "id": 92,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Sample question 92 generated for the game..."
+  },
+  {
+    "id": 93,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 93 generated for the game..."
+  },
+  {
+    "id": 94,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 94 generated for the game..."
+  },
+  {
+    "id": 95,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 95 generated for the game..."
+  },
+  {
+    "id": 96,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 96 generated for the game..."
+  },
+  {
+    "id": 97,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 97 generated for the game..."
+  },
+  {
+    "id": 98,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 98 generated for the game..."
+  },
+  {
+    "id": 99,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 99 generated for the game..."
+  },
+  {
+    "id": 100,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 100 generated for the game..."
+  },
+  {
+    "id": 101,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 101 generated for the game..."
+  },
+  {
+    "id": 102,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 102 generated for the game..."
+  },
+  {
+    "id": 103,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 103 generated for the game..."
+  },
+  {
+    "id": 104,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 104 generated for the game..."
+  },
+  {
+    "id": 105,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 105 generated for the game..."
+  },
+  {
+    "id": 106,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 106 generated for the game..."
+  },
+  {
+    "id": 107,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 107 generated for the game..."
+  },
+  {
+    "id": 108,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 108 generated for the game..."
+  },
+  {
+    "id": 109,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 109 generated for the game..."
+  },
+  {
+    "id": 110,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 110 generated for the game..."
+  },
+  {
+    "id": 111,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 111 generated for the game..."
+  },
+  {
+    "id": 112,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 112 generated for the game..."
+  },
+  {
+    "id": 113,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 113 generated for the game..."
+  },
+  {
+    "id": 114,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 114 generated for the game..."
+  },
+  {
+    "id": 115,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 115 generated for the game..."
+  },
+  {
+    "id": 116,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 116 generated for the game..."
+  },
+  {
+    "id": 117,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 117 generated for the game..."
+  },
+  {
+    "id": 118,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 118 generated for the game..."
+  },
+  {
+    "id": 119,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "male",
+    "text": "Sample question 119 generated for the game..."
+  },
+  {
+    "id": 120,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 120 generated for the game..."
+  },
+  {
+    "id": 121,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 121 generated for the game..."
+  },
+  {
+    "id": 122,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 122 generated for the game..."
+  },
+  {
+    "id": 123,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "male",
+    "text": "Sample question 123 generated for the game..."
+  },
+  {
+    "id": 124,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 124 generated for the game..."
+  },
+  {
+    "id": 125,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 125 generated for the game..."
+  },
+  {
+    "id": 126,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 126 generated for the game..."
+  },
+  {
+    "id": 127,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sample question 127 generated for the game..."
+  },
+  {
+    "id": 128,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "female",
+    "text": "Sample question 128 generated for the game..."
+  },
+  {
+    "id": 129,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 129 generated for the game..."
+  },
+  {
+    "id": 130,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 130 generated for the game..."
+  },
+  {
+    "id": 131,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 131 generated for the game..."
+  },
+  {
+    "id": 132,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 132 generated for the game..."
+  },
+  {
+    "id": 133,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 133 generated for the game..."
+  },
+  {
+    "id": 134,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 134 generated for the game..."
+  },
+  {
+    "id": 135,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 135 generated for the game..."
+  },
+  {
+    "id": 136,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Sample question 136 generated for the game..."
+  },
+  {
+    "id": 137,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 137 generated for the game..."
+  },
+  {
+    "id": 138,
+    "type": "dare",
+    "category": "spicy",
+    "gender_target": "female",
+    "text": "Sample question 138 generated for the game..."
+  },
+  {
+    "id": 139,
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "male",
+    "text": "Sample question 139 generated for the game..."
+  },
+  {
+    "id": 140,
+    "type": "dare",
+    "category": "deep",
+    "gender_target": "female",
+    "text": "Sample question 140 generated for the game..."
+  }
+]
