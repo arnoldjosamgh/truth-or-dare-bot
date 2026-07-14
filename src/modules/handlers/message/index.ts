@@ -5,4 +5,4 @@ export * from "./command-validator";
 export * from "./afk-handler";
 export * from "./eval-exec-handler";
 export * from "./session-handler";
-export * from ./game-listener;
+export * from "./game-listener";
