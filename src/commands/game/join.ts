@@ -6,6 +6,7 @@ const VALID_GENDERS = ["M", "F", "O"] as const;
 
 export default {
     name: "join",
+    alias: [],
     category: "game",
     description: "Join the active bottle spinning game lobby.",
     async run({ Chisato, from, message, args, sender }) {
