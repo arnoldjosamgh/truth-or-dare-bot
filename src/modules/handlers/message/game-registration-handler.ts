@@ -147,8 +147,11 @@ export class GameRegistrationHandler {
             if (alreadyIn) {
                 await sendMention(
                     Chisato, groupId,
-                    `✅ *${alreadyIn.name}*, you're already in the game lobby!\n` +
-                    `The host can type *spin* to start.`,
+                    `✅ *${alreadyIn.name}*, you're already in the game lobby!\n\n` +
+                    `*Game Instructions:*\n` +
+                    `• *spin* — Starts the next round\n` +
+                    `• *stop* — Ends the game and mutes the bot\n` +
+                    `• *skip* — Skips the current player if they don't reply\n`,
                     [sender]
                 );
                 return true;
@@ -163,6 +166,10 @@ export class GameRegistrationHandler {
             await sendMention(
                 Chisato, groupId,
                 `🎮 Hey @${sender.split("@")[0]}! Let's get you into the game.\n\n` +
+                `*Game Instructions:*\n` +
+                `• *spin* — Starts the next round\n` +
+                `• *stop* — Ends the game and mutes the bot\n` +
+                `• *skip* — Skips the current player if they don't reply\n\n` +
                 `What's your *name*? (just type it)`,
                 [sender]
             );
