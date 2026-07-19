@@ -814,9 +814,38 @@ export class GroupUpdateHandler {
         try {
             const botJid = await Chisato.decodeJid(Chisato.user.id);
             if (participants.includes(botJid)) {
-                await Chisato.sendText(from, "🎉 Thanks for making me an admin! I'm ready. Type `@bot` (mention me) to start Truth or Dare!", null);
+                // Unmute the bot in case it was stopped
+                const { Group: GroupDatabase } = await import("../../../libs/database");
+                const groupDb = new GroupDatabase();
+                await groupDb.updateSettings(from, { mute: false });
+
+                // Force-create the game room
+                const { Database } = await import("../../../libs/database/prisma");
+                let room = await Database.gameRoom.findFirst({
+                    where: { groupId: from }
+                });
+                if (!room) {
+                    room = await Database.gameRoom.create({
+                        data: {
+                            roomId: Math.random().toString(36).substring(2, 9),
+                            groupId: from,
+                            status: "lobby",
+                        }
+                    });
+                }
+
+                await Chisato.sendText(
+                    from, 
+                    "🎉 Thanks for making me an admin! Let's get straight into it!\n\n" +
+                    "🍾 *TRUTH OR DARE GAME STARTED*\n\n" +
+                    "Reply to this message (or mention me) with *M* (Male) or *F* (Female) to join the lobby!\n" +
+                    "When everyone is in, type *spin* to start the fun.", 
+                    null
+                );
             }
-        } catch (err) {}
+        } catch (err) {
+            console.error("Failed to auto-start game on promote:", err);
+        }
     }
 
     private async handleParticipantDemote(
