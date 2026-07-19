@@ -20,21 +20,33 @@ export class GameListener {
         if (!room || room.currentPlayerId !== context.sender) return false;
 
         try {
-            // Check if player is asking for an explanation
-            const textLower = context.body?.toLowerCase() || "";
-            const isAskingForExplanation = /^(how|what|why|huh|what do you mean|explain)\??$/i.test(textLower);
+            // Check if player is dodging with a vague non-answer
+            const textLower = context.body?.toLowerCase().trim() || "";
+            const isDodging = /^(how|what|what\?|where|when|who|with who|with whom|huh|what do you mean|explain|wdym|idk|i don'?t (know|understand)|which|say that again|repeat|come again)\??$/i.test(textLower);
 
-            if (isAskingForExplanation && room.currentQuestion) {
-                const questionObj = getQuestionByText(room.currentQuestion);
-                const explanation = questionObj?.explanation || "I don't have an explanation for this one, just try your best!";
-                
+            // Savage roast pool — randomly picked each time
+            const ROASTS = [
+                "How do you even function daily?",
+                "Explain it like you're five?",
+                "Clearly, you lack comprehension.",
+                "Your ignorance is exhausting.",
+                "Did that strain your brain?",
+                "Go back to school.",
+                "You must be slow.",
+                "Is English your second language?",
+                "You can't be serious.",
+                "That is purely pathetic.",
+            ];
+
+            if (isDodging) {
+                const roast = ROASTS[Math.floor(Math.random() * ROASTS.length)];
                 await Chisato.sendText(
                     context.from,
-                    `💡 *Explanation:*\n${explanation}\n\n_Still your turn, @${context.sender.split("@")[0]}!_`,
+                    `😂 @${context.sender.split("@")[0]} — *${roast}*\n\n_The question is still yours. Answer it!_ 🎯`,
                     message,
                     { mentions: [context.sender] } as any
                 );
-                return true; // Consume the message but do not advance the game state
+                return true; // Don't advance game state — they still have to answer
             }
 
             await Database.gameRoom.update({
