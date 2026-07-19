@@ -77,13 +77,15 @@ export class GameRegistrationHandler {
         const botJid: string = context.botNumber;
 
         // ── 1. @mention → start registration ────────────────────────────────
+        // Check mentions array (standard) OR body text containing @number (fallback)
+        const botPhone = botJid.split("@")[0];
+        const mentionsArray = Array.isArray(message.mentions) ? message.mentions : [];
         const botMentioned =
-            Array.isArray(message.mentions) &&
-            message.mentions.some(
-                (m: string) =>
-                    m === botJid ||
-                    m.split("@")[0] === botJid.split("@")[0]
-            );
+            mentionsArray.some(
+                (m: string) => m === botJid || m.split("@")[0] === botPhone
+            ) ||
+            body.includes(`@${botPhone}`);
+
 
         if (botMentioned && !context.cmd) {
             const room = await GameRegistrationHandler.getOrCreateRoom(groupId);

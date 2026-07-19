@@ -129,8 +129,12 @@ export class MessageHandler {
                 }
 
                 // Handle @bot mention registration flow (name → gender)
-                if (await GameRegistrationHandler.handle(Chisato, message, context)) {
-                    return;
+                try {
+                    if (await GameRegistrationHandler.handle(Chisato, message, context)) {
+                        return;
+                    }
+                } catch (regErr) {
+                    logger.error(`GameRegistrationHandler: ${regErr instanceof Error ? regErr.message : String(regErr)}`);
                 }
 
                 // Handle plain "spin" word as a spin trigger (no prefix needed)
