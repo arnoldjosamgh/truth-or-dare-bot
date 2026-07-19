@@ -60,7 +60,8 @@
         "ws": "^8.18.3",
         "yt-search": "^2.10.3",
         "@prisma/client": "^5.22.0",
-        "prisma": "^5.7.0"
+        "prisma": "^5.7.0",
+        "@google/generative-ai": "^0.21.0"
     },
     "devDependencies": {
         "@sveltejs/vite-plugin-svelte": "^7.1.2",

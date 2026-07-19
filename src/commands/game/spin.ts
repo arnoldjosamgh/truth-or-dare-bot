@@ -6,7 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 // Loaded once at startup and cached for the process lifetime.
-let questionCache: { text: string; gender_target: string }[] | null = null;
+let questionCache: { text: string; gender_target: string; explanation?: string }[] | null = null;
 
 const loadQuestions = () => {
     if (questionCache) return questionCache;
@@ -15,6 +15,11 @@ const loadQuestions = () => {
         ? JSON.parse(fs.readFileSync(qPath, "utf8"))
         : [{ text: "What is your biggest secret?", gender_target: "neutral" }];
     return questionCache!;
+};
+
+export const getQuestionByText = (text: string) => {
+    const all = loadQuestions();
+    return all.find((q) => q.text === text);
 };
 
 const pickQuestion = (gender: string) => {
