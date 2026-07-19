@@ -50,11 +50,13 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                 data: { status: "waiting_for_reply", currentPlayerId: target.userId, currentQuestion: question.text }
             });
 
+            const sponsorText = process.env.SPONSOR_TEXT ? `\n\n_Sponsor:_ ${process.env.SPONSOR_TEXT}` : "";
+            
             await Chisato.sendText(
                 groupId,
                 `👉 @${target.userId.split("@")[0]} (*${target.name}*), the bottle landed on you!\n\n` +
                 `*Question:*\n${question.text}\n\n` +
-                `Reply in the chat to continue!`,
+                `Reply in the chat to continue!${sponsorText}`,
                 undefined,
                 { mentions: [target.userId] } as any
             );
