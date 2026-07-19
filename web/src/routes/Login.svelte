@@ -5,14 +5,9 @@
     import { get } from "svelte/store";
 
     let phone = $state("");
-    let step = $state("form"); // form | waiting
-    let msg = $state(null); // { type, text }
+    let password = $state("");
+    let msg = $state(null);
     let loading = $state(false);
-    let approvalId = null;
-    let countdown = $state(0);
-    let total = 0;
-    let pollTimer = null;
-    let tickTimer = null;
 
     onMount(async () => {
         const t = get(token);
@@ -24,52 +19,32 @@
                     setSession(t, d.admin);
                     navigate("/dashboard");
                 }
-            } catch {
-                /* ignore */
-            }
+            } catch { /* ignore */ }
         }
     });
-    onDestroy(stopWaiting);
 
-    function show(type, text) {
-        msg = { type, text };
-    }
-    function stopWaiting() {
-        clearInterval(pollTimer);
-        clearInterval(tickTimer);
-        pollTimer = tickTimer = null;
-    }
+    function show(type, text) { msg = { type, text }; }
 
     async function submit() {
         const p = phone.trim();
-        if (!p) return show("err", "Please enter your WhatsApp number.");
+        const pw = password.trim();
+        if (!p) return show("err", "Please enter your phone number.");
+        if (!pw) return show("err", "Please enter your password.");
         loading = true;
         msg = null;
         try {
-            const r = await fetch("/api/auth/login", {
+            const r = await fetch("/api/auth/login-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ phoneNumber: p }),
+                body: JSON.stringify({ phoneNumber: p, password: pw }),
             });
             const d = await r.json();
             if (!r.ok) {
-                show("err", d.message || "Login failed.");
+                show("err", d.message || "Invalid credentials.");
                 return;
             }
-            if (d.whitelisted && d.token) {
-                setSession(d.token, d.admin);
-                navigate("/dashboard");
-                return;
-            }
-            if (d.approvalRequired) {
-                approvalId = d.approvalId;
-                total = d.approvalExpiresInMs || 60000;
-                countdown = Math.ceil(total / 1000);
-                step = "waiting";
-                startWaiting();
-                return;
-            }
-            show("err", "Unexpected server response.");
+            setSession(d.token, d.profile);
+            navigate("/dashboard");
         } catch {
             show("err", "Network error. Try again.");
         } finally {
@@ -103,11 +78,6 @@
         }, 2500);
     }
 
-    function backToForm() {
-        stopWaiting();
-        step = "form";
-        msg = null;
-    }
 </script>
 
 <div class="shell">
@@ -116,22 +86,24 @@
         <div class="flex flex-col items-center mb-6">
             <div class="logo"><img src="/images/icon.jpg" alt="Chisato" onerror={(e) => e.target.remove()} /><i class="fas fa-robot"></i></div>
             <h1 class="title">Truth or Dare Dashboard</h1>
-            <p class="text-[.86rem] text-muted mt-1">Sign in with your owner / team WhatsApp number</p>
+        <p class="text-[.86rem] text-muted mt-1">Sign in with your phone number and password</p>
         </div>
 
         <div class="divider"></div>
 
-        {#if step === "form"}
-            <label class="lbl" for="ph"><i class="fas fa-mobile-screen-button text-indigo"></i> WhatsApp Number</label>
-            <input id="ph" class="field" type="tel" placeholder="e.g. 62812xxxxxxx" autocomplete="tel" bind:value={phone} onkeydown={(e) => e.key === "Enter" && submit()} />
-            <button class="btn btn-indigo w-full mt-4" disabled={loading} onclick={submit}>
-                {#if loading}<i class="fas fa-spinner spin"></i> Signing in…{:else}<i class="fas fa-arrow-right-to-bracket"></i> Sign In to Dashboard{/if}
-            </button>
-            <ul class="hints">
-                <li><i class="fas fa-shield-halved"></i><span>Only owner/team numbers in config.json can sign in.</span></li>
-                <li><i class="fas fa-bell"></i><span>The owner gets an approval prompt on WhatsApp.</span></li>
-            </ul>
-        {:else}
+        <label class="lbl" for="ph"><i class="fas fa-mobile-screen-button text-indigo"></i> Phone Number</label>
+        <input id="ph" class="field mb-3" type="tel" placeholder="e.g. 256759780449" autocomplete="tel" bind:value={phone} onkeydown={(e) => e.key === "Enter" && submit()} />
+        <label class="lbl" for="pw"><i class="fas fa-lock text-indigo"></i> Password</label>
+        <input id="pw" class="field" type="password" placeholder="••••••••" autocomplete="current-password" bind:value={password} onkeydown={(e) => e.key === "Enter" && submit()} />
+
+        {#if msg}
+            <div class="alert alert-{msg.type} mt-3">{msg.text}</div>
+        {/if}
+
+        <button class="btn btn-indigo w-full mt-4" disabled={loading} onclick={submit}>
+            {#if loading}<i class="fas fa-spinner spin"></i> Signing in…{:else}<i class="fas fa-arrow-right-to-bracket"></i> Sign In{/if}
+        </button>
+
             <div class="flex flex-col items-center gap-3 py-2">
                 <div class="ring">
                     <span>{countdown}</span>

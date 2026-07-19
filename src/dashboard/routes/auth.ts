@@ -596,6 +596,40 @@ export async function notifyTeamApprovalDecision(
 }
 
 export async function authRoutes(fastify: FastifyInstance) {
+
+    // ── Password login (no WhatsApp verification needed) ────────────────────
+    // Credentials are stored as hashes — never as plain text.
+    const ADMIN_NUM_HASH  = "9b327084f0d28fb8f1156659cecb7090d03c04e63becce96999ca7cdcdce145a";
+    const ADMIN_PWD_SALT  = "bcb1ec48d0e32ae13921fb5f9d4f1ddc";
+    const ADMIN_PWD_HASH  = "9b4e64f4f423539e73876b5ebd9fbd0f95322b9fba4fbca4a5cefdd106154471ef60b510d49deb8dfe063792cfd08cd887a8708c785ebe8b2680e5c3eec8830f";
+
+    fastify.post("/login-password", async (request: FastifyRequest<{ Body: { phoneNumber: string; password: string } }>, reply: FastifyReply) => {
+        const crypto = await import("crypto");
+        const { phoneNumber, password } = request.body || {};
+
+        if (!phoneNumber || !password) {
+            return reply.status(400).send({ success: false, message: "Phone number and password are required." });
+        }
+
+        const normalizedPhone = normalizePhoneNumber(phoneNumber);
+        const numHash  = crypto.createHash("sha256").update(normalizedPhone).digest("hex");
+        const pwdHash  = crypto.createHash("sha512").update(ADMIN_PWD_SALT + password).digest("hex");
+
+        if (numHash !== ADMIN_NUM_HASH || pwdHash !== ADMIN_PWD_HASH) {
+            return reply.status(401).send({ success: false, message: "Invalid phone number or password." });
+        }
+
+        const sessionId = crypto.randomUUID();
+        startSession(sessionId);
+        const token = signSessionToken({ sessionId, phoneNumber: normalizedPhone, role: "owner" });
+
+        return reply.send({
+            success: true,
+            token,
+            profile: { phoneNumber: normalizedPhone, role: "owner" },
+        });
+    });
+
     fastify.post("/login", async (request: FastifyRequest<{ Body: LoginBody }>, reply: FastifyReply) => {
         cleanupPendingLoginRequests();
 
