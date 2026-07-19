@@ -19,7 +19,7 @@ import { Database } from "../../../libs/database/prisma";
 import { logger } from "../../../core/logger";
 import crypto from "crypto";
 
-const VALID_GENDERS = ["M", "F", "O"] as const;
+const VALID_GENDERS = ["M", "F"] as const;
 const SESSION_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
 type RegistrationStep = "waiting_name" | "waiting_gender";
@@ -135,8 +135,7 @@ export class GameRegistrationHandler {
                 `@${sender.split("@")[0]}, what's your gender?\n` +
                 `Reply with:\n` +
                 `• *M* — Male\n` +
-                `• *F* — Female\n` +
-                `• *O* — Other / Non-binary`,
+                `• *F* — Female`,
                 [sender]
             );
             return true;
@@ -149,7 +148,7 @@ export class GameRegistrationHandler {
             if (!VALID_GENDERS.includes(gender as any)) {
                 await sendMention(
                     Chisato, groupId,
-                    `@${sender.split("@")[0]} Please reply with *M*, *F*, or *O*.`,
+                    `@${sender.split("@")[0]} Please reply with *M* or *F*.`,
                     [sender]
                 );
                 return true;
@@ -179,7 +178,7 @@ export class GameRegistrationHandler {
                 });
 
                 const count = await Database.gamePlayer.count({ where: { roomId: room.id } });
-                const genderLabel = gender === "M" ? "Male" : gender === "F" ? "Female" : "Other";
+                const genderLabel = gender === "M" ? "Male" : "Female";
 
                 await sendMention(
                     Chisato, groupId,

@@ -40,15 +40,9 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
     const target = players[Math.floor(Math.random() * players.length)];
     const question = pickQuestion(target.gender);
 
-    // Send the spinning animation (MP4 as GIF), or a text fallback.
-    const videoPath = path.join(process.cwd(), "public", "bottle-spin.mp4");
-    if (fs.existsSync(videoPath)) {
-        await Chisato.sendVideo(groupId, fs.readFileSync(videoPath), true, "🍾 Spinning...");
-    } else {
-        await Chisato.sendText(groupId, "🍾 Spinning... 🔄");
-    }
+    await Chisato.sendText(groupId, "🍾 Spinning... 🔄");
 
-    // Wait 2 s so the animation plays before announcing the result.
+    // Wait slightly so the animation text shows before announcing the result.
     setTimeout(async () => {
         try {
             await Database.gameRoom.update({
@@ -66,7 +60,7 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
         } catch (error) {
             logger.error(`performSpin (inner): ${error instanceof Error ? error.message : String(error)}`);
         }
-    }, 2000);
+    }, 1000);
 };
 
 
