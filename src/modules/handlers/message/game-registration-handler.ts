@@ -88,6 +88,11 @@ export class GameRegistrationHandler {
 
 
         if (botMentioned && !context.cmd) {
+            // Wake up / unmute the bot if it was stopped
+            const { Group: GroupDatabase } = await import("../../../libs/database");
+            const groupDb = new GroupDatabase();
+            await groupDb.updateSettings(groupId, { mute: false });
+
             const room = await GameRegistrationHandler.getOrCreateRoom(groupId);
             const alreadyIn = await Database.gamePlayer.findFirst({
                 where: { roomId: room.id, userId: sender },

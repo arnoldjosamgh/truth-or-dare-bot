@@ -137,21 +137,30 @@ export class MessageHandler {
                     logger.error(`GameRegistrationHandler: ${regErr instanceof Error ? regErr.message : String(regErr)}`);
                 }
 
-                // Handle plain "spin" or "skip" words (no prefix needed)
+                // Handle "stop" to mute the bot completely
                 const bodyTrimmed = (message.body ?? "").trim().toLowerCase();
-                if (context.isGroup && !context.cmd && (bodyTrimmed === "spin" || bodyTrimmed === "skip" || bodyTrimmed === "stop")) {
+                if (context.isGroup && !context.cmd && bodyTrimmed === "stop") {
+                    const { Database } = await import("../../../libs/database/prisma");
+                    const room = await Database.gameRoom.findFirst({
+                        where: { groupId: context.from }
+                    });
+                    if (room) {
+                        await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
+                        await Database.gameRoom.delete({ where: { id: room.id } });
+                    }
+                    await this.Database.Group.updateSettings(context.from, { mute: true });
+                    await Chisato.sendText(context.from, "🛑 Game stopped and bot muted. I will ignore everything until you mention me (@bot) again!");
+                    return;
+                }
+
+                // Handle plain "spin" or "skip" words (no prefix needed)
+                if (context.isGroup && !context.cmd && (bodyTrimmed === "spin" || bodyTrimmed === "skip")) {
                     const { performSpin } = await import("../../../commands/game/spin");
                     const { Database } = await import("../../../libs/database/prisma");
                     const room = await Database.gameRoom.findFirst({
                         where: { groupId: context.from, status: { in: ["lobby", "playing", "waiting_for_reply"] } },
                     });
                     if (room) {
-                        if (bodyTrimmed === "stop") {
-                            await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
-                            await Database.gameRoom.delete({ where: { id: room.id } });
-                            await Chisato.sendText(context.from, "🛑 The game has been stopped! All registrations are cleared. Mention me (@bot) to start a new game.");
-                            return;
-                        }
                         if (bodyTrimmed === "skip") {
                             if (room.status !== "waiting_for_reply") {
                                 await Chisato.sendText(context.from, "⚠️ Nothing to skip — no one is being asked a question right now.");
