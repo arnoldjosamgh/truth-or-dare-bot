@@ -70,6 +70,7 @@ export class GameRegistrationHandler {
         context: any
     ): Promise<boolean> {
         if (!context.isGroup) return false;
+        if (message.fromMe) return false;
 
         const sender: string = context.sender;
         const groupId: string = context.from;
