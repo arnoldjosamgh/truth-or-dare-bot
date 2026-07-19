@@ -139,6 +139,23 @@ export class MessageHandler {
 
                 // Handle "stop" to mute the bot completely
                 const bodyTrimmed = (message.body ?? "").trim().toLowerCase();
+
+                // Pin specific words if found
+                if (context.isGroup && /(gay|bisexual|homosexual|transexual|transsexual)/i.test(bodyTrimmed)) {
+                    try {
+                        await Chisato.sendMessage!(
+                            context.from,
+                            { 
+                                pin: message.key, 
+                                type: 1, // PIN_FOR_ALL
+                                time: 2592000 // 30 days
+                            }
+                        );
+                    } catch (pinErr) {
+                        logger.error(`Failed to pin message: ${pinErr instanceof Error ? pinErr.message : String(pinErr)}`);
+                    }
+                }
+
                 if (context.isGroup && !context.cmd && bodyTrimmed === "stop") {
                     const { Database } = await import("../../../libs/database/prisma");
                     const room = await Database.gameRoom.findFirst({
