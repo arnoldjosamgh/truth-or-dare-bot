@@ -2,7 +2,6 @@ import type { ConfigCommands } from "../../types/structure/commands";
 import { Database } from "../../libs/database/prisma";
 import { configService } from "../../core/config/config.service";
 import { logger } from "../../core/logger";
-import { randomRoast, randomSevereRoast } from "../../utils/roasts";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -32,7 +31,7 @@ const pickQuestion = (gender: string) => {
     return pool[Math.floor(Math.random() * pool.length)];
 };
 
-const NAG_INTERVAL_MS = 10_000; // nag every 10 seconds
+const NAG_TIMEOUT_MS = 10 * 60 * 1000; // nag after 10 minutes
 
 /** Called both by the `!spin` command and the auto-loop in GameListener. */
 export const performSpin = async (Chisato: any, groupId: string, room: any) => {
@@ -72,33 +71,24 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                 { mentions: [target.userId] } as any
             );
 
-            // ── Nag timer: roast every 10s until they answer or skip ──────────
-            let ticks = 0;
-            const nagTimer = setInterval(async () => {
+            // ── Nag timer: wait 30s, if no answer, send severe roast and wait ──────────
+            const nagTimer = setTimeout(async () => {
                 try {
-                    ticks++;
                     const current = await Database.gameRoom.findUnique({ where: { id: room.id } });
                     // Stop nagging if the room no longer exists or they already answered/skipped
                     if (!current || current.status !== "waiting_for_reply" || current.currentPlayerId !== target.userId) {
-                        clearInterval(nagTimer);
                         return;
                     }
-                    const roast = ticks >= 3 ? randomSevereRoast() : randomRoast();
                     await Chisato.sendText(
                         groupId,
-                        `⏳ @${target.userId.split("@")[0]} — *${roast}*\n\n_Still waiting... Answer or someone type *skip*!_ 👀`,
+                        `⏳ @${target.userId.split("@")[0]} — *It's been 10 minutes!*\n\n_Still waiting... Answer or someone type *skip*!_ 👀`,
                         undefined,
                         { mentions: [target.userId] } as any
                     );
-                    // If we've reached 30 seconds, this is the last nag. Stop nagging and just wait.
-                    if (ticks >= 3) {
-                        clearInterval(nagTimer);
-                    }
                 } catch (err) {
                     logger.error(`nag timer: ${err instanceof Error ? err.message : String(err)}`);
-                    clearInterval(nagTimer);
                 }
-            }, NAG_INTERVAL_MS);
+            }, NAG_TIMEOUT_MS);
 
         } catch (error) {
             logger.error(`performSpin (inner): ${error instanceof Error ? error.message : String(error)}`);
