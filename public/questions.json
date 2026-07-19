@@ -2,981 +2,2031 @@
   {
     "id": 1,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had a one-night stand?"
+    "text": "If you could be invisible for a day, what’s the first thing you would do?"
   },
   {
     "id": 2,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's your wildest sexual fantasy?"
+    "text": "What’s the biggest secret you’ve kept from your parents?"
   },
   {
     "id": 3,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had a threesome?"
+    "text": "What’s the most embarrassing music you listen to?"
   },
   {
     "id": 4,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What is your most embarrassing sexual experience?"
+    "text": "What’s one thing you love most about yourself?"
   },
   {
     "id": 5,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had sex in public?"
+    "text": "If a genie granted you three wishes, what would you ask for and why?"
   },
   {
     "id": 6,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "How old were you when you lost your virginity?"
+    "text": "If you had to only ever watch rom-coms or only watch scary movies for the rest of your life, which would you choose and why?"
   },
   {
     "id": 7,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's the most adventurous place you've had sex?"
+    "text": "Where is the weirdest place you've ever gone to the bathroom?"
   },
   {
     "id": 8,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Do you enjoy dirty talk?"
+    "text": "Have you ever ghosted on someone?"
   },
   {
     "id": 9,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever filmed yourself having sex?"
+    "text": "Which player would survive a zombie apocalypse and which would be the first to go?"
   },
   {
     "id": 10,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's your favorite type of porn?"
+    "text": "What excuse have you used before to get out plans?"
   },
   {
     "id": 11,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever used sex toys?"
+    "text": "What's the longest you've ever slept?"
   },
   {
     "id": 12,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's the most orgasms you've had in one day?"
+    "text": "Read the last text you sent your best friend or significant other out loud."
   },
   {
     "id": 13,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever faked an orgasm?"
+    "text": "What's your biggest pet peeve?"
   },
   {
     "id": 14,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's your favorite position?"
+    "text": "When was the last time you lied?"
   },
   {
     "id": 15,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Do you prefer to be dominant or submissive?"
+    "text": "What five things would you bring to a deserted island?"
   },
   {
     "id": 16,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had sex with someone much older or younger than you?"
+    "text": "What's the most embarrassing thing you ever did on a date?"
   },
   {
     "id": 17,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had a sexual dream about someone you shouldn't have?"
+    "text": "What celebrity do you think you most look like?"
   },
   {
     "id": 18,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "What's the longest you've gone without sex?"
+    "text": "How many selfies do you take a day?"
   },
   {
     "id": 19,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever been caught in the act?"
+    "text": "What is one thing you would stand in line an hour for?"
   },
   {
     "id": 20,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have you ever had a crush on a teacher or boss?"
+    "text": "What's the longest time you've ever gone without showering?"
   },
   {
     "id": 21,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Send a naughty text to your partner."
+    "text": "What's the most embarrassing top-played song on your phone?"
   },
   {
     "id": 22,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Wear no underwear tomorrow."
+    "text": "What was your favorite childhood show?"
   },
   {
     "id": 23,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Give your partner a lap dance."
+    "text": "If you had to change your name, what would your new first name be?"
   },
   {
     "id": 24,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Take a nude photo of yourself."
+    "text": "If you could be a fictional character for a day, who would you choose?"
   },
   {
     "id": 25,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Share a sexual fantasy with your partner."
+    "text": "If you could date a fictional character, who would it be?"
   },
   {
     "id": 26,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Watch an erotic movie together."
+    "text": "What's one silly thing you can't live without?"
   },
   {
     "id": 27,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Give your partner a striptease."
+    "text": "Where was your favorite childhood vacation spot?"
   },
   {
     "id": 28,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Make out with your partner for five minutes straight."
+    "text": "What is the weirdest trend you've ever participated in?"
   },
   {
     "id": 29,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Try a new sex position tonight."
+    "text": "If you could only listen to one song for the rest of your life, what would you choose?"
   },
   {
     "id": 30,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Send a sensual voice note to your partner."
+    "text": "Who do you text the most?"
   },
   {
     "id": 31,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Use ice cubes during foreplay."
+    "text": "Have you ever been fired from a job?"
   },
   {
     "id": 32,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Whisper something dirty into your partner's ear."
+    "text": "If you had to wear only flip-flops or heels for the next 10 years, which would you choose?"
   },
   {
     "id": 33,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Blindfold your partner and tease them."
+    "text": "What’s an instant deal breaker in a potential love interest?"
   },
   {
     "id": 34,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Give your partner a sensual massage."
+    "text": "If you could only eat one thing for the rest of your life, what would you choose?"
   },
   {
     "id": 35,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Try role-playing with your partner."
+    "text": "What is the biggest lie you ever told your parents?"
   },
   {
     "id": 36,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Wear a revealing outfit under your clothes."
+    "text": "What's the worst physical pain you've ever experienced?"
   },
   {
     "id": 37,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Share an embarrassing sexual moment."
+    "text": "Which player knows you the best?"
   },
   {
     "id": 38,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Flash your partner."
+    "text": "What's your favorite part of your body?"
   },
   {
     "id": 39,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Have a quickie in an unusual place."
+    "text": "If you could only accomplish three things in life, what would they be?"
   },
   {
     "id": 40,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Use food during foreplay."
+    "text": "What's the weirdest thing you've ever eaten?"
   },
   {
     "id": 41,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 41 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have you ever gone skinny dipping?"
   },
   {
     "id": 42,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 42 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Tell us about the biggest romantic fail you’ve ever experienced."
   },
   {
     "id": 43,
     "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 43 generated for the game..."
+    "text": "Who was your first celebrity crush?"
   },
   {
     "id": 44,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 44 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What's the strangest dream you've ever had?"
   },
   {
     "id": 45,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 45 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What are the top three things you look for in a love interest?"
   },
   {
     "id": 46,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 46 generated for the game..."
+    "text": "What is your worst habit?"
   },
   {
     "id": 47,
     "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 47 generated for the game..."
+    "gender_target": "neutral",
+    "text": "How many stuffed animals do you own?"
   },
   {
     "id": 48,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 48 generated for the game..."
+    "text": "Do you sleep with any stuffed animals?"
   },
   {
     "id": 49,
     "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 49 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What is your biggest insecurity?"
   },
   {
     "id": 50,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 50 generated for the game..."
+    "text": "Name one thing you’d do if you knew there’d be zero consequences."
   },
   {
     "id": 51,
     "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 51 generated for the game..."
+    "text": "Do you pee in the shower?"
   },
   {
     "id": 52,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 52 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the most embarrassing thing you’ve done to get a crush’s attention?"
   },
   {
     "id": 53,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 53 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the most random thing in your bag right now?"
   },
   {
     "id": 54,
-    "type": "dare",
-    "category": "deep",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 54 generated for the game..."
+    "text": "What’s the last movie that made you cry?"
   },
   {
     "id": 55,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 55 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the last song that made you cry?"
   },
   {
     "id": 56,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 56 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What are the five most recent things in your search history?"
   },
   {
     "id": 57,
     "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 57 generated for the game..."
+    "gender_target": "neutral",
+    "text": "When’s the last time you got caught in a lie?"
   },
   {
     "id": 58,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 58 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What gross smell do you actually enjoy?"
   },
   {
     "id": 59,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 59 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Who was the last person you said “I love you” to?"
   },
   {
     "id": 60,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 60 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Have you ever had a paranormal experience?"
   },
   {
     "id": 61,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 61 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you could have lunch with a famous person, dead or alive, who would you pick and why?"
   },
   {
     "id": 62,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 62 generated for the game..."
+    "gender_target": "neutral",
+    "text": "If you were handed $1,000 right now, what would you spend it on?"
   },
   {
     "id": 63,
     "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 63 generated for the game..."
+    "text": "Have you ever cheated on an exam?"
   },
   {
     "id": 64,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 64 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the most awkward thing you’ve ever been caught doing?"
   },
   {
     "id": 65,
     "type": "truth",
-    "category": "deep",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 65 generated for the game..."
+    "text": "What was your first concert?"
   },
   {
     "id": 66,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 66 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you had the choice to never have to sleep again, would you do it?"
   },
   {
     "id": 67,
     "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 67 generated for the game..."
+    "gender_target": "neutral",
+    "text": "If you had to get a tattoo today, what would it be?"
   },
   {
     "id": 68,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 68 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Even if you’d be paid $1 million for it, what’s something you would never do?"
   },
   {
     "id": 69,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 69 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you could travel to the past and meet one person, who would it be?"
   },
   {
     "id": 70,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 70 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What popular TV show or movie do you secretly hate?"
   },
   {
     "id": 71,
     "type": "truth",
-    "category": "spicy",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 71 generated for the game..."
+    "text": "Where do you see yourself in 10 years?"
   },
   {
     "id": 72,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 72 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Name your go-to karaoke song."
   },
   {
     "id": 73,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 73 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the most adventurous thing you’ve ever done?"
   },
   {
     "id": 74,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 74 generated for the game..."
+    "gender_target": "neutral",
+    "text": "When have you been in the most trouble in school?"
   },
   {
     "id": 75,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 75 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you had to always be overdressed or underdressed, which would you choose?"
   },
   {
     "id": 76,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 76 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Who would you cast as you and your friends in the movie version of your life?"
   },
   {
     "id": 77,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 77 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the luckiest thing that’s ever happened to you?"
   },
   {
     "id": 78,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 78 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you had to move to a different country tomorrow, where would you go?"
   },
   {
     "id": 79,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 79 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have you ever re-gifted a present? What was it?"
   },
   {
     "id": 80,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 80 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What’s the weirdest thing you do when you’re alone?"
   },
   {
     "id": 81,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 81 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What movie (or franchise) are you most embarrassed to love?"
   },
   {
     "id": 82,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 82 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have you ever had an imaginary friend? Describe them."
   },
   {
     "id": 83,
     "type": "truth",
-    "category": "deep",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 83 generated for the game..."
+    "text": "What gross food combo do you secretly love?"
   },
   {
     "id": 84,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 84 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "If you could become besties with a celebrity, who would it be?"
   },
   {
     "id": 85,
     "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 85 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What’s the most embarrassing nickname you’ve ever been given?"
   },
   {
     "id": 86,
-    "type": "dare",
-    "category": "deep",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 86 generated for the game..."
+    "text": "If you could trade lives with any person you know for a day, who would it be?"
   },
   {
     "id": 87,
     "type": "truth",
-    "category": "deep",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 87 generated for the game..."
+    "text": "Have you ever been in a physical fight?"
   },
   {
     "id": 88,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 88 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have you ever had a wardrobe malfunction?"
   },
   {
     "id": 89,
     "type": "truth",
     "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 89 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What’s the scariest dream you’ve ever had?"
   },
   {
     "id": 90,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 90 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the weirdest place you’ve kissed/hooked up with someone?"
   },
   {
     "id": 91,
     "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 91 generated for the game..."
+    "text": "Have you ever slid into a celebrity’s DMs?"
   },
   {
     "id": 92,
-    "type": "dare",
-    "category": "deep",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 92 generated for the game..."
+    "text": "What superstitions do you believe in?"
   },
   {
     "id": 93,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 93 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Are you Team Edward or Team Jacob (or both?)"
   },
   {
     "id": 94,
-    "type": "dare",
+    "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 94 generated for the game..."
+    "text": "What app do you check first in the morning?"
   },
   {
     "id": 95,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 95 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the weirdest thing you’ve ever purchased?"
   },
   {
     "id": 96,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 96 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the longest you’ve gone without brushing your teeth?"
   },
   {
     "id": 97,
     "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 97 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What’s the weirdest thing you have in your bedroom?"
   },
   {
     "id": 98,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 98 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s the weirdest thing you have in your locker?"
   },
   {
     "id": 99,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 99 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "How often do you wash your sheets?"
   },
   {
     "id": 100,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 100 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do you sing in the shower? What was the last song you belted out?"
   },
   {
     "id": 101,
     "type": "truth",
     "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 101 generated for the game..."
+    "text": "What’s the weirdest thing you do while driving?"
   },
   {
     "id": 102,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "funny",
     "gender_target": "neutral",
-    "text": "Sample question 102 generated for the game..."
+    "text": "Have you ever started a rumor about someone? What was it?"
   },
   {
     "id": 103,
     "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 103 generated for the game..."
+    "gender_target": "neutral",
+    "text": "If you could talk to a fortune teller, what would you ask them?"
   },
   {
     "id": 104,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 104 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do you believe in aliens? What do you think they look like?"
   },
   {
     "id": 105,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 105 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have you ever given a fake number?"
   },
   {
     "id": 106,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 106 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s more important to you: love or money?"
   },
   {
     "id": 107,
     "type": "truth",
     "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 107 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Have you ever had your palm read?"
   },
   {
     "id": 108,
-    "type": "dare",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 108 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What's a conspiracy theory you actually believe?"
   },
   {
     "id": 109,
     "type": "truth",
-    "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 109 generated for the game..."
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What’s your survival plan during a zombie apocalypse?"
   },
   {
     "id": 110,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 110 generated for the game..."
+    "type": "truth",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "What destination is on your travel bucket list?"
   },
   {
     "id": 111,
     "type": "truth",
     "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 111 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What’s your biggest regret?"
   },
   {
     "id": 112,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 112 generated for the game..."
+    "text": "What's the most memorable lesson you learned from your parents?"
   },
   {
     "id": 113,
     "type": "truth",
     "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 113 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Who are you jealous of?"
   },
   {
     "id": 114,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 114 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever fallen in love at first sight?"
   },
   {
     "id": 115,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 115 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "When was the last time you cried?"
   },
   {
     "id": 116,
-    "type": "dare",
-    "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 116 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What's your biggest fear?"
   },
   {
     "id": 117,
     "type": "truth",
-    "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 117 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "When’s the last time you said you were sorry? For what?"
   },
   {
     "id": 118,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 118 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you have any phobias?"
   },
   {
     "id": 119,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "male",
-    "text": "Sample question 119 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you believe in an afterlife?"
   },
   {
     "id": 120,
-    "type": "dare",
-    "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 120 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What do you want to be remembered for most in life?"
   },
   {
     "id": 121,
     "type": "truth",
-    "category": "spicy",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 121 generated for the game..."
+    "text": "Do you believe in soulmates?"
   },
   {
     "id": 122,
-    "type": "dare",
-    "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 122 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s the worst thing you’ve ever said to anyone?"
   },
   {
     "id": 123,
     "type": "truth",
     "category": "deep",
-    "gender_target": "male",
-    "text": "Sample question 123 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Have you ever been rejected by someone?"
   },
   {
     "id": 124,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 124 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you want to get married someday?"
   },
   {
     "id": 125,
     "type": "truth",
-    "category": "spicy",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 125 generated for the game..."
+    "text": "What are you most excited about at this very moment?"
   },
   {
     "id": 126,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 126 generated for the game..."
+    "text": "What do you write about the most in your diary?"
   },
   {
     "id": 127,
     "type": "truth",
-    "category": "funny",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 127 generated for the game..."
+    "text": "Are you afraid of the future?"
   },
   {
     "id": 128,
-    "type": "dare",
-    "category": "funny",
-    "gender_target": "female",
-    "text": "Sample question 128 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever ditched someone before?"
   },
   {
     "id": 129,
     "type": "truth",
-    "category": "spicy",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 129 generated for the game..."
+    "text": "Have you ever intentionally sabotaged someone?"
   },
   {
     "id": 130,
-    "type": "dare",
+    "type": "truth",
     "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 130 generated for the game..."
+    "gender_target": "neutral",
+    "text": "Have you ever lied to a friend?"
   },
   {
     "id": 131,
     "type": "truth",
-    "category": "spicy",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 131 generated for the game..."
+    "text": "Have you ever said “I love you” to someone and not meant it?"
   },
   {
     "id": 132,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 132 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "How have your priorities changed over time?"
   },
   {
     "id": 133,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 133 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "If you suddenly had a million dollars, how would you spend it?"
   },
   {
     "id": 134,
-    "type": "dare",
-    "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 134 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Is there an ex with whom you’d consider reconciling?"
   },
   {
     "id": 135,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 135 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Name one thing you’d do if you knew there’d be zero consequences."
   },
   {
     "id": 136,
-    "type": "dare",
-    "category": "spicy",
+    "type": "truth",
+    "category": "deep",
     "gender_target": "neutral",
-    "text": "Sample question 136 generated for the game..."
+    "text": "Personality-wise, are you more like your mom or your dad?"
   },
   {
     "id": 137,
     "type": "truth",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 137 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What are you most proud of in your life?"
   },
   {
     "id": 138,
-    "type": "dare",
-    "category": "spicy",
-    "gender_target": "female",
-    "text": "Sample question 138 generated for the game..."
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What bridges are you glad that you burned?"
   },
   {
     "id": 139,
     "type": "truth",
-    "category": "funny",
-    "gender_target": "male",
-    "text": "Sample question 139 generated for the game..."
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What was your biggest childhood fear?"
   },
   {
     "id": 140,
-    "type": "dare",
+    "type": "truth",
     "category": "deep",
-    "gender_target": "female",
-    "text": "Sample question 140 generated for the game..."
+    "gender_target": "neutral",
+    "text": "What was your first heartbreak?"
+  },
+  {
+    "id": 141,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s the biggest mistake you’ve ever made?"
+  },
+  {
+    "id": 142,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s something you’re glad your mom doesn’t know about you?"
+  },
+  {
+    "id": 143,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s the worst thing anyone’s ever done to you?"
+  },
+  {
+    "id": 144,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s been your most physically painful experience?"
+  },
+  {
+    "id": 145,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s something you know you need to do but aren’t looking forward to at all?"
+  },
+  {
+    "id": 146,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s something you only do when you’re alone?"
+  },
+  {
+    "id": 147,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What was the best compliment you’ve ever received?"
+  },
+  {
+    "id": 148,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s the scariest thing that’s ever happened to you?"
+  },
+  {
+    "id": 149,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s your favorite possession?"
+  },
+  {
+    "id": 150,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Would you marry someone rich even if you weren’t in love with them?"
+  },
+  {
+    "id": 151,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever fallen out of love?"
+  },
+  {
+    "id": 152,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Name one childish thing that you still do."
+  },
+  {
+    "id": 153,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever let someone else take the blame for something you have done?"
+  },
+  {
+    "id": 154,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What is the stupidest thing you have done for a crush or partner?"
+  },
+  {
+    "id": 155,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What are the things you think about while sitting on the toilet?"
+  },
+  {
+    "id": 156,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "How far are you willing to go for the person of your dreams?"
+  },
+  {
+    "id": 157,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What is something stupid you have done to try to be ‘cooler’?"
+  },
+  {
+    "id": 158,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Who was your first love?"
+  },
+  {
+    "id": 159,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "If you were stranded on an island, who would you want to be stranded with?"
+  },
+  {
+    "id": 160,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What is your dream career?"
+  },
+  {
+    "id": 161,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What makes you the happiest?"
+  },
+  {
+    "id": 162,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What does falling in love feel like to you?"
+  },
+  {
+    "id": 163,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you think you’re a good person?"
+  },
+  {
+    "id": 164,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What are the elements of the perfect day?"
+  },
+  {
+    "id": 165,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you believe it’s ok to have secrets in a relationship?"
+  },
+  {
+    "id": 166,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "If you saw a friend’s partner cheating, would you tell the friend? Why or why not?"
+  },
+  {
+    "id": 167,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you trust people easily?"
+  },
+  {
+    "id": 168,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you prefer slow-burn romance or love-at-first-sight energy?"
+  },
+  {
+    "id": 169,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s the biggest leap of faith you’ve taken?"
+  },
+  {
+    "id": 170,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you believe in monogamy?"
+  },
+  {
+    "id": 171,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Do you most often follow your heart or your head?"
+  },
+  {
+    "id": 172,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "True or false: Traveling makes you a better person."
+  },
+  {
+    "id": 173,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s something you're really scared to fail at?"
+  },
+  {
+    "id": 174,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Who in your life knows you the best?"
+  },
+  {
+    "id": 175,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever lost a friendship that you still miss?"
+  },
+  {
+    "id": 176,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s a belief or opinion you’ve changed your mind about recently?"
+  },
+  {
+    "id": 177,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "If you could have one “do-over” moment in your life, what would it be?"
+  },
+  {
+    "id": 178,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "When was the last time you really surprised yourself?"
+  },
+  {
+    "id": 179,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s a \"red flag\" you ignored — and regretted later?"
+  },
+  {
+    "id": 180,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s a \"green flag\" you’re grateful you listened to?"
+  },
+  {
+    "id": 181,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "Have you ever felt like you outgrew someone? What did you do about it?"
+  },
+  {
+    "id": 182,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s something you’ve never shared because you were scared of being judged?"
+  },
+  {
+    "id": 183,
+    "type": "truth",
+    "category": "deep",
+    "gender_target": "neutral",
+    "text": "What’s one way you’ve grown in the past year?"
+  },
+  {
+    "id": 184,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who is your secret crush?"
+  },
+  {
+    "id": 185,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who is the last person you creeped on social media?"
+  },
+  {
+    "id": 186,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Reveal all the details of your first kiss."
+  },
+  {
+    "id": 187,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What is the boldest pickup line you've ever used?"
+  },
+  {
+    "id": 188,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Do you still have feelings for any of your exes?"
+  },
+  {
+    "id": 189,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever sent a sext?"
+  },
+  {
+    "id": 190,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who’s your celebrity “hall pass” if you were to meet that person while in a relationship?"
+  },
+  {
+    "id": 191,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What unexpected part of the body do you find attractive?"
+  },
+  {
+    "id": 192,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever flirted with a close friend’s sibling?"
+  },
+  {
+    "id": 193,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What’s your wildest fantasy?"
+  },
+  {
+    "id": 194,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "If you had to kiss someone in this room, who would it be?"
+  },
+  {
+    "id": 195,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Would you ever date a friend's ex if they gave you permission?"
+  },
+  {
+    "id": 196,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a sexy dream about someone here?"
+  },
+  {
+    "id": 197,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever faked a crush or fake-flirted to make someone jealous?"
+  },
+  {
+    "id": 198,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What song always puts you in the mood?"
+  },
+  {
+    "id": 199,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever caught feelings for someone you shouldn’t have?"
+  },
+  {
+    "id": 200,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What’s the most spontaneous thing you’ve ever done for love (or a crush)?"
+  },
+  {
+    "id": 201,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who would you call for a “no-questions-asked” hookup?"
+  },
+  {
+    "id": 202,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's your go-to outfit when you want to feel hot?"
+  },
+  {
+    "id": 203,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's your biggest dating dealbreaker?"
+  },
+  {
+    "id": 204,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever kissed someone you weren't supposed to?"
+  },
+  {
+    "id": 205,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever dated (or wanted to date) someone you met on a trip?"
+  },
+  {
+    "id": 206,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's the riskiest text you've ever sent?"
+  },
+  {
+    "id": 207,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had a \"friends with benefits\" situation?"
+  },
+  {
+    "id": 208,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever made out or hooked up somewhere you definitely shouldn't have?"
+  },
+  {
+    "id": 209,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who’s one person you would kiss right now — no hesitation?"
+  },
+  {
+    "id": 210,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's the most daring thing you’ve ever done while flirting?"
+  },
+  {
+    "id": 211,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever flirted just to get something?"
+  },
+  {
+    "id": 212,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Hot friend. Who’s the first person who came to mind?"
+  },
+  {
+    "id": 213,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever had feelings for two people at once?"
+  },
+  {
+    "id": 214,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever caught feelings for someone older or younger than you?"
+  },
+  {
+    "id": 215,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "What's one secret about your love life you've never admitted to anyone — until now?"
+  },
+  {
+    "id": 216,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Who in this room do you think would be the best kisser?"
+  },
+  {
+    "id": 217,
+    "type": "truth",
+    "category": "spicy",
+    "gender_target": "neutral",
+    "text": "Have you ever kissed more than one person in a 24-hour period?"
+  },
+  {
+    "id": 218,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Pick someone in this room and (lovingly) roast them for one minute straight."
+  },
+  {
+    "id": 219,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let another person post an Instagram caption on your behalf."
+  },
+  {
+    "id": 220,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Smell another player's armpit."
+  },
+  {
+    "id": 221,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Smell another player's bare foot."
+  },
+  {
+    "id": 222,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Eat a bite of a banana peel."
+  },
+  {
+    "id": 223,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do an impression of another player until someone can figure out who it is."
+  },
+  {
+    "id": 224,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Say pickles at the end of every sentence you say until the game ends."
+  },
+  {
+    "id": 225,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Imitate a TikTok star until another player guesses who you're portraying."
+  },
+  {
+    "id": 226,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Act like a chicken until your next turn."
+  },
+  {
+    "id": 227,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Talk in a British accent until your next turn."
+  },
+  {
+    "id": 228,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Call a friend, pretend it's their birthday, and sing them Happy Birthday to You."
+  },
+  {
+    "id": 229,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Name a famous person that looks like each player in the room."
+  },
+  {
+    "id": 230,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Show us your best dance moves."
+  },
+  {
+    "id": 231,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Eat a packet of hot sauce straight."
+  },
+  {
+    "id": 232,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let another person draw a tattoo on your back with a permanent marker."
+  },
+  {
+    "id": 233,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Put on a blindfold and touch the other players' faces until you can figure out who's who."
+  },
+  {
+    "id": 234,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Bite into a raw onion without slicing it."
+  },
+  {
+    "id": 235,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Go outside and try to “summon” the rain as loud as possible."
+  },
+  {
+    "id": 236,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Serenade the person to your right for a full minute."
+  },
+  {
+    "id": 237,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do 20 squats."
+  },
+  {
+    "id": 238,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let the other players redo your hairstyle."
+  },
+  {
+    "id": 239,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Eat a condiment of your choice straight from the bottle."
+  },
+  {
+    "id": 240,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Dump out your purse, backpack, or pockets and do a show and tell of what's inside."
+  },
+  {
+    "id": 241,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let the player to your right redo your makeup with their eyes closed."
+  },
+  {
+    "id": 242,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Prank call one of your family members."
+  },
+  {
+    "id": 243,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let another player create a hat out of toilet paper — and you have to wear it for the rest of the game."
+  },
+  {
+    "id": 244,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do a plank for a full minute."
+  },
+  {
+    "id": 245,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do your sassiest runway walk."
+  },
+  {
+    "id": 246,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Put five ice cubes in your mouth (you can't chew them, you just have to let them melt—brrr)."
+  },
+  {
+    "id": 247,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Bark like a dog until it’s your next turn."
+  },
+  {
+    "id": 248,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Draw your favorite movie and have the other person guess it (Pictionary-style)."
+  },
+  {
+    "id": 249,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Repeat everything the person to your right says until your next turn."
+  },
+  {
+    "id": 250,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Demonstrate how you style your hair in the mirror (without actually using the mirror)."
+  },
+  {
+    "id": 251,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Play air guitar for one minute."
+  },
+  {
+    "id": 252,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Empty a glass of cold water onto your head outside."
+  },
+  {
+    "id": 253,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Go on Instagram Live and do a dramatic reading of one of your textbooks."
+  },
+  {
+    "id": 254,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "In the next 10 minutes, find a way to scare another player and make it a surprise."
+  },
+  {
+    "id": 255,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Lick a bar of soap."
+  },
+  {
+    "id": 256,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Talk to a pillow as if it’s your crush."
+  },
+  {
+    "id": 257,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Post the oldest selfie on your phone to Snapchat or Instagram stories (and leave it up!)."
+  },
+  {
+    "id": 258,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Attempt the first TikTok dance on your FYP."
+  },
+  {
+    "id": 259,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Imitate a celebrity of the group’s choosing every time you talk for the next 10 minutes."
+  },
+  {
+    "id": 260,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Do karaoke to a song of the group’s choosing."
+  },
+  {
+    "id": 261,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Post a photo (any photo) to social with a heartfelt dedication to a celebrity of the group’s choosing."
+  },
+  {
+    "id": 262,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Find your very first crush on social and DM them."
+  },
+  {
+    "id": 263,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Peel a banana using just your toes."
+  },
+  {
+    "id": 264,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let the group mix together five of whatever liquids they find in the fridge, then drink it."
+  },
+  {
+    "id": 265,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Wear another player’s socks like gloves for the next five minutes."
+  },
+  {
+    "id": 266,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Put on makeup without looking in the mirror, then leave it like that for the rest of the game."
+  },
+  {
+    "id": 267,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Describe the most attractive quality of every person in the room."
+  },
+  {
+    "id": 268,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Sing like an opera singer instead of speaking for the next five minutes."
+  },
+  {
+    "id": 269,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Allow the person to your right to draw on your face with a Sharpie."
+  },
+  {
+    "id": 270,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Jump in the pool (or shower) with all your clothes on!"
+  },
+  {
+    "id": 271,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Stand outside your house and wave to everyone who passes in the next minute."
+  },
+  {
+    "id": 272,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Pretend to be underwater for the next 10 minutes."
+  },
+  {
+    "id": 273,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Make out with a pillow."
+  },
+  {
+    "id": 274,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Post a flirty comment on the first Instagram picture that you see."
+  },
+  {
+    "id": 275,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Give the person to your right a foot massage (with their consent)."
+  },
+  {
+    "id": 276,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Pretend to be a ballerina until your next turn."
+  },
+  {
+    "id": 277,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Try to fit your whole fist in your mouth."
+  },
+  {
+    "id": 278,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Reveal your screen time report to your friends."
+  },
+  {
+    "id": 279,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Go outside and howl at the moon."
+  },
+  {
+    "id": 280,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let someone else write your next Hinge bio line."
+  },
+  {
+    "id": 281,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Tell the group your “type” without using any words — just emojis."
+  },
+  {
+    "id": 282,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Call a random number and try to have a 1-minute conversation with whoever answers."
+  },
+  {
+    "id": 283,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Send a \"hey stranger\" text to someone you haven’t talked to in over a year."
+  },
+  {
+    "id": 284,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Send your mom or dad a text that just says, \"We need to talk.\""
+  },
+  {
+    "id": 285,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "DM someone random \"I have a business proposition for you\" and share their response."
+  },
+  {
+    "id": 286,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have a fake emotional breakup with a chair (full drama)."
+  },
+  {
+    "id": 287,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Have a “dramatic fainting contest” with another player — most believable wins."
+  },
+  {
+    "id": 288,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Let someone tickle you for 30 seconds straight while you try not to laugh."
+  },
+  {
+    "id": 289,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Rank everyone in the room by who you think would survive longest on a deserted island (and defend your reasoning)."
+  },
+  {
+    "id": 290,
+    "type": "dare",
+    "category": "funny",
+    "gender_target": "neutral",
+    "text": "Pretend you’re auditioning for “America’s Next Top Model” and strut/pose like your life depends on it."
   }
 ]
