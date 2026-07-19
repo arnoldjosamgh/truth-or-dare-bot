@@ -2,7 +2,7 @@ import { Client } from "../../../libs/client/client";
 import { MessageSerialize } from "../../../types/structure/serialize";
 import { Database } from "../../../libs/database/prisma";
 import { logger } from "../../../core/logger";
-import { performSpin } from "../../../commands/game/spin";
+import { performSpin, getQuestionByText } from "../../../commands/game/spin";
 
 const AUTO_SPIN_DELAY_MS = 5000;
 
@@ -20,6 +20,23 @@ export class GameListener {
         if (!room || room.currentPlayerId !== context.sender) return false;
 
         try {
+            // Check if player is asking for an explanation
+            const textLower = context.body?.toLowerCase() || "";
+            const isAskingForExplanation = /^(how|what|why|huh|what do you mean|explain)\??$/i.test(textLower);
+
+            if (isAskingForExplanation && room.currentQuestion) {
+                const questionObj = getQuestionByText(room.currentQuestion);
+                const explanation = questionObj?.explanation || "I don't have an explanation for this one, just try your best!";
+                
+                await Chisato.sendText(
+                    context.from,
+                    `💡 *Explanation:*\n${explanation}\n\n_Still your turn, @${context.sender.split("@")[0]}!_`,
+                    message,
+                    { mentions: [context.sender] } as any
+                );
+                return true; // Consume the message but do not advance the game state
+            }
+
             await Database.gameRoom.update({
                 where: { id: room.id },
                 data: { status: "playing", currentPlayerId: null, currentQuestion: null }
