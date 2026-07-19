@@ -1,13 +1,13 @@
 /**
  * game-registration-handler.ts
  *
- * Handles the conversational @bot → name → gender registration flow.
+ * Handles the conversational @bot mention → name → gender registration flow.
  *
  * Flow:
  *   1. Someone @mentions the bot in a group  → bot asks for their name
  *   2. That person sends any text            → bot saves it as their name, asks for gender
  *   3. That person sends M / F / O           → bot confirms registration
- *   4. Host sends "spin" or "!spin"          → game runs with registered players only
+ *   4. Host sends "spin"                     → game runs with registered players only
  *
  * State is kept in-memory (Map) and automatically expires after 5 minutes of
  * inactivity so stale sessions don't accumulate.
@@ -31,7 +31,6 @@ interface RegSession {
     expiresAt: number;
 }
 
-// Key: sender JID (bare phone e.g. "628xxx@s.whatsapp.net")
 const sessions = new Map<string, RegSession>();
 
 /** Sweep expired sessions periodically */
@@ -47,6 +46,17 @@ function refreshSession(sender: string, patch: Partial<RegSession>): void {
     if (existing) {
         Object.assign(existing, patch, { expiresAt: Date.now() + SESSION_TTL_MS });
     }
+}
+
+/** Send a text message that @mentions the given JIDs. */
+async function sendMention(
+    Chisato: Client,
+    groupId: string,
+    text: string,
+    mentions: string[]
+): Promise<void> {
+    // sendText accepts an options object as the 4th arg; pass mentions there.
+    await Chisato.sendText(groupId, text, undefined, { mentions } as any);
 }
 
 export class GameRegistrationHandler {
@@ -66,7 +76,7 @@ export class GameRegistrationHandler {
         const body: string = (message.body ?? "").trim();
         const botJid: string = context.botNumber;
 
-        // ── 1. @mention → start registration ───────────────────────────────
+        // ── 1. @mention → start registration ────────────────────────────────
         const botMentioned =
             Array.isArray(message.mentions) &&
             message.mentions.some(
@@ -76,33 +86,31 @@ export class GameRegistrationHandler {
             );
 
         if (botMentioned && !context.cmd) {
-            // Check if already registered in this room
             const room = await GameRegistrationHandler.getOrCreateRoom(groupId);
             const alreadyIn = await Database.gamePlayer.findFirst({
                 where: { roomId: room.id, userId: sender },
             });
 
             if (alreadyIn) {
-                await Chisato.sendText(
-                    groupId,
+                await sendMention(
+                    Chisato, groupId,
                     `✅ *${alreadyIn.name}*, you're already in the game lobby!\n` +
-                        `The host can type *spin* to start.`,
-                    message
+                    `The host can type *spin* to start.`,
+                    [sender]
                 );
                 return true;
             }
 
-            // Start name collection
             sessions.set(sender, {
                 step: "waiting_name",
                 groupId,
                 expiresAt: Date.now() + SESSION_TTL_MS,
             });
 
-            await Chisato.sendTextWithMentions(
-                groupId,
+            await sendMention(
+                Chisato, groupId,
                 `🎮 Hey @${sender.split("@")[0]}! Let's get you into the game.\n\n` +
-                    `What's your *name*? (just type it)`,
+                `What's your *name*? (just type it)`,
                 [sender]
             );
             return true;
@@ -112,24 +120,23 @@ export class GameRegistrationHandler {
         const session = sessions.get(sender);
         if (!session || session.groupId !== groupId) return false;
 
-        // Ignore commands while in a session
         if (context.cmd) return false;
 
         // Step: waiting for name
         if (session.step === "waiting_name") {
             if (!body || body.length < 1) return false;
 
-            const name = body.slice(0, 32); // cap name length
+            const name = body.slice(0, 32);
             refreshSession(sender, { step: "waiting_gender", name });
 
-            await Chisato.sendTextWithMentions(
-                groupId,
+            await sendMention(
+                Chisato, groupId,
                 `Nice to meet you, *${name}*! 👋\n\n` +
-                    `@${sender.split("@")[0]}, what's your gender?\n` +
-                    `Reply with:\n` +
-                    `• *M* — Male\n` +
-                    `• *F* — Female\n` +
-                    `• *O* — Other / Non-binary`,
+                `@${sender.split("@")[0]}, what's your gender?\n` +
+                `Reply with:\n` +
+                `• *M* — Male\n` +
+                `• *F* — Female\n` +
+                `• *O* — Other / Non-binary`,
                 [sender]
             );
             return true;
@@ -140,8 +147,8 @@ export class GameRegistrationHandler {
             const gender = body.toUpperCase();
 
             if (!VALID_GENDERS.includes(gender as any)) {
-                await Chisato.sendTextWithMentions(
-                    groupId,
+                await sendMention(
+                    Chisato, groupId,
                     `@${sender.split("@")[0]} Please reply with *M*, *F*, or *O*.`,
                     [sender]
                 );
@@ -154,14 +161,13 @@ export class GameRegistrationHandler {
             try {
                 const room = await GameRegistrationHandler.getOrCreateRoom(groupId);
 
-                // Prevent duplicate
                 const existing = await Database.gamePlayer.findFirst({
                     where: { roomId: room.id, userId: sender },
                 });
 
                 if (existing) {
-                    await Chisato.sendTextWithMentions(
-                        groupId,
+                    await sendMention(
+                        Chisato, groupId,
                         `@${sender.split("@")[0]} You're already registered as *${existing.name}*! 🎮`,
                         [sender]
                     );
@@ -172,19 +178,16 @@ export class GameRegistrationHandler {
                     data: { userId: sender, roomId: room.id, name, gender },
                 });
 
-                // Count players
                 const count = await Database.gamePlayer.count({ where: { roomId: room.id } });
+                const genderLabel = gender === "M" ? "Male" : gender === "F" ? "Female" : "Other";
 
-                const genderLabel =
-                    gender === "M" ? "Male" : gender === "F" ? "Female" : "Other";
-
-                await Chisato.sendTextWithMentions(
-                    groupId,
+                await sendMention(
+                    Chisato, groupId,
                     `🎉 @${sender.split("@")[0]} (*${name}* · ${genderLabel}) has joined the game!\n\n` +
-                        `👥 *${count} player${count === 1 ? "" : "s"}* in the lobby.\n\n` +
-                        (count >= 2
-                            ? `The host can now type *spin* to start! 🍾`
-                            : `Waiting for more players to @mention me and join!`),
+                    `👥 *${count} player${count === 1 ? "" : "s"}* in the lobby.\n\n` +
+                    (count >= 2
+                        ? `The host can now type *spin* to start! 🍾`
+                        : `Waiting for more players to @mention me and join!`),
                     [sender]
                 );
             } catch (err) {
@@ -197,7 +200,7 @@ export class GameRegistrationHandler {
         return false;
     }
 
-    /** Get the lobby room for a group, creating one if none exists. */
+    /** Get the active lobby room for a group, or create a new one. */
     static async getOrCreateRoom(groupId: string) {
         return (
             (await Database.gameRoom.findFirst({
