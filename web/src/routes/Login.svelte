@@ -8,6 +8,11 @@
     let password = $state("");
     let msg = $state(null);
     let loading = $state(false);
+    let step = $state("form"); // "form" | "waiting"
+    let countdown = $state(60);
+    let approvalId = $state(null);
+    let tickTimer = null;
+    let pollTimer = null;
 
     onMount(async () => {
         const t = get(token);
@@ -23,7 +28,22 @@
         }
     });
 
+    onDestroy(() => stopWaiting());
+
     function show(type, text) { msg = { type, text }; }
+
+    function stopWaiting() {
+        clearInterval(tickTimer);
+        clearInterval(pollTimer);
+        tickTimer = null;
+        pollTimer = null;
+    }
+
+    function backToForm() {
+        stopWaiting();
+        step = "form";
+        msg = null;
+    }
 
     async function submit() {
         const p = phone.trim();
@@ -100,10 +120,13 @@
             <div class="alert alert-{msg.type} mt-3">{msg.text}</div>
         {/if}
 
+        {#if step !== "waiting"}
         <button class="btn btn-indigo w-full mt-4" disabled={loading} onclick={submit}>
             {#if loading}<i class="fas fa-spinner spin"></i> Signing in…{:else}<i class="fas fa-arrow-right-to-bracket"></i> Sign In{/if}
         </button>
+        {/if}
 
+        {#if step === "waiting"}
             <div class="flex flex-col items-center gap-3 py-2">
                 <div class="ring">
                     <span>{countdown}</span>
@@ -115,10 +138,6 @@
                 </div>
                 <button class="btn btn-sm mt-1" onclick={backToForm}><i class="fas fa-arrow-left"></i> Cancel</button>
             </div>
-        {/if}
-
-        {#if msg}
-            <div class="alert {msg.type}"><i class="fas {msg.type === 'err' ? 'fa-triangle-exclamation' : 'fa-circle-check'}"></i><span>{msg.text}</span></div>
         {/if}
 
         <div class="foot">
