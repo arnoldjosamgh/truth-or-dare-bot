@@ -810,6 +810,13 @@ export class GroupUpdateHandler {
         await Chisato.sendText(from, caption, null, {
             mentions: [actor, ...participants],
         });
+
+        try {
+            const botJid = await Chisato.decodeJid(Chisato.user.id);
+            if (participants.includes(botJid)) {
+                await Chisato.sendText(from, "🎉 Thanks for making me an admin! I'm ready. Type `@bot` (mention me) to start Truth or Dare!", null);
+            }
+        } catch (err) {}
     }
 
     private async handleParticipantDemote(
