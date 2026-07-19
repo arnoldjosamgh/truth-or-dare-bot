@@ -118,6 +118,9 @@
             if (typeof localStorage !== "undefined") {
                 localStorage.setItem("game-theme", themeId);
             }
+            if (typeof document !== "undefined") {
+                document.body.className = `theme-${themeId}`;
+            }
             generateParticles();
         }
     };
@@ -170,6 +173,9 @@
     onMount(async () => {
         const parts = window.location.hash.replace("#", "").split("/").filter(Boolean);
         roomId = parts[parts.length - 1] ?? "";
+
+        // Apply theme class to body
+        document.body.className = `theme-${currentThemeId}`;
 
         generateParticles();
     });
@@ -261,7 +267,8 @@
     };
 </script>
 
-<svelte:body class="theme-{currentThemeId}" />
+
+
 
 <!-- Realm Navigation -->
 <header class="realm-nav">
