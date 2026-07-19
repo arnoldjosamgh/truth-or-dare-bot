@@ -115,7 +115,7 @@
     <div class="card w-full max-w-[440px] p-9 relative z-10">
         <div class="flex flex-col items-center mb-6">
             <div class="logo"><img src="/images/icon.jpg" alt="Chisato" onerror={(e) => e.target.remove()} /><i class="fas fa-robot"></i></div>
-            <h1 class="title">Chisato Dashboard</h1>
+            <h1 class="title">Truth or Dare Dashboard</h1>
             <p class="text-[.86rem] text-muted mt-1">Sign in with your owner / team WhatsApp number</p>
         </div>
 

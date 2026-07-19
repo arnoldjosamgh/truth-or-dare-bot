@@ -69,7 +69,7 @@
             <div class="brand">
                 <div class="brand-ic"><i class="fas fa-robot"></i></div>
                 <div>
-                    <div class="font-extrabold leading-tight">ChisatoBOT</div>
+                    <div class="font-extrabold leading-tight">Truth or Dare</div>
                     <div class="text-[.7rem] text-muted">Control Panel</div>
                 </div>
             </div>
