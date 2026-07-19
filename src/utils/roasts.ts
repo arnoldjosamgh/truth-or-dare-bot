@@ -151,3 +151,14 @@ export const ROASTS: ReadonlyArray<string> = [
 
 export const randomRoast = (): string =>
     ROASTS[Math.floor(Math.random() * ROASTS.length)];
+
+export const SEVERE_ROASTS: ReadonlyArray<string> = [
+    "Naye otegele lwakumeka Damu ekibuzo",
+    "Olina amagezi Damu ekibuzo",
+    "Labba embizzi eno damu ekibuzo",
+    "Nyoko damu ekibuzzo",
+    "Naye Nte gwe damu ekibuzo",
+];
+
+export const randomSevereRoast = (): string =>
+    SEVERE_ROASTS[Math.floor(Math.random() * SEVERE_ROASTS.length)];

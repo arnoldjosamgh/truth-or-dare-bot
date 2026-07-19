@@ -2,7 +2,7 @@ import type { ConfigCommands } from "../../types/structure/commands";
 import { Database } from "../../libs/database/prisma";
 import { configService } from "../../core/config/config.service";
 import { logger } from "../../core/logger";
-import { randomRoast } from "../../utils/roasts";
+import { randomRoast, randomSevereRoast } from "../../utils/roasts";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -73,15 +73,17 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
             );
 
             // ── Nag timer: roast every 10s until they answer or skip ──────────
+            let ticks = 0;
             const nagTimer = setInterval(async () => {
                 try {
+                    ticks++;
                     const current = await Database.gameRoom.findUnique({ where: { id: room.id } });
                     // Stop nagging if the room no longer exists or they already answered/skipped
                     if (!current || current.status !== "waiting_for_reply" || current.currentPlayerId !== target.userId) {
                         clearInterval(nagTimer);
                         return;
                     }
-                    const roast = randomRoast();
+                    const roast = ticks >= 3 ? randomSevereRoast() : randomRoast();
                     await Chisato.sendText(
                         groupId,
                         `⏳ @${target.userId.split("@")[0]} — *${roast}*\n\n_Still waiting... Answer or someone type *skip*!_ 👀`,
