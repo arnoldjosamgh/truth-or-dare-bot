@@ -2,6 +2,7 @@ import type { ConfigCommands } from "../../types/structure/commands";
 import { Database } from "../../libs/database/prisma";
 import { configService } from "../../core/config/config.service";
 import { logger } from "../../core/logger";
+import { randomRoast } from "../../utils/roasts";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -30,6 +31,8 @@ const pickQuestion = (gender: string) => {
     const pool = filtered.length > 0 ? filtered : all;
     return pool[Math.floor(Math.random() * pool.length)];
 };
+
+const NAG_INTERVAL_MS = 10_000; // nag every 10 seconds
 
 /** Called both by the `!spin` command and the auto-loop in GameListener. */
 export const performSpin = async (Chisato: any, groupId: string, room: any) => {
@@ -68,6 +71,29 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                 undefined,
                 { mentions: [target.userId] } as any
             );
+
+            // ── Nag timer: roast every 10s until they answer or skip ──────────
+            const nagTimer = setInterval(async () => {
+                try {
+                    const current = await Database.gameRoom.findUnique({ where: { id: room.id } });
+                    // Stop nagging if the room no longer exists or they already answered/skipped
+                    if (!current || current.status !== "waiting_for_reply" || current.currentPlayerId !== target.userId) {
+                        clearInterval(nagTimer);
+                        return;
+                    }
+                    const roast = randomRoast();
+                    await Chisato.sendText(
+                        groupId,
+                        `⏳ @${target.userId.split("@")[0]} — *${roast}*\n\n_Still waiting... Answer or someone type *skip*!_ 👀`,
+                        undefined,
+                        { mentions: [target.userId] } as any
+                    );
+                } catch (err) {
+                    logger.error(`nag timer: ${err instanceof Error ? err.message : String(err)}`);
+                    clearInterval(nagTimer);
+                }
+            }, NAG_INTERVAL_MS);
+
         } catch (error) {
             logger.error(`performSpin (inner): ${error instanceof Error ? error.message : String(error)}`);
         }
