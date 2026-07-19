@@ -29,7 +29,11 @@ const pickQuestion = (gender: string) => {
 export const performSpin = async (Chisato: any, groupId: string, room: any) => {
     const players = await Database.gamePlayer.findMany({ where: { roomId: room.id } });
     if (players.length === 0) {
-        await Chisato.sendText(groupId, "❌ No players in the lobby! Have people join with `!join <Name> <M/F/O>`.");
+        await Chisato.sendText(groupId, "❌ No players registered yet!\n\n@mention me to join: e.g. *@bot* then follow the prompts for your name and gender.");
+        return;
+    }
+    if (players.length < 2) {
+        await Chisato.sendText(groupId, `⚠️ Only *1 player* registered (${players[0].name}). Need at least 2 to spin!\n\nOthers can @mention me to join.`);
         return;
     }
 
@@ -64,6 +68,8 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
         }
     }, 2000);
 };
+
+
 
 export default {
     name: "spin",

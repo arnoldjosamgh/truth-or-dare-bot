@@ -9,6 +9,7 @@ import { AfkHandler } from "./afk-handler";
 import { EvalExecHandler } from "./eval-exec-handler";
 import { SessionHandler } from "./session-handler";
 import { GameListener } from "./game-listener";
+import { GameRegistrationHandler } from "./game-registration-handler";
 import { commands, aliasIndex, cooldowns } from "../../../libs";
 import { calculateXPReward, getRankInfo } from "../../../utils/leveling";
 import {
@@ -125,6 +126,34 @@ export class MessageHandler {
                 // Check if user has active adminpanel session
                 if (await SessionHandler.handle(Chisato, message, context)) {
                     return; // Session handled, skip normal command processing
+                }
+
+                // Handle @bot mention registration flow (name → gender)
+                if (await GameRegistrationHandler.handle(Chisato, message, context)) {
+                    return;
+                }
+
+                // Handle plain "spin" word as a spin trigger (no prefix needed)
+                if (
+                    context.isGroup &&
+                    !context.cmd &&
+                    /^spin$/i.test((message.body ?? "").trim())
+                ) {
+                    const { performSpin } = await import("../../../commands/game/spin");
+                    const { Database } = await import("../../../libs/database/prisma");
+                    const room = await Database.gameRoom.findFirst({
+                        where: { groupId: context.from, status: { in: ["lobby", "playing", "waiting_for_reply"] } },
+                    });
+                    if (room) {
+                        if (room.status === "waiting_for_reply") {
+                            await Chisato.sendText(context.from, "⏳ Waiting for the current player to answer first!", message);
+                        } else {
+                            const { Database: DB } = await import("../../../libs/database/prisma");
+                            await DB.gameRoom.update({ where: { id: room.id }, data: { status: "playing" } });
+                            await performSpin(Chisato, context.from, { ...room, status: "playing" });
+                        }
+                        return;
+                    }
                 }
 
                 // Check if it's an answer to the game
