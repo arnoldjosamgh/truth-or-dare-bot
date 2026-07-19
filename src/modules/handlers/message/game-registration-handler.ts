@@ -77,8 +77,7 @@ export class GameRegistrationHandler {
         const body: string = (message.body ?? "").trim();
         const botJid: string = context.botNumber;
 
-        // ── 1. @mention → start registration ────────────────────────────────
-        // Check mentions array (standard) OR body text containing @number (fallback)
+        // ── 1. @mention detection ────────────────────────────────────────────
         const botPhone = botJid.split("@")[0];
         const mentionsArray = Array.isArray(message.mentions) ? message.mentions : [];
         const botMentioned =
@@ -88,9 +87,54 @@ export class GameRegistrationHandler {
             body.includes(`@${botPhone}`) ||
             body.toLowerCase().includes("@bot");
 
-
         if (botMentioned && !context.cmd) {
-            // Wake up / unmute the bot if it was stopped
+            // ── 1a. "tell" pattern: @bot tell @target <insult> ───────────────
+            // Detects: "@bot tell @jordan his dumb"
+            // Bot strips "tell @target" and fires back the insult AT the sender
+            const tellMatch = body.match(
+                /(?:@\S+\s+)?tell\s+@(\S+)\s+(.+)/i
+            );
+            if (tellMatch) {
+                const targetName = tellMatch[1].replace(/[^a-zA-Z0-9_]/g, ""); // cleaned name/number
+                const insult = tellMatch[2].trim();
+
+                // Flip pronouns: his→you, he→you, her→you, she→you, they→you etc.
+                const flipped = insult
+                    .replace(/\bhis\b/gi, "your")
+                    .replace(/\bher\b/gi, "your")
+                    .replace(/\bhe's\b/gi, "you're")
+                    .replace(/\bshe's\b/gi, "you're")
+                    .replace(/\bhe\b/gi, "you")
+                    .replace(/\bshe\b/gi, "you")
+                    .replace(/\bthey're\b/gi, "you're")
+                    .replace(/\bthey\b/gi, "you")
+                    .replace(/\bhim\b/gi, "you")
+                    .replace(/\bis\b/gi, "are");
+
+                // Resolve target JID from mentions or just use the name text
+                const targetJid = mentionsArray.find(
+                    (m: string) => m.split("@")[0].includes(targetName) && m !== botJid
+                ) || null;
+
+                const mentionList = targetJid ? [targetJid] : [];
+                const targetTag = targetJid
+                    ? `@${targetJid.split("@")[0]}`
+                    : `@${targetName}`;
+
+                await sendMention(
+                    Chisato, groupId,
+                    `🎤 ${targetTag} ${flipped} 💀`,
+                    mentionList
+                );
+
+                // Immediately mute bot and wait for next @bot call
+                const { Group: GroupDatabase } = await import("../../../libs/database");
+                const groupDb = new GroupDatabase();
+                await groupDb.updateSettings(groupId, { mute: true });
+                return true;
+            }
+
+            // ── 1b. Plain @bot → unmute + start game registration ────────────
             const { Group: GroupDatabase } = await import("../../../libs/database");
             const groupDb = new GroupDatabase();
             await groupDb.updateSettings(groupId, { mute: false });
