@@ -84,7 +84,8 @@ export class GameRegistrationHandler {
             mentionsArray.some(
                 (m: string) => m === botJid || m.split("@")[0] === botPhone
             ) ||
-            body.includes(`@${botPhone}`);
+            body.includes(`@${botPhone}`) ||
+            body.toLowerCase().includes("@bot");
 
 
         if (botMentioned && !context.cmd) {
