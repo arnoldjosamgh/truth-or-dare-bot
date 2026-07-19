@@ -50,12 +50,13 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                 data: { status: "waiting_for_reply", currentPlayerId: target.userId, currentQuestion: question.text }
             });
 
-            await Chisato.sendTextWithMentions(
+            await Chisato.sendText(
                 groupId,
                 `👉 @${target.userId.split("@")[0]} (*${target.name}*), the bottle landed on you!\n\n` +
                 `*Question:*\n${question.text}\n\n` +
                 `Reply in the chat to continue!`,
-                [target.userId]
+                undefined,
+                { mentions: [target.userId] } as any
             );
         } catch (error) {
             logger.error(`performSpin (inner): ${error instanceof Error ? error.message : String(error)}`);
