@@ -36,6 +36,16 @@ export class GameListener {
                 "Is English your second language?",
                 "You can't be serious.",
                 "That is purely pathetic.",
+                "Are you always this dense?",
+                "A toddler understands this better.",
+                "Your opinion is completely worthless.",
+                "Did you leave your brain behind?",
+                "This is embarrassingly simple.",
+                "You are a total waste of time.",
+                "Stop talking, you are embarrassing yourself.",
+                "No one cares about your thoughts.",
+                "You bring down the average IQ.",
+                "Are you incapable of basic thought?",
             ];
 
             if (isDodging) {
