@@ -90,6 +90,10 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                         undefined,
                         { mentions: [target.userId] } as any
                     );
+                    // If we've reached 30 seconds, this is the last nag. Stop nagging and just wait.
+                    if (ticks >= 3) {
+                        clearInterval(nagTimer);
+                    }
                 } catch (err) {
                     logger.error(`nag timer: ${err instanceof Error ? err.message : String(err)}`);
                     clearInterval(nagTimer);
