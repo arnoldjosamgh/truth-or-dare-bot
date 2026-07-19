@@ -75,16 +75,20 @@ export async function configRoutes(fastify: FastifyInstance) {
         }
     });
 
-    // PATCH /api/config/settings — update boolean settings
+    // PATCH /api/config/settings — update boolean settings + sponsorText
     fastify.patch("/settings", async (request: FastifyRequest<{ Body: any }>, reply) => {
         if (!requireOwner(request, reply)) return;
         try {
-            const allowed = ["ownerNotifyOnline", "useLimit", "useCooldown", "selfbot", "autoReadMessage", "autoReadStatus", "autoCorrect"];
+            const boolKeys = ["ownerNotifyOnline", "useLimit", "useCooldown", "selfbot", "autoReadMessage", "autoReadStatus", "autoCorrect"];
             const updates: any = {};
-            for (const key of allowed) {
+            for (const key of boolKeys) {
                 if (typeof request.body[key] === "boolean") {
                     updates[key] = request.body[key];
                 }
+            }
+            // Allow sponsorText as an optional string (empty string = disabled)
+            if (typeof request.body["sponsorText"] === "string") {
+                updates["sponsorText"] = request.body["sponsorText"].trim();
             }
             configService.updateSettings(updates);
             return reply.send({ success: true, message: "Settings updated", settings: configService.getConfig().settings });

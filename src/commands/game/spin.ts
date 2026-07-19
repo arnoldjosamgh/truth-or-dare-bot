@@ -1,5 +1,6 @@
 import type { ConfigCommands } from "../../types/structure/commands";
 import { Database } from "../../libs/database/prisma";
+import { configService } from "../../core/config/config.service";
 import { logger } from "../../core/logger";
 import * as fs from "fs";
 import * as path from "path";
@@ -50,7 +51,9 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                 data: { status: "waiting_for_reply", currentPlayerId: target.userId, currentQuestion: question.text }
             });
 
-            const sponsorText = process.env.SPONSOR_TEXT ? `\n\n_Sponsor:_ ${process.env.SPONSOR_TEXT}` : "";
+            const sponsorText = configService.getConfig().settings?.sponsorText
+                ? `\n\n_Sponsor:_ ${configService.getConfig().settings.sponsorText}`
+                : "";
             
             await Chisato.sendText(
                 groupId,

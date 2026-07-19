@@ -33,6 +33,7 @@ export interface BotConfig {
         autoReadMessage: boolean;
         autoReadStatus: boolean;
         autoCorrect: boolean;
+        sponsorText?: string;
     };
     call: {
         status: string;

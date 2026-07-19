@@ -85,6 +85,17 @@
             toast(e.message, "err");
         }
     }
+    async function saveSponsor() {
+        try {
+            await apiJson("/api/config/settings", {
+                method: "PATCH",
+                body: JSON.stringify({ sponsorText: config.settings.sponsorText ?? "" }),
+            });
+            toast("Sponsor saved! 🎉", "ok");
+        } catch (e) {
+            toast(e.message, "err");
+        }
+    }
 </script>
 
 {#if loading}
@@ -118,6 +129,19 @@
             <label class="lbl">Daily limit</label>
             <input class="field mb-3" type="number" bind:value={config.limit.command} disabled={!isOwner} />
             {#if isOwner}<button class="btn btn-primary" onclick={saveGeneral}><i class="fas fa-save"></i> Save general</button>{/if}
+        </div>
+
+        <div class="card p-5" style="border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.04)">
+            <div class="font-bold mb-1"><i class="fas fa-bullhorn text-amber-400"></i> Sponsor</div>
+            <p class="text-[.78rem] text-muted mb-3">This small line appears silently at the bottom of every spin message. Leave blank to disable.</p>
+            <label class="lbl">Sponsor text / link</label>
+            <input
+                class="field mb-3"
+                placeholder="e.g. Brought to you by Jomish Tech Hub 🔗 https://yourlink.com"
+                bind:value={config.settings.sponsorText}
+                disabled={!isOwner}
+            />
+            {#if isOwner}<button class="btn btn-primary" onclick={saveSponsor}><i class="fas fa-save"></i> Save sponsor</button>{/if}
         </div>
 
         {#if isOwner}
