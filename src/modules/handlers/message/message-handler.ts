@@ -137,28 +137,48 @@ export class MessageHandler {
                     logger.error(`GameRegistrationHandler: ${regErr instanceof Error ? regErr.message : String(regErr)}`);
                 }
 
-                // Handle plain "spin" word as a spin trigger (no prefix needed)
-                if (
-                    context.isGroup &&
-                    !context.cmd &&
-                    /^spin$/i.test((message.body ?? "").trim())
-                ) {
+                // Handle plain "spin" or "skip" words (no prefix needed)
+                const bodyTrimmed = (message.body ?? "").trim().toLowerCase();
+                if (context.isGroup && !context.cmd && (bodyTrimmed === "spin" || bodyTrimmed === "skip")) {
                     const { performSpin } = await import("../../../commands/game/spin");
                     const { Database } = await import("../../../libs/database/prisma");
                     const room = await Database.gameRoom.findFirst({
                         where: { groupId: context.from, status: { in: ["lobby", "playing", "waiting_for_reply"] } },
                     });
                     if (room) {
-                        if (room.status === "waiting_for_reply") {
-                            await Chisato.sendText(context.from, "⏳ Waiting for the current player to answer first!", message);
-                        } else {
-                            const { Database: DB } = await import("../../../libs/database/prisma");
-                            await DB.gameRoom.update({ where: { id: room.id }, data: { status: "playing" } });
+                        if (bodyTrimmed === "skip") {
+                            if (room.status !== "waiting_for_reply") {
+                                await Chisato.sendText(context.from, "⚠️ Nothing to skip — no one is being asked a question right now.");
+                                return;
+                            }
+                            // Only registered players can skip
+                            const isRegistered = await Database.gamePlayer.findFirst({
+                                where: { roomId: room.id, userId: context.sender }
+                            });
+                            if (!isRegistered) {
+                                await Chisato.sendText(context.from, "❌ Only registered players can skip. @mention me to join!");
+                                return;
+                            }
+                            // Skip: mark as playing and spin again immediately
+                            await Database.gameRoom.update({
+                                where: { id: room.id },
+                                data: { status: "playing", currentPlayerId: null, currentQuestion: null }
+                            });
+                            await Chisato.sendText(context.from, `⏭️ *${context.pushName ?? "Someone"}* skipped! Spinning again... 🍾`);
                             await performSpin(Chisato, context.from, { ...room, status: "playing" });
+                        } else {
+                            // spin
+                            if (room.status === "waiting_for_reply") {
+                                await Chisato.sendText(context.from, "⏳ Waiting for the current player to answer! Type *skip* if they're not responding.");
+                            } else {
+                                await Database.gameRoom.update({ where: { id: room.id }, data: { status: "playing" } });
+                                await performSpin(Chisato, context.from, { ...room, status: "playing" });
+                            }
                         }
                         return;
                     }
                 }
+
 
                 // Check if it's an answer to the game
                 if (!command && await GameListener.handle(Chisato, message, context)) {
