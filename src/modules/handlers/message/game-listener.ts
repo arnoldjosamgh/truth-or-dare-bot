@@ -4,7 +4,7 @@ import { Database } from "../../../libs/database/prisma";
 import { logger } from "../../../core/logger";
 import { performSpin, getQuestionByText } from "../../../commands/game/spin";
 
-const AUTO_SPIN_DELAY_MS = 5000;
+const AUTO_SPIN_DELAY_MS = 15000;
 
 export class GameListener {
     /** Returns true if the message was consumed by the game loop. */
