@@ -89,10 +89,10 @@ export class GameRegistrationHandler {
 
         if (botMentioned && !context.cmd) {
             // ── 1a. "tell" pattern: @bot tell @target <insult> ───────────────
-            // Detects: "@bot tell @jordan his dumb"
-            // Bot strips "tell @target" and fires back the insult AT the sender
+            // Detects: "@bot tell Jordan his dumb" OR "@bot tell @jordan his dumb"
+            // Bot strips "tell [target]" and fires back the insult AT the target
             const tellMatch = body.match(
-                /(?:@\S+\s+)?tell\s+@(\S+)\s+(.+)/i
+                /(?:@\S+\s+)?tell\s+@?(\S+)\s+(.+)/i
             );
             if (tellMatch) {
                 const targetName = tellMatch[1].replace(/[^a-zA-Z0-9_]/g, ""); // cleaned name/number
