@@ -95,7 +95,7 @@ export class MessageHandler {
                 }
             }
 
-            // ── Auto-confession: any plain DM (not a command, not fromMe, not a number-only OTP) is treated as an anonymous confession ──
+            // ── Auto-confession: any plain DM (not a command, not fromMe) is treated as an anonymous confession ──
             if (
                 !message.fromMe &&
                 !context.isGroup &&
@@ -105,13 +105,26 @@ export class MessageHandler {
                 const confessText = message.body.trim();
                 const { Database } = await import("../../../libs/database/prisma");
 
+                // Extract the phone number part from the sender JID (e.g. "2348012345678@s.whatsapp.net" → "2348012345678")
+                const senderPhone = context.sender?.split("@")[0] ?? "";
+
                 let groups: { groupId: string; subject: string }[] = [];
                 try {
-                    groups = await Database.group.findMany({
-                        where: { participants: { some: { id: context.sender } } },
-                        select: { groupId: true, subject: true }
-                    });
-                } catch { /* ignore DB errors, fall through to normal DM handling */ }
+                    if (senderPhone) {
+                        // MongoDB embedded array — filter by participant phoneNumber or id containing the phone number
+                        const allGroups = await Database.group.findMany({
+                            select: { groupId: true, subject: true, participants: true }
+                        });
+                        groups = allGroups.filter(g =>
+                            g.participants?.some((p: any) =>
+                                (p.id && p.id.includes(senderPhone)) ||
+                                (p.phoneNumber && p.phoneNumber.includes(senderPhone))
+                            )
+                        ).map(g => ({ groupId: g.groupId, subject: g.subject }));
+                    }
+                } catch (err) {
+                    logger.error(`confession lookup: ${err instanceof Error ? err.message : String(err)}`);
+                }
 
                 if (groups.length === 0) {
                     // User not in any shared group — silently ignore
@@ -149,6 +162,7 @@ export class MessageHandler {
                 return;
             }
             // ── End auto-confession ──
+
 
             const command = context.cmd
                 ? (commands.get(context.cmd) ?? aliasIndex.get(context.cmd) ?? null)
