@@ -18,7 +18,6 @@ const loadStopRoasts = (): string[] => {
     } catch (err) {
         logger.error(`stop: failed to load stop-roasts.json — ${err instanceof Error ? err.message : String(err)}`);
     }
-    // Fallback if the file is missing or broken
     return ["Nice try! Only the host can stop the game 😂 The game continues!"];
 };
 
@@ -27,12 +26,15 @@ const randomUnauthorizedRoast = (): string => {
     return roasts[Math.floor(Math.random() * roasts.length)];
 };
 
+// Tracks how many times each user has tried to stop per group: "sender:groupId" → count
+const stopAttempts = new Map<string, number>();
+
 export default {
     name: "stop",
     alias: ["stopgame", "endgame"],
     category: "game",
-    description: "Stop the active bottle game. Only the host (or any player if host is offline) can do this.",
-    async run({ Chisato, from, message, sender, args }) {
+    description: "Stop the active bottle game. Only the host can stop it.",
+    async run({ Chisato, from, message, sender }) {
         try {
             const room = await Database.gameRoom.findFirst({
                 where: {
@@ -50,20 +52,23 @@ export default {
                 room.hostId?.split(":")[0] + "@s.whatsapp.net" === sender?.split(":")[0] + "@s.whatsapp.net" ||
                 room.hostId?.split("@")[0] === sender?.split("@")[0];
 
-            // ── "stop now" override: any player can force-stop if host is offline ──
-            // Syntax: !stop now
-            let isForceStop = false;
-            if (args[0]?.toLowerCase() === "now") {
-                const player = await Database.gamePlayer.findFirst({
-                    where: { roomId: room.id, userId: sender }
-                });
-                if (player) {
-                    isForceStop = true;
-                }
-            }
+            if (!isHost) {
+                const attemptKey = `${sender}:${from}`;
+                const attempts = (stopAttempts.get(attemptKey) ?? 0) + 1;
+                stopAttempts.set(attemptKey, attempts);
 
-            if (!isHost && !isForceStop) {
-                // Non-host tried to type !stop without "now" → roast them, then continue the game
+                if (attempts >= 3) {
+                    // Third attempt — silently end the game and clear counter
+                    stopAttempts.delete(attemptKey);
+                    await Database.gameRoom.update({
+                        where: { id: room.id },
+                        data: { status: "ended" as any }
+                    });
+                    await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
+                    return;
+                }
+
+                // 1st or 2nd attempt — roast them and keep the game going
                 const roast = randomUnauthorizedRoast();
                 await Chisato.sendText(
                     from,
@@ -72,7 +77,7 @@ export default {
                     { mentions: [sender] } as any
                 );
 
-                // Continue game to next player if we are currently in playing state
+                // Continue game to next player if currently in playing state
                 if (room.status === "playing") {
                     setTimeout(async () => {
                         try {
@@ -88,7 +93,9 @@ export default {
                 return;
             }
 
-            // ── Authorised stop: host typed !stop, or anyone typed !stop now ──────
+            // ── Host stopped the game ──
+            stopAttempts.forEach((_, key) => { if (key.endsWith(`:${from}`)) stopAttempts.delete(key); });
+
             await Database.gameRoom.update({
                 where: { id: room.id },
                 data: { status: "ended" as any }
@@ -96,10 +103,9 @@ export default {
 
             await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
 
-            const stoppedBy = isHost ? "The host" : "A player (host override)";
             await Chisato.sendText(
                 from,
-                `🛑 *Game over!* ${stoppedBy} ended the session.\n\n` +
+                `🛑 *Game over!* The host ended the session.\n\n` +
                 `Thanks for playing everyone! 🎉\n` +
                 `Start a new game anytime with *!startgame*`,
                 message

@@ -250,11 +250,11 @@ export class MessageHandler {
                     }
                 }
 
-                // Handle plain "stop" or "stop now" words (no prefix needed)
-                if (context.isGroup && !context.cmd && (bodyTrimmed === "stop" || bodyTrimmed === "stop now")) {
+                // Handle plain "stop" word (no prefix needed)
+                if (context.isGroup && !context.cmd && bodyTrimmed === "stop") {
                     const stopCmd = commands.get("stop");
                     if (stopCmd) {
-                        context.args = bodyTrimmed === "stop now" ? ["now"] : [];
+                        context.args = [];
                         await this.handleCommand(Chisato, message, context, stopCmd);
                         return;
                     }
