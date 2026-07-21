@@ -166,6 +166,7 @@ model GameRoom {
   id              String       @id @default(auto()) @map("_id") @db.ObjectId
   roomId          String       @unique
   groupId         String
+  hostId          String?      // userId of the person who started the game
   status          String       @default("lobby") // lobby, playing, waiting_for_reply
   currentPlayerId String?
   currentQuestion String?

@@ -11,13 +11,18 @@ export default {
     alias: ["bottle"],
     category: "game",
     description: "Start a bottle spinning game lobby in this group.",
-    async run({ Chisato, from, message }) {
+    async run({ Chisato, from, message, sender }) {
         try {
             // Reuse an existing lobby or create a fresh one
             const room = await Database.gameRoom.findFirst({ where: { groupId: from, status: "lobby" } })
                 ?? await Database.gameRoom.create({
-                    data: { roomId: crypto.randomBytes(4).toString("hex"), groupId: from, status: "lobby" }
+                    data: { roomId: crypto.randomBytes(4).toString("hex"), groupId: from, hostId: sender, status: "lobby" }
                 });
+
+            // Update hostId if we reused an existing room and there's no host yet
+            if (!room.hostId) {
+                await Database.gameRoom.update({ where: { id: room.id }, data: { hostId: sender } });
+            }
 
             const gameUrl = `${GAME_BASE_URL}/#/game/${room.roomId}`;
 
@@ -30,7 +35,8 @@ export default {
                 `You can also join here in chat:\n` +
                 `➕ \`!join <Name> <M/F/O>\`  e.g. \`!join John M\`\n\n` +
                 `🔑 Room Code: *${room.roomId}*\n` +
-                `▶️ Host spins with: \`!spin\``,
+                `▶️ Host spins with: \`!spin\`\n` +
+                `🛑 Host stops with: \`!stop\``,
                 message
             );
         } catch (error) {
