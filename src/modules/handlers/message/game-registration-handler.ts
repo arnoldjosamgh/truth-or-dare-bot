@@ -139,7 +139,7 @@ export class GameRegistrationHandler {
             const groupDb = new GroupDatabase();
             await groupDb.updateSettings(groupId, { mute: false });
 
-            const room = await GameRegistrationHandler.getOrCreateRoom(groupId);
+            const room = await GameRegistrationHandler.getOrCreateRoom(groupId, sender);
             const alreadyIn = await Database.gamePlayer.findFirst({
                 where: { roomId: room.id, userId: sender },
             });
@@ -250,7 +250,7 @@ export class GameRegistrationHandler {
             sessions.delete(sender);
 
             try {
-                const room = await GameRegistrationHandler.getOrCreateRoom(groupId);
+                const room = await GameRegistrationHandler.getOrCreateRoom(groupId, sender);
 
                 const existing = await Database.gamePlayer.findFirst({
                     where: { roomId: room.id, userId: sender },
@@ -291,19 +291,27 @@ export class GameRegistrationHandler {
         return false;
     }
 
-    /** Get the active lobby room for a group, or create a new one. */
-    static async getOrCreateRoom(groupId: string) {
-        return (
-            (await Database.gameRoom.findFirst({
-                where: { groupId, status: { in: ["lobby", "playing", "waiting_for_reply"] } },
-            })) ??
-            (await Database.gameRoom.create({
+    /** Get the active lobby room for a group, or create a new one. Assigns the sender as host if none exists. */
+    static async getOrCreateRoom(groupId: string, sender?: string) {
+        let room = await Database.gameRoom.findFirst({
+            where: { groupId, status: { in: ["lobby", "playing", "waiting_for_reply"] } },
+        });
+
+        if (!room) {
+            room = await Database.gameRoom.create({
                 data: {
                     roomId: crypto.randomBytes(4).toString("hex"),
                     groupId,
                     status: "lobby",
+                    hostId: sender,
                 },
-            }))
-        );
+            });
+        } else if (!room.hostId && sender) {
+            room = await Database.gameRoom.update({
+                where: { id: room.id },
+                data: { hostId: sender }
+            });
+        }
+        return room;
     }
 }
