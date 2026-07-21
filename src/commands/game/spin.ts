@@ -7,7 +7,7 @@ import * as path from "path";
 import { randomSevereRoast } from "../../utils/roasts";
 
 // Loaded once at startup and cached for the process lifetime.
-let questionCache: { text: string; gender_target: string; explanation?: string }[] | null = null;
+let questionCache: { id: number; text: string; gender_target: string; explanation?: string }[] | null = null;
 
 const loadQuestions = () => {
     if (questionCache) return questionCache;
