@@ -3,7 +3,7 @@ import { MessageSerialize } from "../../../types/structure/serialize";
 import { Database } from "../../../libs/database/prisma";
 import { logger } from "../../../core/logger";
 import { performSpin, getQuestionByText } from "../../../commands/game/spin";
-import { randomRoast } from "../../../utils/roasts";
+import { getGenderedRoast } from "../../../utils/roasts";
 
 const AUTO_SPIN_DELAY_MS = 15000;
 
@@ -26,7 +26,12 @@ export class GameListener {
             const isDodging = /^(how|what|what\?|where|when|who|with who|with whom|huh|what do you mean|explain|wdym|idk|i don'?t (know|understand)|which|say that again|repeat|come again)\??$/i.test(textLower);
 
             if (isDodging) {
-                const roast = randomRoast();
+                // Look up player gender for a targeted roast
+                const player = await Database.gamePlayer.findFirst({
+                    where: { roomId: room.id, userId: context.sender },
+                    select: { gender: true }
+                });
+                const roast = getGenderedRoast(player?.gender);
                 await Chisato.sendText(
                     context.from,
                     `😂 @${context.sender.split("@")[0]} — *${roast}*\n\n_The question is still yours. Answer it!_ 🎯`,

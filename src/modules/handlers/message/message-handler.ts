@@ -111,9 +111,15 @@ export class MessageHandler {
                 const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(confessText);
                 if (isInsult) {
                     const { getRandomMixedRoast } = await import("../../../utils/roasts");
+                    const { Database: DB } = await import("../../../libs/database/prisma");
+                    const genderRecord = await DB.gamePlayer.findFirst({
+                        where: { userId: context.sender },
+                        select: { gender: true },
+                        orderBy: { id: "desc" }
+                    });
                     await Chisato.sendText(
                         context.from,
-                        `@${context.sender.split("@")[0]} ${getRandomMixedRoast()}`,
+                        `@${context.sender.split("@")[0]} ${getRandomMixedRoast(genderRecord?.gender)}`,
                         message
                     );
                     return;

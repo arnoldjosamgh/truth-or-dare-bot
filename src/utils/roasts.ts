@@ -1,4 +1,7 @@
-/** Full savage roast pool — shared between game-listener and the nag timer in spin. */
+import * as fs from "fs";
+import * as path from "path";
+
+/** Gender-neutral roasts — used for everyone */
 export const ROASTS: ReadonlyArray<string> = [
     "How do you even function daily?",
     "Explain it like you're five?",
@@ -100,9 +103,7 @@ export const ROASTS: ReadonlyArray<string> = [
     "There's this great book I'll recommend you, if you ever learn how to read.",
     "You should teach people how to clear their minds. Since you're always empty-headed.",
     "I think of you often. On trash day.",
-    "Your birth control of choice appears to be your personality.",
     "It was great seeing you yesterday. Also, you're stupid.",
-    "If you're going to be two-faced, at least make one of them cute.",
     "If your IQ were just a little higher you could be an idiot.",
     "You're not the dumbest person alive, but you better hope they're taking vitamins.",
     "I saw you the other day. I was relieved that you didn't see me.",
@@ -121,7 +122,6 @@ export const ROASTS: ReadonlyArray<string> = [
     "Don't bother covering up your answers. No one's gonna cheat off you.",
     "You're incredible. Incredibly stupid.",
     "Silence is golden, but for you, it's actually diamond status.",
-    "Your mom wishes the stork left a gift receipt with you.",
     "Your parents didn't put many points in intelligence when they created you.",
     "If zombies tried eating your brains, they'd starve.",
     "If you were any dumber I'd have to water you once a day.",
@@ -147,53 +147,99 @@ export const ROASTS: ReadonlyArray<string> = [
     "You're about as bright as a cave.",
     "You should become an astronaut. We need you as far away from Earth as possible.",
     "Your mom gave me $20 to hang out with you.",
-    // 🚗 Flexing Fake Wealth
-    "You are flexing a rented Passo but your fuel tank is permanently on E.",
-    "You are out here tweeting 'invest in yourself' but your rent is four months late.",
+    // Uganda-flavored neutral
     "Stop acting corporate. Your entire net worth can be wiped out by one KCCA fine.",
-    "You are tweeting from an iPhone 16 but you are still eating rolex on credit.",
     "You want to look rich so bad you are taking selfies with people's cars in parking lots.",
-    // 🛑 Lifestyle & Fake Status
-    "Your ego is huge but your knees are dark from kneeling for old men's money.",
-    "You talk about 'slaying' but your makeup makes you look like a repainted Pioneer bus.",
-    "You act like an international celeb but you haven't even crossed to Mutukula.",
-    "Stop calling yourself a 'CEO.' You just sell faded thrift clothes on WhatsApp status.",
-    "You are trying to speak with a posh accent but the Luganda is fighting back hard.",
-    // 💔 Dating & Relationship Disasters
-    "You think you are his main chick but you are just on the bench like a substitute keeper.",
-    "He didn't take you to Munyonyo because he loves you. He just wanted cheap weekend company.",
-    "You are fighting girls online over a man who shares boxers with his roommate.",
-    "She likes your tweets but she ignores your WhatsApp messages for three days.",
-    "You are posting 'my king' but that king belongs to the whole of Makerere.",
-    // 💀 Humble Yourself
     "Your future is looking bleaker than the traffic gridlock at Northern Bypass.",
-    "You are trying to be a Twitter influencer but your engagement is lower than the value of the Shilling.",
     "Stop trying to give life advice. You can't even manage your own data bundle.",
     "You are trying to look dangerous but you look like you can be defeated by a single mosquito.",
     "Your opinions are as useless as the broken traffic lights in Wandegeya.",
 ];
 
+/** Male-specific roasts */
+export const MALE_ROASTS: ReadonlyArray<string> = [
+    "You are flexing a rented Passo but your fuel tank is permanently on E.",
+    "You are out here tweeting 'invest in yourself' but your rent is four months late.",
+    "You are tweeting from an iPhone 16 but you are still eating rolex on credit.",
+    "You act like an international celeb but you haven't even crossed to Mutukula.",
+    "Stop calling yourself a 'CEO.' You just sell faded thrift clothes on WhatsApp status.",
+    "You are trying to speak with a posh accent but the Luganda is fighting back hard.",
+    "You are trying to be a Twitter influencer but your engagement is lower than the value of the Shilling.",
+    "Your ego is huge but your knees are dark from kneeling for old men's money.",
+    "You call yourself a man but you can't even fix a flat tyre without calling your mum.",
+    "You've been 'coming up' for five years. At this point, you're going down.",
+    "Your gym selfies are more consistent than your rent payments.",
+    "You act tough online but you flinch at every loud sound in real life.",
+    "You ghost girls but cry when the same energy is returned.",
+    "Your LinkedIn says CEO. Your bank account says 'insufficient funds.'",
+    "You are the reason your father drinks.",
+    "Your idea of investing is buying airtime in bulk.",
+    "You are posting 'real men don't cry' but you cried watching a football match last week.",
+    "Stop sending girls 'Good morning' texts. Start sending your landlord rent.",
+    "You are fighting girls online over a man who shares boxers with his roommate.",
+    "He didn't take you to Munyonyo because he loves you. He just wanted cheap weekend company.",
+];
+
+/** Female-specific roasts */
+export const FEMALE_ROASTS: ReadonlyArray<string> = [
+    "You talk about 'slaying' but your makeup makes you look like a repainted Pioneer bus.",
+    "You think you are his main chick but you are just on the bench like a substitute keeper.",
+    "She likes your tweets but she ignores your WhatsApp messages for three days.",
+    "You are posting 'my king' but that king belongs to the whole of Makerere.",
+    "Your birth control of choice appears to be your personality.",
+    "If you're going to be two-faced, at least make one of them cute.",
+    "Your mom wishes the stork left a gift receipt with you.",
+    "You are fighting girls online over a man who doesn't know your middle name.",
+    "You post 'unbothered' then check his last seen every 20 minutes.",
+    "Your highlight reel is borrowed. Your real life is a rerun of a bad TV show.",
+    "You call yourself a queen but you are waiting on a man to build your throne.",
+    "You block him then unblock him at 2am. We see you.",
+    "Your body count is higher than your GPA.",
+    "You have more drama than a Ugandan soap opera and half the plot.",
+    "You say 'I don't need a man' but your ringtone is still his favourite song.",
+    "Your edges are laid but your priorities are scattered.",
+    "You went to the salon for confidence and still came out empty.",
+    "Stop posting motivational quotes. Start paying your NWSC bill.",
+    "You are everybody's therapist but your own mental health is a construction site.",
+    "You are not 'unbothered.' You are just very good at pretending online.",
+];
+
 export const randomRoast = (): string =>
     ROASTS[Math.floor(Math.random() * ROASTS.length)];
 
-import * as fs from "fs";
-import * as path from "path";
+/** Returns a gender-appropriate roast, falling back to neutral if gender unknown */
+export const getGenderedRoast = (gender?: string | null): string => {
+    const g = (gender ?? "").toUpperCase();
+    if (g === "M") {
+        const pool = [...ROASTS, ...MALE_ROASTS];
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+    if (g === "F") {
+        const pool = [...ROASTS, ...FEMALE_ROASTS];
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+    return randomRoast();
+};
 
-/** Mixes the hardcoded roasts with the stop-roasts from the JSON file */
-export const getRandomMixedRoast = (): string => {
-    let mixedPool = [...ROASTS];
+/** Mixes all hardcoded roasts + the stop-roasts.json file, with optional gender targeting */
+export const getRandomMixedRoast = (gender?: string | null): string => {
+    const g = (gender ?? "").toUpperCase();
+    let pool: string[] = [...ROASTS];
+    if (g === "M") pool = pool.concat([...MALE_ROASTS]);
+    else if (g === "F") pool = pool.concat([...FEMALE_ROASTS]);
+
     try {
         const filePath = path.join(process.cwd(), "public", "stop-roasts.json");
         if (fs.existsSync(filePath)) {
             const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
             if (Array.isArray(data.messages) && data.messages.length > 0) {
-                mixedPool = mixedPool.concat(data.messages);
+                pool = pool.concat(data.messages);
             }
         }
     } catch (err) {
-        // Fall back to just the hardcoded ones if JSON parsing fails
+        // Fall back to hardcoded pool
     }
-    return mixedPool[Math.floor(Math.random() * mixedPool.length)];
+    return pool[Math.floor(Math.random() * pool.length)];
 };
 
 export const SEVERE_ROASTS: ReadonlyArray<string> = [

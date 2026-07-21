@@ -138,9 +138,14 @@ export class GameRegistrationHandler {
             const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(body);
             if (isInsult) {
                 const { getRandomMixedRoast } = await import("../../../utils/roasts");
+                const genderRecord = await Database.gamePlayer.findFirst({
+                    where: { userId: sender },
+                    select: { gender: true },
+                    orderBy: { id: "desc" }
+                });
                 await sendMention(
                     Chisato, groupId,
-                    `@${sender.split("@")[0]} ${getRandomMixedRoast()}`,
+                    `@${sender.split("@")[0]} ${getRandomMixedRoast(genderRecord?.gender)}`,
                     [sender]
                 );
                 return true;
