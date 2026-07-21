@@ -22,7 +22,7 @@ import crypto from "crypto";
 const VALID_GENDERS = ["M", "F"] as const;
 const SESSION_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
-type RegistrationStep = "waiting_name" | "waiting_gender";
+type RegistrationStep = "waiting_game_choice" | "waiting_name" | "waiting_gender";
 
 interface RegSession {
     step: RegistrationStep;
@@ -158,19 +158,17 @@ export class GameRegistrationHandler {
             }
 
             sessions.set(sender, {
-                step: "waiting_name",
+                step: "waiting_game_choice",
                 groupId,
                 expiresAt: Date.now() + SESSION_TTL_MS,
             });
 
             await sendMention(
                 Chisato, groupId,
-                `🎮 Hey @${sender.split("@")[0]}! Let's get you into the game.\n\n` +
-                `*Game Instructions:*\n` +
-                `• *spin* — Starts the next round\n` +
-                `• *stop* — Ends the game and mutes the bot\n` +
-                `• *skip* — Skips the current player if they don't reply\n\n` +
-                `What's your *name*? (just type it)`,
+                `🎮 Hey @${sender.split("@")[0]}! What game do you want to play?\n\n` +
+                `Reply with:\n` +
+                `• *1* for Truth or Dare 🍾\n` +
+                `• *2* for Anonymous Confessions 🕵️‍♂️`,
                 [sender]
             );
             return true;
@@ -181,6 +179,40 @@ export class GameRegistrationHandler {
         if (!session || session.groupId !== groupId) return false;
 
         if (context.cmd) return false;
+
+        // Step: waiting for game choice
+        if (session.step === "waiting_game_choice") {
+            const choice = body.trim();
+            if (choice === "2" || choice.toLowerCase() === "confession" || choice.toLowerCase() === "confessions") {
+                sessions.delete(sender);
+                await sendMention(
+                    Chisato, groupId,
+                    `🕵️‍♂️ @${sender.split("@")[0]}, to send an anonymous confession, just *send me a private message (DM)*! I'll keep your secret safe and post it here anonymously.`,
+                    [sender]
+                );
+                return true;
+            } else if (choice === "1" || choice.toLowerCase().includes("truth") || choice.toLowerCase().includes("dare")) {
+                refreshSession(sender, { step: "waiting_name" });
+                await sendMention(
+                    Chisato, groupId,
+                    `🍾 Truth or Dare it is!\n\n` +
+                    `*Game Instructions:*\n` +
+                    `• *spin* — Starts the next round\n` +
+                    `• *stop* — Ends the game and mutes the bot\n` +
+                    `• *skip* — Skips the current player if they don't reply\n\n` +
+                    `What's your *name*? (just type it)`,
+                    [sender]
+                );
+                return true;
+            } else {
+                await sendMention(
+                    Chisato, groupId,
+                    `@${sender.split("@")[0]} Please reply with *1* (Truth or Dare) or *2* (Confessions).`,
+                    [sender]
+                );
+                return true;
+            }
+        }
 
         // Step: waiting for name
         if (session.step === "waiting_name") {
