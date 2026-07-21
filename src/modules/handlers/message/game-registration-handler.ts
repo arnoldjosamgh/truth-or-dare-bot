@@ -134,6 +134,18 @@ export class GameRegistrationHandler {
                 return true;
             }
 
+            // ── 1a-2. Insult directed at the bot ─────────────────────────────
+            const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(body);
+            if (isInsult) {
+                const { randomRoast } = await import("../../../utils/roasts");
+                await sendMention(
+                    Chisato, groupId,
+                    `@${sender.split("@")[0]} ${randomRoast()}`,
+                    [sender]
+                );
+                return true;
+            }
+
             // ── 1b. Plain @bot → unmute + start game registration ────────────
             const { Group: GroupDatabase } = await import("../../../libs/database");
             const groupDb = new GroupDatabase();

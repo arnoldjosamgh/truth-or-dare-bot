@@ -106,6 +106,19 @@ export class MessageHandler {
                 !context.cmd
             ) {
                 const confessText = message.body.trim();
+
+                // Intercept insults in DM so they aren't sent as confessions
+                const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(confessText);
+                if (isInsult) {
+                    const { randomRoast } = await import("../../../utils/roasts");
+                    await Chisato.sendText(
+                        context.from,
+                        `@${context.sender.split("@")[0]} ${randomRoast()}`,
+                        message
+                    );
+                    return;
+                }
+
                 const { Database } = await import("../../../libs/database/prisma");
 
                 // Check if they are replying with a number for a previous confession
