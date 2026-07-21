@@ -162,7 +162,7 @@ export class MessageHandler {
                         where: { groupId: context.from }
                     });
                     
-                    const isAuthorized = context.isGroupAdmin || context.isOwner || (room && room.hostId === context.sender);
+                    const isAuthorized = context.isOwner || (room && room.hostId === context.sender);
                     
                     if (isAuthorized) {
                         if (room) {
