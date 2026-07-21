@@ -48,9 +48,9 @@ export default {
                 return;
             }
 
-            const isHost = room.hostId === sender ||
-                room.hostId?.split(":")[0] + "@s.whatsapp.net" === sender?.split(":")[0] + "@s.whatsapp.net" ||
-                room.hostId?.split("@")[0] === sender?.split("@")[0];
+            // Normalize to plain phone number (strip device suffix and domain)
+            const normalize = (jid?: string | null) => jid?.split("@")[0]?.split(":")[0] ?? "";
+            const isHost = !!room.hostId && normalize(room.hostId) === normalize(sender);
 
             if (!isHost) {
                 const attemptKey = `${sender}:${from}`;
