@@ -137,10 +137,10 @@ export class GameRegistrationHandler {
             // ── 1a-2. Insult directed at the bot ─────────────────────────────
             const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(body);
             if (isInsult) {
-                const { randomRoast } = await import("../../../utils/roasts");
+                const { getRandomMixedRoast } = await import("../../../utils/roasts");
                 await sendMention(
                     Chisato, groupId,
-                    `@${sender.split("@")[0]} ${randomRoast()}`,
+                    `@${sender.split("@")[0]} ${getRandomMixedRoast()}`,
                     [sender]
                 );
                 return true;

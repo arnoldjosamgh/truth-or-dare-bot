@@ -110,10 +110,10 @@ export class MessageHandler {
                 // Intercept insults in DM so they aren't sent as confessions
                 const isInsult = /fuck you|shut up|mother fucker|bitch|stupid|idiot|dumbass|suck/i.test(confessText);
                 if (isInsult) {
-                    const { randomRoast } = await import("../../../utils/roasts");
+                    const { getRandomMixedRoast } = await import("../../../utils/roasts");
                     await Chisato.sendText(
                         context.from,
-                        `@${context.sender.split("@")[0]} ${randomRoast()}`,
+                        `@${context.sender.split("@")[0]} ${getRandomMixedRoast()}`,
                         message
                     );
                     return;

@@ -152,6 +152,26 @@ export const ROASTS: ReadonlyArray<string> = [
 export const randomRoast = (): string =>
     ROASTS[Math.floor(Math.random() * ROASTS.length)];
 
+import * as fs from "fs";
+import * as path from "path";
+
+/** Mixes the hardcoded roasts with the stop-roasts from the JSON file */
+export const getRandomMixedRoast = (): string => {
+    let mixedPool = [...ROASTS];
+    try {
+        const filePath = path.join(process.cwd(), "public", "stop-roasts.json");
+        if (fs.existsSync(filePath)) {
+            const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+            if (Array.isArray(data.messages) && data.messages.length > 0) {
+                mixedPool = mixedPool.concat(data.messages);
+            }
+        }
+    } catch (err) {
+        // Fall back to just the hardcoded ones if JSON parsing fails
+    }
+    return mixedPool[Math.floor(Math.random() * mixedPool.length)];
+};
+
 export const SEVERE_ROASTS: ReadonlyArray<string> = [
     "Naye otegele lwakumeka Damu ekibuzo",
     "Olina amagezi Damu ekibuzo",
