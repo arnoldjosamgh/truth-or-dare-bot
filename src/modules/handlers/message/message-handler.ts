@@ -156,21 +156,12 @@ export class MessageHandler {
                     }
                 }
 
-                if (context.isGroup && !context.cmd && bodyTrimmed === "stop") {
-                    const { Database } = await import("../../../libs/database/prisma");
-                    const room = await Database.gameRoom.findFirst({
-                        where: { groupId: context.from }
-                    });
-                    
-                    const isAuthorized = context.isOwner || (room && room.hostId === context.sender);
-                    
-                    if (isAuthorized) {
-                        if (room) {
-                            await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
-                            await Database.gameRoom.delete({ where: { id: room.id } });
-                        }
-                        await this.Database.Group.updateSettings(context.from, { mute: true });
-                        await Chisato.sendText(context.from, "🛑 Game stopped and bot muted. I will ignore everything until you mention me (@bot) again!");
+                // Handle plain "stop" or "stop now" words (no prefix needed)
+                if (context.isGroup && !context.cmd && (bodyTrimmed === "stop" || bodyTrimmed === "stop now")) {
+                    const stopCmd = commands.get("stop");
+                    if (stopCmd) {
+                        context.args = bodyTrimmed === "stop now" ? ["now"] : [];
+                        await this.handleCommand(Chisato, message, context, stopCmd);
                         return;
                     }
                 }
