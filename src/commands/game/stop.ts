@@ -50,7 +50,15 @@ export default {
 
             // ── "stop now" override: any player can force-stop if host is offline ──
             // Syntax: !stop now
-            const isForceStop = args[0]?.toLowerCase() === "now";
+            let isForceStop = false;
+            if (args[0]?.toLowerCase() === "now") {
+                const player = await Database.gamePlayer.findFirst({
+                    where: { roomId: room.id, userId: sender }
+                });
+                if (player) {
+                    isForceStop = true;
+                }
+            }
 
             if (!isHost && !isForceStop) {
                 // Non-host tried to type !stop without "now" → roast them, then continue the game
