@@ -46,7 +46,9 @@ export default {
                 return;
             }
 
-            const isHost = room.hostId === sender;
+            const isHost = room.hostId === sender ||
+                room.hostId?.split(":")[0] + "@s.whatsapp.net" === sender?.split(":")[0] + "@s.whatsapp.net" ||
+                room.hostId?.split("@")[0] === sender?.split("@")[0];
 
             // ── "stop now" override: any player can force-stop if host is offline ──
             // Syntax: !stop now
@@ -65,7 +67,7 @@ export default {
                 const roast = randomUnauthorizedRoast();
                 await Chisato.sendText(
                     from,
-                    `@${sender.split("@")[0]} ${roast}\n\n_Only the host can stop the game. If the host is away, type_ *!stop now* _to force-end it._`,
+                    `@${sender.split("@")[0]} ${roast}`,
                     message,
                     { mentions: [sender] } as any
                 );
