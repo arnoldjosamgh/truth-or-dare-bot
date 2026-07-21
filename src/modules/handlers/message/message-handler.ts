@@ -22,8 +22,8 @@ import { formatExample } from "../../../utils";
 import { tryConsumeLoginOtp } from "../../../dashboard/routes/group-auth";
 import { resolveToPnJid } from "../../../utils/jid-resolver";
 
-// Tracks users who sent a group number but no confession text yet: sender → { groupId, groupName }
-const pendingConfessionGroup = new Map<string, { groupId: string; groupName: string }>();
+// Tracks users who sent a confession text but need to pick a group: sender → confessionText
+const pendingConfessionText = new Map<string, string>();
 
 export class MessageHandler {
     private Database = {
@@ -108,15 +108,11 @@ export class MessageHandler {
                 const confessText = message.body.trim();
                 const { Database } = await import("../../../libs/database/prisma");
 
-                // ── Check if user already picked a group and is now sending confession text ──
-                const pending = pendingConfessionGroup.get(context.sender);
-                if (pending) {
-                    pendingConfessionGroup.delete(context.sender);
-                    const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${confessText}"`;
-                    await Chisato.sendText(pending.groupId, confessionMsg);
-                    await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${pending.groupName}*!`, message);
-                    return;
-                }
+                // Check if they are replying with a number for a previous confession
+                const pendingText = pendingConfessionText.get(context.sender);
+                const isPickingGroup = pendingText && /^\d+$/.test(confessText);
+                
+                const actualConfession = isPickingGroup ? pendingText : confessText;
 
                 // Extract the phone number part from the sender JID
                 const senderPhone = context.sender?.split("@")[0] ?? "";
@@ -145,43 +141,53 @@ export class MessageHandler {
 
                 if (groups.length === 1) {
                     // Exactly one shared group — post anonymously
-                    const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${confessText}"`;
+                    const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualConfession}"`;
                     await Chisato.sendText(groups[0].groupId, confessionMsg);
                     await Chisato.sendText(context.from, "✅ Your confession has been sent anonymously to the group!", message);
+                    if (isPickingGroup) pendingConfessionText.delete(context.sender);
                     return;
                 }
 
-                // Multiple groups — check if message starts with a valid group number
+                // Multiple groups
+                if (isPickingGroup) {
+                    const groupIndex = parseInt(confessText, 10);
+                    if (groupIndex >= 1 && groupIndex <= groups.length) {
+                        pendingConfessionText.delete(context.sender);
+                        const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualConfession}"`;
+                        await Chisato.sendText(groups[groupIndex - 1].groupId, confessionMsg);
+                        await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
+                        return;
+                    }
+                    // Invalid number - ask again
+                    const groupList = groups.map((g, i) => `${i + 1}. ${g.subject}`).join("\n");
+                    await Chisato.sendText(
+                        context.from,
+                        `❌ Invalid number. Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
+                        message
+                    );
+                    return;
+                }
+
+                // New confession for multiple groups
+                // Check if they used the inline format "1 I have a crush"
                 const firstWord = confessText.split(" ")[0];
                 const groupIndex = parseInt(firstWord, 10);
                 if (!isNaN(groupIndex) && groupIndex >= 1 && groupIndex <= groups.length) {
                     const actualText = confessText.slice(firstWord.length).trim();
                     if (actualText) {
-                        // Number + text in same message — send immediately
                         const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualText}"`;
                         await Chisato.sendText(groups[groupIndex - 1].groupId, confessionMsg);
                         await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
                         return;
-                    } else {
-                        // User sent just a number — store their group pick and ask for the text
-                        pendingConfessionGroup.set(context.sender, {
-                            groupId: groups[groupIndex - 1].groupId,
-                            groupName: groups[groupIndex - 1].subject
-                        });
-                        await Chisato.sendText(
-                            context.from,
-                            `✅ Got it! You picked *${groups[groupIndex - 1].subject}*.\n\nNow send your confession text and I'll post it anonymously! 🕵️‍♂️`,
-                            message
-                        );
-                        return;
                     }
                 }
 
-                // No valid number — ask user to pick a group
+                // Store text and ask to pick group
+                pendingConfessionText.set(context.sender, confessText);
                 const groupList = groups.map((g, i) => `${i + 1}. ${g.subject}`).join("\n");
                 await Chisato.sendText(
                     context.from,
-                    `🕵️‍♂️ You are in multiple groups! Reply with the group number followed by your confession:\n\n${groupList}\n\nExample: \`1 I have a crush on someone 👀\`\nOr just send the number first, then your confession.`,
+                    `🕵️‍♂️ You are in multiple groups! Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
                     message
                 );
                 return;
