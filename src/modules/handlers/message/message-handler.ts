@@ -95,6 +95,61 @@ export class MessageHandler {
                 }
             }
 
+            // ── Auto-confession: any plain DM (not a command, not fromMe, not a number-only OTP) is treated as an anonymous confession ──
+            if (
+                !message.fromMe &&
+                !context.isGroup &&
+                message.body &&
+                !context.cmd
+            ) {
+                const confessText = message.body.trim();
+                const { Database } = await import("../../../libs/database/prisma");
+
+                let groups: { groupId: string; subject: string }[] = [];
+                try {
+                    groups = await Database.group.findMany({
+                        where: { participants: { some: { id: context.sender } } },
+                        select: { groupId: true, subject: true }
+                    });
+                } catch { /* ignore DB errors, fall through to normal DM handling */ }
+
+                if (groups.length === 0) {
+                    // User not in any shared group — silently ignore
+                    return;
+                }
+
+                if (groups.length === 1) {
+                    // Exactly one shared group — post anonymously
+                    const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${confessText}"`;
+                    await Chisato.sendText(groups[0].groupId, confessionMsg);
+                    await Chisato.sendText(context.from, "✅ Your confession has been sent anonymously to the group!", message);
+                    return;
+                }
+
+                // Multiple groups — check if message starts with a valid group number
+                const firstWord = confessText.split(" ")[0];
+                const groupIndex = parseInt(firstWord, 10);
+                if (!isNaN(groupIndex) && groupIndex >= 1 && groupIndex <= groups.length) {
+                    const actualText = confessText.slice(firstWord.length).trim();
+                    if (actualText) {
+                        const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualText}"`;
+                        await Chisato.sendText(groups[groupIndex - 1].groupId, confessionMsg);
+                        await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
+                        return;
+                    }
+                }
+
+                // Ask user to pick a group
+                const groupList = groups.map((g, i) => `${i + 1}. ${g.subject}`).join("\n");
+                await Chisato.sendText(
+                    context.from,
+                    `🕵️‍♂️ You are in multiple groups! Reply with the group number followed by your confession:\n\n${groupList}\n\nExample: \`1 I have a crush on someone 👀\``,
+                    message
+                );
+                return;
+            }
+            // ── End auto-confession ──
+
             const command = context.cmd
                 ? (commands.get(context.cmd) ?? aliasIndex.get(context.cmd) ?? null)
                 : null;
