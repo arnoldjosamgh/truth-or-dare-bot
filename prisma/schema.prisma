@@ -163,15 +163,16 @@ model GroupAuditLog {
 
 
 model GameRoom {
-  id              String       @id @default(auto()) @map("_id") @db.ObjectId
-  roomId          String       @unique
-  groupId         String
-  hostId          String?      // userId of the person who started the game
-  status          String       @default("lobby") // lobby, playing, waiting_for_reply
-  currentPlayerId String?
-  currentQuestion String?
-  players         GamePlayer[]
-  createdAt       DateTime     @default(now())
+  id                String       @id @default(auto()) @map("_id") @db.ObjectId
+  roomId            String       @unique
+  groupId           String
+  hostId            String?      // userId of the person who started the game
+  status            String       @default("lobby") // lobby, playing, waiting_for_reply
+  currentPlayerId   String?
+  currentQuestion   String?
+  usedQuestionIds   Int[]        @default([]) // tracks IDs of already-shown questions
+  players           GamePlayer[]
+  createdAt         DateTime     @default(now())
 }
 
 model GamePlayer {

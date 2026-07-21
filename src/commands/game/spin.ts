@@ -23,13 +23,34 @@ export const getQuestionByText = (text: string) => {
     return all.find((q) => q.text === text);
 };
 
-const pickQuestion = (gender: string) => {
+/**
+ * Picks a question for the target player that:
+ * 1. Matches their gender (male / female / neutral)
+ * 2. Has NOT been shown yet this game session
+ * 3. Resets the used-list and starts fresh if every suitable question has been shown
+ */
+const pickQuestion = (gender: string, room: any) => {
     const all = loadQuestions();
-    const filtered = all.filter(q =>
-        q.gender_target === "neutral" || q.gender_target.toUpperCase().startsWith(gender)
+
+    // Build gender-appropriate pool
+    const genderUpper = gender.toUpperCase();
+    const genderPool = all.filter(q =>
+        q.gender_target === "neutral" ||
+        q.gender_target?.toUpperCase().startsWith(genderUpper)
     );
-    const pool = filtered.length > 0 ? filtered : all;
-    return pool[Math.floor(Math.random() * pool.length)];
+    const pool = genderPool.length > 0 ? genderPool : all;
+
+    const used: number[] = Array.isArray(room.usedQuestionIds) ? room.usedQuestionIds : [];
+
+    // Filter out already-used questions
+    let fresh = pool.filter(q => !used.includes(q.id));
+
+    // If we've exhausted the pool, reset
+    if (fresh.length === 0) {
+        fresh = pool;
+    }
+
+    return fresh[Math.floor(Math.random() * fresh.length)];
 };
 
 const NAG_TIMEOUT_MS = 30 * 1000; // nag after 30 seconds
@@ -47,16 +68,25 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
     }
 
     const target = players[Math.floor(Math.random() * players.length)];
-    const question = pickQuestion(target.gender);
+    const question = pickQuestion(target.gender, room);
 
     await Chisato.sendText(groupId, "🍾 Spinning... 🔄");
 
     // Wait slightly so the animation text shows before announcing the result.
     setTimeout(async () => {
         try {
+            // Track this question as used, reset if all exhausted
+            const currentUsed: number[] = Array.isArray(room.usedQuestionIds) ? room.usedQuestionIds : [];
+            const nowUsed = currentUsed.includes(question.id) ? [] : [...currentUsed, question.id];
+
             await Database.gameRoom.update({
                 where: { id: room.id },
-                data: { status: "waiting_for_reply", currentPlayerId: target.userId, currentQuestion: question.text }
+                data: {
+                    status: "waiting_for_reply",
+                    currentPlayerId: target.userId,
+                    currentQuestion: question.text,
+                    usedQuestionIds: nowUsed
+                }
             });
 
             const sponsorText = configService.getConfig().settings?.sponsorText
