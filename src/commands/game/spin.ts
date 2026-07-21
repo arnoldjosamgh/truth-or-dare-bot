@@ -4,6 +4,7 @@ import { configService } from "../../core/config/config.service";
 import { logger } from "../../core/logger";
 import * as fs from "fs";
 import * as path from "path";
+import { randomSevereRoast } from "../../utils/roasts";
 
 // Loaded once at startup and cached for the process lifetime.
 let questionCache: { text: string; gender_target: string; explanation?: string }[] | null = null;
@@ -31,7 +32,7 @@ const pickQuestion = (gender: string) => {
     return pool[Math.floor(Math.random() * pool.length)];
 };
 
-const NAG_TIMEOUT_MS = 10 * 60 * 1000; // nag after 10 minutes
+const NAG_TIMEOUT_MS = 30 * 1000; // nag after 30 seconds
 
 /** Called both by the `!spin` command and the auto-loop in GameListener. */
 export const performSpin = async (Chisato: any, groupId: string, room: any) => {
@@ -79,9 +80,10 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
                     if (!current || current.status !== "waiting_for_reply" || current.currentPlayerId !== target.userId) {
                         return;
                     }
+                    const roast = randomSevereRoast();
                     await Chisato.sendText(
                         groupId,
-                        `⏳ @${target.userId.split("@")[0]} — *It's been 10 minutes!*\n\n_Still waiting... Answer or someone type *skip*!_ 👀`,
+                        `@${target.userId.split("@")[0]} ${roast}`,
                         undefined,
                         { mentions: [target.userId] } as any
                     );

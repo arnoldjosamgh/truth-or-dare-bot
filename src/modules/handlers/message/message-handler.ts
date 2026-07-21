@@ -161,13 +161,18 @@ export class MessageHandler {
                     const room = await Database.gameRoom.findFirst({
                         where: { groupId: context.from }
                     });
-                    if (room) {
-                        await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
-                        await Database.gameRoom.delete({ where: { id: room.id } });
+                    
+                    const isAuthorized = context.isGroupAdmin || context.isOwner || (room && room.hostId === context.sender);
+                    
+                    if (isAuthorized) {
+                        if (room) {
+                            await Database.gamePlayer.deleteMany({ where: { roomId: room.id } });
+                            await Database.gameRoom.delete({ where: { id: room.id } });
+                        }
+                        await this.Database.Group.updateSettings(context.from, { mute: true });
+                        await Chisato.sendText(context.from, "🛑 Game stopped and bot muted. I will ignore everything until you mention me (@bot) again!");
+                        return;
                     }
-                    await this.Database.Group.updateSettings(context.from, { mute: true });
-                    await Chisato.sendText(context.from, "🛑 Game stopped and bot muted. I will ignore everything until you mention me (@bot) again!");
-                    return;
                 }
 
                 // Handle plain "spin" or "skip" words (no prefix needed)
