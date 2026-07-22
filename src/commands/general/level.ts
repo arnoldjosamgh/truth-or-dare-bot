@@ -15,26 +15,26 @@ export default {
         if (args.length > 0 && message.mentions.length === 0) {
             const infoMessage = `*「 LEVEL 」*
 
-📊 Check your level and progress!
+Check your level and progress!
 
-💡 *Usage:*
+*Usage:*
 ${prefix}${command.name} - Check your level
 ${prefix}${command.name} @user - Check someone's level
 
-📈 *How to level up:*
+*How to level up:*
 • Use bot commands to gain XP
 • Different commands give different XP
 • Premium users get 50% XP bonus
 
-🏆 *Ranks:*
-• 🌱 Beginner (Lv 1-4)
-• 🎯 Novice (Lv 5-14)
-• 🥉 Intermediate (Lv 15-24)
-• 🎖️ Advanced (Lv 25-39)
-• 💎 Expert (Lv 40-59)
-• ⭐ Master (Lv 60-79)
-• 🔮 Mythical (Lv 80-99)
-• 👑 Legendary (Lv 100+)`
+*Ranks:*
+• Beginner (Lv 1-4)
+• Novice (Lv 5-14)
+• Intermediate (Lv 15-24)
+• ️ Advanced (Lv 25-39)
+• Expert (Lv 40-59)
+• Master (Lv 60-79)
+• Mythical (Lv 80-99)
+• Legendary (Lv 100+)`
             return Chisato.sendText(from, infoMessage, message);
         }
 
@@ -44,7 +44,7 @@ ${prefix}${command.name} @user - Check someone's level
             if (!userData) {
                 return Chisato.sendText(
                     from,
-                    `❌ User data not found!`,
+                    `User data not found!`,
                     message
                 );
             }
@@ -59,10 +59,10 @@ ${prefix}${command.name} @user - Check someone's level
             const isPremium = userData.role === "premium";
             
             let text = `*「 ${isOwnProfile ? "YOUR" : "USER"} LEVEL 」*\n\n`;
-            text += `👤 *Name:* ${username}\n`;
-            text += `${isPremium ? "⭐ *Premium User*\n" : ""}\n`;
+            text += `*Name:* ${username}\n`;
+            text += `${isPremium ? "*Premium User*\n" : ""}\n`;
             text += formatLevelDisplay(levelInfo);
-            text += `\n\n📊 *Statistics:*\n`;
+            text += `\n\n*Statistics:*\n`;
             text += `• Total Commands: ${userData.stats?.totalCommands || 0}\n`;
             text += `• Join Date: ${userData.stats?.joinedAt ? new Date(userData.stats.joinedAt * 1000).toLocaleDateString() : "Unknown"}\n`;
             
@@ -72,7 +72,7 @@ ${prefix}${command.name} @user - Check someone's level
                     .sort((a, b) => b.count - a.count)
                     .slice(0, 3);
                 
-                text += `\n🏅 *Most Used Commands:*\n`;
+                text += `\n*Most Used Commands:*\n`;
                 sortedCommands.forEach((cmd, idx) => {
                     text += `${idx + 1}. ${cmd.command} - ${cmd.count}x\n`;
                 });
@@ -83,7 +83,7 @@ ${prefix}${command.name} @user - Check someone's level
             Chisato.logger.error(`Level command error:`, error);
             await Chisato.sendText(
                 from,
-                "❌ Failed to retrieve level information. Please try again.",
+                "Failed to retrieve level information. Please try again.",
                 message
             );
         }

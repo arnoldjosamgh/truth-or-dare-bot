@@ -11,10 +11,10 @@ export default {
     isBotAdmin: true,
     example: `*「 CHANGE GROUP DESCRIPTION 」*
 
-📝 *How to use:*
+*How to use:*
 {prefix}{command.name} [text]
 
-📌 *Example:*
+*Example:*
 {prefix}{command.name} This is Group Description
 `,
     async run({ Chisato, query, from, message }) {

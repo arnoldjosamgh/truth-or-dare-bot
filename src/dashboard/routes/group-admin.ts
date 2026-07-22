@@ -30,7 +30,7 @@ function getAdmin(request: FastifyRequest): GroupAdminToken {
     return (request as any).admin as GroupAdminToken;
 }
 
-const onOff = (v: boolean): string => (v ? "enabled ✅" : "disabled ❌");
+const onOff = (v: boolean): string => (v ? "enabled " : "disabled ");
 
 /**
  * Announce a group-admin change back to the group itself, so other members can
@@ -46,7 +46,7 @@ async function notifyGroupChange(
     const client = getClientInstance();
     if (!client) return;
     const body =
-        `🔧 *Group Setting Updated*\n\n` +
+        `*Group Setting Updated*\n\n` +
         `@${adminPn} changed:\n` +
         lines.map((l) => `• ${l}`).join("\n");
     try {
@@ -73,8 +73,8 @@ async function notifyGroupMemberAction(
     if (!client) return;
     const body =
         op === "promote"
-            ? `⬆️ @${actorPn} promoted @${targetPn} to *admin*.`
-            : `⬇️ @${actorPn} removed @${targetPn} from *admin*.`;
+            ? `️ @${actorPn} promoted @${targetPn} to *admin*.`
+            : `️ @${actorPn} removed @${targetPn} from *admin*.`;
     try {
         await (client as any).sendText(groupId, body, null, {
             mentions: [`${actorPn}@s.whatsapp.net`, `${targetPn}@s.whatsapp.net`],

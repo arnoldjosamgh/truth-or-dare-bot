@@ -91,7 +91,7 @@ export class MessageHandler {
                 if (otp.matched) {
                     await Chisato.sendText(
                         context.from,
-                        "✅ *Login verified!*\n\nYou can return to the dashboard — it will continue automatically.",
+                        "*Login verified!*\n\nYou can return to the dashboard — it will continue automatically.",
                         message
                     ).catch(() => {});
                     return;
@@ -160,9 +160,9 @@ export class MessageHandler {
 
                 if (groups.length === 1) {
                     // Exactly one shared group — post anonymously
-                    const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualConfession}"`;
+                    const confessionMsg = `️‍️ *Anonymous Confession:*\n\n"${actualConfession}"`;
                     await Chisato.sendText(groups[0].groupId, confessionMsg);
-                    await Chisato.sendText(context.from, "✅ Your confession has been sent anonymously to the group!", message);
+                    await Chisato.sendText(context.from, "Your confession has been sent anonymously to the group!", message);
                     if (isPickingGroup) pendingConfessionText.delete(context.sender);
                     return;
                 }
@@ -172,16 +172,16 @@ export class MessageHandler {
                     const groupIndex = parseInt(confessText, 10);
                     if (groupIndex >= 1 && groupIndex <= groups.length) {
                         pendingConfessionText.delete(context.sender);
-                        const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualConfession}"`;
+                        const confessionMsg = `️‍️ *Anonymous Confession:*\n\n"${actualConfession}"`;
                         await Chisato.sendText(groups[groupIndex - 1].groupId, confessionMsg);
-                        await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
+                        await Chisato.sendText(context.from, `Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
                         return;
                     }
                     // Invalid number - ask again
                     const groupList = groups.map((g, i) => `${i + 1}. ${g.subject}`).join("\n");
                     await Chisato.sendText(
                         context.from,
-                        `❌ Invalid number. Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
+                        `Invalid number. Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
                         message
                     );
                     return;
@@ -194,9 +194,9 @@ export class MessageHandler {
                 if (!isNaN(groupIndex) && groupIndex >= 1 && groupIndex <= groups.length) {
                     const actualText = confessText.slice(firstWord.length).trim();
                     if (actualText) {
-                        const confessionMsg = `🕵️‍♂️ *Anonymous Confession:*\n\n"${actualText}"`;
+                        const confessionMsg = `️‍️ *Anonymous Confession:*\n\n"${actualText}"`;
                         await Chisato.sendText(groups[groupIndex - 1].groupId, confessionMsg);
-                        await Chisato.sendText(context.from, `✅ Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
+                        await Chisato.sendText(context.from, `Your confession has been sent anonymously to *${groups[groupIndex - 1].subject}*!`, message);
                         return;
                     }
                 }
@@ -206,7 +206,7 @@ export class MessageHandler {
                 const groupList = groups.map((g, i) => `${i + 1}. ${g.subject}`).join("\n");
                 await Chisato.sendText(
                     context.from,
-                    `🕵️‍♂️ You are in multiple groups! Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
+                    `️‍️ You are in multiple groups! Which group do you want to send this to? Reply with the group number:\n\n${groupList}`,
                     message
                 );
                 return;
@@ -295,7 +295,7 @@ export class MessageHandler {
                     if (room) {
                         if (bodyTrimmed === "skip") {
                             if (room.status !== "waiting_for_reply") {
-                                await Chisato.sendText(context.from, "⚠️ Nothing to skip — no one is being asked a question right now.");
+                                await Chisato.sendText(context.from, "️ Nothing to skip — no one is being asked a question right now.");
                                 return;
                             }
                             // Only registered players can skip
@@ -303,7 +303,7 @@ export class MessageHandler {
                                 where: { roomId: room.id, userId: context.sender }
                             });
                             if (!isRegistered) {
-                                await Chisato.sendText(context.from, "❌ Only registered players can skip. @mention me to join!");
+                                await Chisato.sendText(context.from, "Only registered players can skip. @mention me to join!");
                                 return;
                             }
                             // Skip: mark as playing and spin again immediately
@@ -311,12 +311,12 @@ export class MessageHandler {
                                 where: { id: room.id },
                                 data: { status: "playing", currentPlayerId: null, currentQuestion: null }
                             });
-                            await Chisato.sendText(context.from, `⏭️ *${context.pushName ?? "Someone"}* skipped! Spinning again... 🍾`);
+                            await Chisato.sendText(context.from, `️ *${context.pushName ?? "Someone"}* skipped! Spinning again... `);
                             await performSpin(Chisato, context.from, { ...room, status: "playing" });
                         } else {
                             // spin
                             if (room.status === "waiting_for_reply") {
-                                await Chisato.sendText(context.from, "⏳ Waiting for the current player to answer! Type *skip* if they're not responding.");
+                                await Chisato.sendText(context.from, "Waiting for the current player to answer! Type *skip* if they're not responding.");
                             } else {
                                 await Database.gameRoom.update({ where: { id: room.id }, data: { status: "playing" } });
                                 await performSpin(Chisato, context.from, { ...room, status: "playing" });
@@ -494,7 +494,7 @@ export class MessageHandler {
                     
                     await Chisato.sendText(
                         context.from,
-                        `🎉 *LEVEL UP!*\n\n` +
+                        `*LEVEL UP!*\n\n` +
                         `${rankInfo.emoji} Congratulations! You've reached Level ${result.newLevel}\n` +
                         `Rank: ${rankInfo.rank}\n\n` +
                         `Keep using commands to level up more!`,
@@ -664,7 +664,7 @@ export class MessageHandler {
                 } (${item.similarity.toFixed(0)}% match)\n`;
             });
 
-            suggestionText += `\n💡 Type ${context.prefix}menu to see all commands`;
+            suggestionText += `\nType ${context.prefix}menu to see all commands`;
 
             await Chisato.sendText(context.from, suggestionText, message);
         }

@@ -123,7 +123,7 @@ export class GameRegistrationHandler {
 
                 await sendMention(
                     Chisato, groupId,
-                    `🎤 ${targetTag} ${flipped} 💀`,
+                    `${targetTag} ${flipped} `,
                     mentionList
                 );
 
@@ -164,7 +164,7 @@ export class GameRegistrationHandler {
             if (alreadyIn) {
                 await sendMention(
                     Chisato, groupId,
-                    `✅ *${alreadyIn.name}*, you're already in the game lobby!\n\n` +
+                    `*${alreadyIn.name}*, you're already in the game lobby!\n\n` +
                     `*Game Instructions:*\n` +
                     `• *spin* — Starts the next round\n` +
                     `• *stop* — Ends the game and mutes the bot\n` +
@@ -182,10 +182,10 @@ export class GameRegistrationHandler {
 
             await sendMention(
                 Chisato, groupId,
-                `🎮 Hey @${sender.split("@")[0]}! What game do you want to play?\n\n` +
+                `Hey @${sender.split("@")[0]}! What game do you want to play?\n\n` +
                 `Reply with:\n` +
-                `• *1* for Truth or Dare 🍾\n` +
-                `• *2* for Anonymous Confessions 🕵️‍♂️`,
+                `• *1* for Truth or Dare \n` +
+                `• *2* for Anonymous Confessions ️‍️`,
                 [sender]
             );
             return true;
@@ -204,7 +204,7 @@ export class GameRegistrationHandler {
                 sessions.delete(sender);
                 await sendMention(
                     Chisato, groupId,
-                    `🕵️‍♂️ @${sender.split("@")[0]}, to send an anonymous confession, just *send me a private message (DM)*! I'll keep your secret safe and post it here anonymously.`,
+                    `️‍️ @${sender.split("@")[0]}, to send an anonymous confession, just *send me a private message (DM)*! I'll keep your secret safe and post it here anonymously.`,
                     [sender]
                 );
                 return true;
@@ -212,7 +212,7 @@ export class GameRegistrationHandler {
                 refreshSession(sender, { step: "waiting_name" });
                 await sendMention(
                     Chisato, groupId,
-                    `🍾 Truth or Dare it is!\n\n` +
+                    `Truth or Dare it is!\n\n` +
                     `*Game Instructions:*\n` +
                     `• *spin* — Starts the next round\n` +
                     `• *stop* — Ends the game and mutes the bot\n` +
@@ -240,7 +240,7 @@ export class GameRegistrationHandler {
 
             await sendMention(
                 Chisato, groupId,
-                `Nice to meet you, *${name}*! 👋\n\n` +
+                `Nice to meet you, *${name}*! \n\n` +
                 `@${sender.split("@")[0]}, what's your gender?\n` +
                 `Reply with:\n` +
                 `• *M* — Male\n` +
@@ -276,7 +276,7 @@ export class GameRegistrationHandler {
                 if (existing) {
                     await sendMention(
                         Chisato, groupId,
-                        `@${sender.split("@")[0]} You're already registered as *${existing.name}*! 🎮`,
+                        `@${sender.split("@")[0]} You're already registered as *${existing.name}*! `,
                         [sender]
                     );
                     return true;
@@ -291,16 +291,16 @@ export class GameRegistrationHandler {
 
                 await sendMention(
                     Chisato, groupId,
-                    `🎉 @${sender.split("@")[0]} (*${name}* · ${genderLabel}) has joined the game!\n\n` +
-                    `👥 *${count} player${count === 1 ? "" : "s"}* in the lobby.\n\n` +
+                    `@${sender.split("@")[0]} (*${name}* · ${genderLabel}) has joined the game!\n\n` +
+                    `*${count} player${count === 1 ? "" : "s"}* in the lobby.\n\n` +
                     (count >= 2
-                        ? `The host can now type *spin* to start! 🍾`
+                        ? `The host can now type *spin* to start! `
                         : `Waiting for more players to @mention me and join!`),
                     [sender]
                 );
             } catch (err) {
                 logger.error(`GameRegistration: ${err instanceof Error ? err.message : String(err)}`);
-                await Chisato.sendText(groupId, "❌ Failed to register. Please try again.", message);
+                await Chisato.sendText(groupId, "Failed to register. Please try again.", message);
             }
             return true;
         }

@@ -31,13 +31,13 @@ export default {
             `└★ Packname : ${config.stickers.packname}\n` +
             `└★ Authorname : ${config.stickers.author}\n` +
             `★ Settings :\n` +
-            `└「 ${config.settings.ownerNotifyOnline ? "✅" : "❌"} 」 Bot Online Notification\n` +
-            `└「 ${config.settings.useLimit ? "✅" : "❌"} 」 Use Limit\n` +
-            `└「 ${config.settings.useCooldown ? "✅" : "❌"} 」 Use Cooldown\n` +
-            `└「 ${config.settings.autoReadMessage ? "✅" : "❌"} 」 Auto Read Message\n` +
-            `└「 ${config.settings.autoReadStatus ? "✅" : "❌"} 」 Auto Read Status\n` +
-            `└「 ${config.settings.autoCorrect ? "✅" : "❌"} 」 Auto Correct\n` +
-            `└「 ${config.settings.selfbot ? "✅" : "❌"} 」 Selfbot\n` +
+            `└「 ${config.settings.ownerNotifyOnline ? "" : ""} 」 Bot Online Notification\n` +
+            `└「 ${config.settings.useLimit ? "" : ""} 」 Use Limit\n` +
+            `└「 ${config.settings.useCooldown ? "" : ""} 」 Use Cooldown\n` +
+            `└「 ${config.settings.autoReadMessage ? "" : ""} 」 Auto Read Message\n` +
+            `└「 ${config.settings.autoReadStatus ? "" : ""} 」 Auto Read Status\n` +
+            `└「 ${config.settings.autoCorrect ? "" : ""} 」 Auto Correct\n` +
+            `└「 ${config.settings.selfbot ? "" : ""} 」 Selfbot\n` +
             `★ Call :\n` +
             `└「 ${config.call.status} 」 Anti Call\n` +
             `★ Limit :\n` +

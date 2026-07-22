@@ -9,16 +9,16 @@ export default {
     usage: "[on/off]",
     example: `*「 AUTO-READ STATUS 」*
 
-📱 Toggle auto-read status/story feature
+Toggle auto-read status/story feature
 
-📝 *Description:*
+*Description:*
 Auto-read status feature will automatically view all WhatsApp status/stories.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 
-🎯 *Note:* Bot will automatically view all status updates from contacts.`,
+*Note:* Bot will automatically view all status updates from contacts.`,
     isOwner: true,
     async run({ Chisato, message, args, from }) {
         const config = configService.getConfig();
@@ -29,7 +29,7 @@ Auto-read status feature will automatically view all WhatsApp status/stories.
             if (config.settings.autoReadStatus) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-read status is already *enabled*!",
+                    "Auto-read status is already *enabled*!",
                     message
                 );
             }
@@ -37,15 +37,15 @@ Auto-read status feature will automatically view all WhatsApp status/stories.
             configService.updateSettings({ autoReadStatus: true });
 
             let text = `*「 AUTO-READ STATUS ENABLED 」*\n\n`;
-            text += `✅ Auto-read status feature has been *enabled*!\n\n`;
-            text += `📝 Bot will now automatically view all WhatsApp status/stories.`;
+            text += `Auto-read status feature has been *enabled*!\n\n`;
+            text += `Bot will now automatically view all WhatsApp status/stories.`;
 
             return Chisato.sendText(from, text, message);
         } else if (action === "off" || action === "disable" || action === "false" || action === "0") {
             if (!config.settings.autoReadStatus) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-read status is already *disabled*!",
+                    "Auto-read status is already *disabled*!",
                     message
                 );
             }
@@ -53,14 +53,14 @@ Auto-read status feature will automatically view all WhatsApp status/stories.
             configService.updateSettings({ autoReadStatus: false });
 
             let text = `*「 AUTO-READ STATUS DISABLED 」*\n\n`;
-            text += `✅ Auto-read status feature has been *disabled*!\n\n`;
-            text += `📝 Bot will no longer automatically view status updates.`;
+            text += `Auto-read status feature has been *disabled*!\n\n`;
+            text += `Bot will no longer automatically view status updates.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${config.prefix}autoreadstatus on\n`;
             text += `• ${config.prefix}autoreadstatus off`;
 

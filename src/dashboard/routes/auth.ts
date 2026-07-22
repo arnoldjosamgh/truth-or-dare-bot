@@ -404,21 +404,21 @@ async function sendApprovalRequest(
 
     const approvalBody =
         role === "team"
-            ? `🔔 *Team Login — Action Required*\n\n` +
+            ? `*Team Login — Action Required*\n\n` +
               `A *team* member is signing in to the ChisatoBOT Dashboard. ` +
               `Only you (owner) can approve or block this login.\n\n` +
-              `📱 *Team Number:* +${loginPhone}\n` +
-              `🌐 *IP Address:* ${requesterIp}\n` +
-              `🕐 *Time:* ${time}\n\n` +
+              `*Team Number:* +${loginPhone}\n` +
+              `*IP Address:* ${requesterIp}\n` +
+              `*Time:* ${time}\n\n` +
               `Tap *Allow & Whitelist* to approve and remember this IP as a team IP.\n` +
               `Tap *Block IP* to reject and add the IP to the team blocklist.\n\n` +
               `_This button is valid for 1 minute._`
-            : `🔐 *Did You Login From a New Device or Location?*\n\n` +
+            : `*Did You Login From a New Device or Location?*\n\n` +
               `I noticed a new login attempt to your ChisatoBOT Dashboard.\n\n` +
-              `📱 *Account:* +${loginPhone}\n` +
-              `👤 *Role:* Owner\n` +
-              `🌐 *IP Address:* ${requesterIp}\n` +
-              `🕐 *Time:* ${time}\n\n` +
+              `*Account:* +${loginPhone}\n` +
+              `*Role:* Owner\n` +
+              `*IP Address:* ${requesterIp}\n` +
+              `*Time:* ${time}\n\n` +
               `If this was *you*, tap *Allow & Whitelist* to grant access — the IP will be remembered for next time.\n` +
               `If you *don't recognize* this, tap *Block IP* to deny it and add the IP to the blocklist.\n\n` +
               `_This button is valid for 1 minute._`;
@@ -432,11 +432,11 @@ async function sendApprovalRequest(
                 .mainFooter("ChisatoBOT Dashboard Security")
                 .buttons(
                     builder.button.reply({
-                        display: "✅ Allow & Whitelist",
+                        display: "Allow & Whitelist",
                         id: `${prefix}dashboardapprove ${approvalId}`,
                     }),
                     builder.button.reply({
-                        display: "🚫 Block IP",
+                        display: "Block IP",
                         id: `${prefix}dashboardreject ${approvalId}`,
                     })
                 )
@@ -450,7 +450,7 @@ async function sendApprovalRequest(
             try {
                 await (client as any).sendText(
                     targetJid,
-                    `${approvalBody}\n\n✅ Allow & Whitelist: ${prefix}dashboardapprove ${approvalId}\n🚫 Block IP: ${prefix}dashboardreject ${approvalId}`
+                    `${approvalBody}\n\nAllow & Whitelist: ${prefix}dashboardapprove ${approvalId}\nBlock IP: ${prefix}dashboardreject ${approvalId}`
                 );
             } catch (fallbackErr) {
                 console.error(`Failed to send approval to ${targetJid}:`, fallbackErr);
@@ -470,8 +470,8 @@ async function notifyTeamMemberOfDecision(
     const teamJid = `${loginPhone}@s.whatsapp.net`;
     const body =
         action === "whitelist"
-            ? `✅ Your dashboard login from IP \`${requesterIp}\` has been approved by the owner. You can now continue on the login page.`
-            : `🚫 Your dashboard login from IP \`${requesterIp}\` has been rejected by the owner. The IP has been added to the team blocklist.`;
+            ? `Your dashboard login from IP \`${requesterIp}\` has been approved by the owner. You can now continue on the login page.`
+            : `Your dashboard login from IP \`${requesterIp}\` has been rejected by the owner. The IP has been added to the team blocklist.`;
     try {
         await (client as any).sendText(teamJid, body);
     } catch (err) {

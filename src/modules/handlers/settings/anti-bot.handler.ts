@@ -100,8 +100,8 @@ export class AntiBotMessageHandler {
 
             const caption =
                 `*「 ANTI-BOT 」*\n\n` +
-                `🤖 @${sender.split("@")[0]} was kicked for sending bot-type messages.\n` +
-                `📨 Message type: \`${type}\`\n\n` +
+                `@${sender.split("@")[0]} was kicked for sending bot-type messages.\n` +
+                `Message type: \`${type}\`\n\n` +
                 `_Anti-bot is active in this group._`;
 
             await Chisato.sendText(from, caption, null, {

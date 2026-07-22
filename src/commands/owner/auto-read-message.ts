@@ -9,16 +9,16 @@ export default {
     usage: "[on/off]",
     example: `*「 AUTO-READ MESSAGE 」*
 
-✉️ Toggle auto-read message feature
+️ Toggle auto-read message feature
 
-📝 *Description:*
+*Description:*
 Auto-read message feature will automatically mark all incoming messages as read.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 
-🎯 *Note:* All messages will be automatically marked as read.`,
+*Note:* All messages will be automatically marked as read.`,
     isOwner: true,
     async run({ Chisato, message, args, from }) {
         const config = configService.getConfig();
@@ -29,7 +29,7 @@ Auto-read message feature will automatically mark all incoming messages as read.
             if (config.settings.autoReadMessage) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-read message is already *enabled*!",
+                    "Auto-read message is already *enabled*!",
                     message
                 );
             }
@@ -37,15 +37,15 @@ Auto-read message feature will automatically mark all incoming messages as read.
             configService.updateSettings({ autoReadMessage: true });
 
             let text = `*「 AUTO-READ MESSAGE ENABLED 」*\n\n`;
-            text += `✅ Auto-read message feature has been *enabled*!\n\n`;
-            text += `📝 All incoming messages will now be automatically marked as read.`;
+            text += `Auto-read message feature has been *enabled*!\n\n`;
+            text += `All incoming messages will now be automatically marked as read.`;
 
             return Chisato.sendText(from, text, message);
         } else if (action === "off" || action === "disable" || action === "false" || action === "0") {
             if (!config.settings.autoReadMessage) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-read message is already *disabled*!",
+                    "Auto-read message is already *disabled*!",
                     message
                 );
             }
@@ -53,14 +53,14 @@ Auto-read message feature will automatically mark all incoming messages as read.
             configService.updateSettings({ autoReadMessage: false });
 
             let text = `*「 AUTO-READ MESSAGE DISABLED 」*\n\n`;
-            text += `✅ Auto-read message feature has been *disabled*!\n\n`;
-            text += `📝 Messages will no longer be automatically marked as read.`;
+            text += `Auto-read message feature has been *disabled*!\n\n`;
+            text += `Messages will no longer be automatically marked as read.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${config.prefix}autoreadmessage on\n`;
             text += `• ${config.prefix}autoreadmessage off`;
 

@@ -34,7 +34,7 @@ export class GameListener {
                 const roast = getGenderedRoast(player?.gender);
                 await Chisato.sendText(
                     context.from,
-                    `😂 @${context.sender.split("@")[0]} — *${roast}*\n\n_The question is still yours. Answer it!_ 🎯`,
+                    `@${context.sender.split("@")[0]} — *${roast}*\n\n_The question is still yours. Answer it!_ `,
                     message,
                     { mentions: [context.sender] } as any
                 );
@@ -48,7 +48,7 @@ export class GameListener {
 
             await Chisato.sendText(
                 context.from,
-                `✅ *${context.pushName ?? "Player"}* answered! React, comment, roast...\n_Next spin in ${AUTO_SPIN_DELAY_MS / 1000}s_ 🍾`,
+                `*${context.pushName ?? "Player"}* answered! React, comment, roast...\n_Next spin in ${AUTO_SPIN_DELAY_MS / 1000}s_ `,
                 message
             );
 

@@ -402,10 +402,10 @@ export async function groupsRoutes(fastify: FastifyInstance) {
                     try {
                         await client.sendMessage(joinedGroupId, {
                             text:
-                                `👋 *Hello Everyone!*\n\n` +
+                                `*Hello Everyone!*\n\n` +
                                 `I'm ChisatoBot, thanks for inviting me to this group!\n\n` +
                                 `Type *.menu* to see all available commands.\n\n` +
-                                `Let's have fun together! 🎉`,
+                                `Let's have fun together! `,
                         });
                     } catch (e) {
                         logger.warn(`Failed to send join greeting to ${joinedGroupId}: ${e}`);

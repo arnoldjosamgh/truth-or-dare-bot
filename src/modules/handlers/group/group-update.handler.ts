@@ -836,8 +836,8 @@ export class GroupUpdateHandler {
 
                 await Chisato.sendText(
                     from, 
-                    "🎉 Thanks for making me an admin! Let's get straight into it!\n\n" +
-                    "🍾 *TRUTH OR DARE GAME STARTED*\n\n" +
+                    "Thanks for making me an admin! Let's get straight into it!\n\n" +
+                    "*TRUTH OR DARE GAME STARTED*\n\n" +
                     "Reply to this message (or mention me) with *M* (Male) or *F* (Female) to join the lobby!\n" +
                     "When everyone is in, type *spin* to start the fun.", 
                     null
@@ -932,7 +932,7 @@ export class GroupUpdateHandler {
                 .map((u) => `@${u.split("@")[0]}`)
                 .join(", ");
             const caption =
-                `👋 Welcome to *${groupName}*!\n\n${names}\n\n` +
+                `Welcome to *${groupName}*!\n\n${names}\n\n` +
                 `You're now part of the group — enjoy! (${memberCount} members)`;
             try {
                 await Chisato.sendText(from, caption, null, { mentions });
@@ -986,7 +986,7 @@ export class GroupUpdateHandler {
                         }
                     }
                 } else {
-                    caption = `👋 Welcome to *${groupName}*!\n\n@${username}\n\nYou are member #${memberCount}`;
+                    caption = `Welcome to *${groupName}*!\n\n@${username}\n\nYou are member #${memberCount}`;
                 }
 
                 if (!isSocketReady(Chisato)) return;
@@ -1053,7 +1053,7 @@ export class GroupUpdateHandler {
                     .join(", ");
                 await Chisato.sendText(
                     from,
-                    `👋 ${names} left *${groupName}*. Remaining members: ${memberCount}`,
+                    `${names} left *${groupName}*. Remaining members: ${memberCount}`,
                     null,
                     { mentions }
                 ).catch((error) =>
@@ -1112,7 +1112,7 @@ export class GroupUpdateHandler {
                             }
                         }
                     } else {
-                        caption = `👋 Goodbye *@${username}*!\n\nThanks for being part of *${groupName}*\n\nRemaining members: ${memberCount}`;
+                        caption = `Goodbye *@${username}*!\n\nThanks for being part of *${groupName}*\n\nRemaining members: ${memberCount}`;
                     }
 
                     if (!isSocketReady(Chisato)) break;
@@ -1185,7 +1185,7 @@ export class GroupUpdateHandler {
 
                 const caption =
                     `*「 ANTI-BOT 」*\n\n` +
-                    `🤖 Bot account @${
+                    `Bot account @${
                         botJid.split("@")[0]
                     } has been automatically kicked.\n\n` +
                     `_Anti-bot is enabled in this group._`;

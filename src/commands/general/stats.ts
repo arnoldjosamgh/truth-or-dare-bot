@@ -14,13 +14,13 @@ export default {
         if (args.length > 0 && message.mentions.length === 0) {
             const infoMessage = `*「 STATISTICS 」*
 
-📊 View your detailed bot usage statistics!
+View your detailed bot usage statistics!
 
-💡 *Usage:*
+*Usage:*
 ${prefix}${command.name} - View your stats
 ${prefix}${command.name} @user - View someone's stats
 
-📈 *What you'll see:*
+*What you'll see:*
 • Total commands used
 • Most used commands
 • Join date
@@ -35,7 +35,7 @@ ${prefix}${command.name} @user - View someone's stats
             if (!userData) {
                 return Chisato.sendText(
                     from,
-                    `❌ User data not found!`,
+                    `User data not found!`,
                     message
                 );
             }
@@ -44,12 +44,12 @@ ${prefix}${command.name} @user - View someone's stats
             const isPremium = userData.role === "premium";
             
             let text = `*「 ${isOwnProfile ? "YOUR" : "USER"} STATISTICS 」*\n\n`;
-            text += `👤 *User:* ${username}\n`;
-            text += `🆔 *ID:* ${targetUser.split("@")[0]}\n`;
-            text += `${isPremium ? "⭐ *Status:* Premium\n" : "🎯 *Status:* Free\n"}`;
-            text += `📅 *Joined:* ${userData.stats?.joinedAt ? new Date(userData.stats.joinedAt * 1000).toLocaleDateString() : "Unknown"}\n\n`;
+            text += `*User:* ${username}\n`;
+            text += `*ID:* ${targetUser.split("@")[0]}\n`;
+            text += `${isPremium ? "*Status:* Premium\n" : "*Status:* Free\n"}`;
+            text += `*Joined:* ${userData.stats?.joinedAt ? new Date(userData.stats.joinedAt * 1000).toLocaleDateString() : "Unknown"}\n\n`;
             
-            text += `*「 📊 COMMAND USAGE 」*\n\n`;
+            text += `*「 COMMAND USAGE 」*\n\n`;
             text += `• Total Commands: ${userData.stats?.totalCommands || 0}\n`;
             
             if (userData.stats?.lastCommandTime) {
@@ -61,7 +61,7 @@ ${prefix}${command.name} @user - View someone's stats
                 const sortedCommands = [...userData.stats.commandsUsed]
                     .sort((a, b) => b.count - a.count);
                 
-                text += `\n*「 🏅 TOP COMMANDS 」*\n\n`;
+                text += `\n*「 TOP COMMANDS 」*\n\n`;
                 
                 const topCommands = sortedCommands.slice(0, 10);
                 topCommands.forEach((cmd, idx) => {
@@ -84,7 +84,7 @@ ${prefix}${command.name} @user - View someone's stats
                     userData.level.totalXp
                 );
                 
-                text += `\n\n*「 ⚡ LEVEL INFO 」*\n\n`;
+                text += `\n\n*「 LEVEL INFO 」*\n\n`;
                 text += formatLevelDisplay(levelInfo);
             }
             
@@ -93,7 +93,7 @@ ${prefix}${command.name} @user - View someone's stats
             Chisato.logger.error(`Stats command error:`, error);
             await Chisato.sendText(
                 from,
-                "❌ Failed to retrieve statistics. Please try again.",
+                "Failed to retrieve statistics. Please try again.",
                 message
             );
         }

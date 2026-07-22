@@ -8,18 +8,18 @@ export default {
     usage: "[on/off]",
     example: `*「 JOIN APPROVAL MODE 」*
 
-✅ Require admin approval for join requests
+Require admin approval for join requests
 
-📝 *Description:*
+*Description:*
 • ON - Members must get admin approval to join
 • OFF - Members can join directly via invite link
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 {prefix}{command.name}
 
-🔒 *Note:* Bot must be admin to change this setting.`,
+*Note:* Bot must be admin to change this setting.`,
     isGroup: true,
     isGroupAdmin: true,
     isBotAdmin: true,
@@ -32,7 +32,7 @@ export default {
             if (groupSetting?.approval) {
                 return Chisato.sendText(
                     from,
-                    "❌ Join approval is already *required*!",
+                    "Join approval is already *required*!",
                     message
                 );
             }
@@ -41,15 +41,15 @@ export default {
             await Database.Group.update(from, { approval: true });
 
             let text = `*「 JOIN APPROVAL REQUIRED 」*\n\n`;
-            text += `✅ Join approval has been *enabled*!\n\n`;
-            text += `📝 People must now get admin approval to join this group via invite link.`;
+            text += `Join approval has been *enabled*!\n\n`;
+            text += `People must now get admin approval to join this group via invite link.`;
 
             return Chisato.sendText(from, text, message);
         } else if (action === "off" || action === "disable" || action === "false" || action === "0") {
             if (!groupSetting?.approval) {
                 return Chisato.sendText(
                     from,
-                    "❌ Join approval is already *not required*!",
+                    "Join approval is already *not required*!",
                     message
                 );
             }
@@ -58,14 +58,14 @@ export default {
             await Database.Group.update(from, { approval: false });
 
             let text = `*「 JOIN APPROVAL DISABLED 」*\n\n`;
-            text += `✅ Join approval has been *disabled*!\n\n`;
-            text += `🔓 People can now join directly via invite link without approval.`;
+            text += `Join approval has been *disabled*!\n\n`;
+            text += `People can now join directly via invite link without approval.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${prefix}approval on\n`;
             text += `• ${prefix}approval off`;
 

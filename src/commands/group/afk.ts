@@ -26,7 +26,7 @@ export default {
 
         return Chisato.sendText(
             from,
-            `✅ You are now AFK!\nReason: ${query || "No Reason"}`,
+            `You are now AFK!\nReason: ${query || "No Reason"}`,
             message
         );
     },

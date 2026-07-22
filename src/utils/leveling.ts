@@ -91,21 +91,21 @@ export function addXP(currentLevel: number, currentXp: number, totalXp: number, 
  */
 export function getRankInfo(level: number): { rank: string; emoji: string; color: string } {
     if (level >= 100) {
-        return { rank: "Legendary", emoji: "👑", color: "#FFD700" };
+        return { rank: "Legendary", emoji: "", color: "#FFD700" };
     } else if (level >= 80) {
-        return { rank: "Mythical", emoji: "🔮", color: "#9B59B6" };
+        return { rank: "Mythical", emoji: "", color: "#9B59B6" };
     } else if (level >= 60) {
-        return { rank: "Master", emoji: "⭐", color: "#E74C3C" };
+        return { rank: "Master", emoji: "", color: "#E74C3C" };
     } else if (level >= 40) {
-        return { rank: "Expert", emoji: "💎", color: "#3498DB" };
+        return { rank: "Expert", emoji: "", color: "#3498DB" };
     } else if (level >= 25) {
-        return { rank: "Advanced", emoji: "🎖️", color: "#1ABC9C" };
+        return { rank: "Advanced", emoji: "️", color: "#1ABC9C" };
     } else if (level >= 15) {
-        return { rank: "Intermediate", emoji: "🥉", color: "#95A5A6" };
+        return { rank: "Intermediate", emoji: "", color: "#95A5A6" };
     } else if (level >= 5) {
-        return { rank: "Novice", emoji: "🎯", color: "#2ECC71" };
+        return { rank: "Novice", emoji: "", color: "#2ECC71" };
     } else {
-        return { rank: "Beginner", emoji: "🌱", color: "#BDC3C7" };
+        return { rank: "Beginner", emoji: "", color: "#BDC3C7" };
     }
 }
 

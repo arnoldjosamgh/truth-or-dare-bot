@@ -9,16 +9,16 @@ export default {
     usage: "[on/off]",
     example: `*「 AUTO-CORRECT 」*
 
-✅ Toggle auto-correct feature
+Toggle auto-correct feature
 
-📝 *Description:*
+*Description:*
 Auto-correct feature will suggest similar commands when users type an incorrect command name.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 
-🎯 *Example:* If user types ".mnu" (typo), bot will suggest ".menu"`,
+*Example:* If user types ".mnu" (typo), bot will suggest ".menu"`,
     isOwner: true,
     async run({ Chisato, message, args, from }) {
         const config = configService.getConfig();
@@ -29,7 +29,7 @@ Auto-correct feature will suggest similar commands when users type an incorrect 
             if (config.settings.autoCorrect) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-correct is already *enabled*!",
+                    "Auto-correct is already *enabled*!",
                     message
                 );
             }
@@ -37,9 +37,9 @@ Auto-correct feature will suggest similar commands when users type an incorrect 
             configService.updateSettings({ autoCorrect: true });
 
             let text = `*「 AUTO-CORRECT ENABLED 」*\n\n`;
-            text += `✅ Auto-correct feature has been *enabled*!\n\n`;
-            text += `📝 Users will now receive command suggestions when they make typos.\n\n`;
-            text += `💡 Example:\n`;
+            text += `Auto-correct feature has been *enabled*!\n\n`;
+            text += `Users will now receive command suggestions when they make typos.\n\n`;
+            text += `Example:\n`;
             text += `User: "${config.prefix}mnu"\n`;
             text += `Bot: "Did you mean: ${config.prefix}menu?"`;
 
@@ -48,7 +48,7 @@ Auto-correct feature will suggest similar commands when users type an incorrect 
             if (!config.settings.autoCorrect) {
                 return Chisato.sendText(
                     from,
-                    "❌ Auto-correct is already *disabled*!",
+                    "Auto-correct is already *disabled*!",
                     message
                 );
             }
@@ -56,14 +56,14 @@ Auto-correct feature will suggest similar commands when users type an incorrect 
             configService.updateSettings({ autoCorrect: false });
 
             let text = `*「 AUTO-CORRECT DISABLED 」*\n\n`;
-            text += `✅ Auto-correct feature has been *disabled*!\n\n`;
-            text += `📝 Users will no longer receive command suggestions for typos.`;
+            text += `Auto-correct feature has been *disabled*!\n\n`;
+            text += `Users will no longer receive command suggestions for typos.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${config.prefix}autocorrect on\n`;
             text += `• ${config.prefix}autocorrect off`;
 

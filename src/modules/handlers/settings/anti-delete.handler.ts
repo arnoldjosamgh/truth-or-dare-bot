@@ -108,7 +108,7 @@ export class AntiDeleteHandler {
 
             let header =
                 `*「 ANTI-DELETE 」*\n\n` +
-                `🗑 *Deleted message recovered*\n` +
+                `*Deleted message recovered*\n` +
                 `• *Sender* : @${senderNum} (${pushName})\n`;
             if (deleterNum && deleterNum !== senderNum) {
                 header += `• *Deleted by* : @${deleterNum}\n`;

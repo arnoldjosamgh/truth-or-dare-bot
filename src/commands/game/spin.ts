@@ -59,18 +59,18 @@ const NAG_TIMEOUT_MS = 30 * 1000; // nag after 30 seconds
 export const performSpin = async (Chisato: any, groupId: string, room: any) => {
     const players = await Database.gamePlayer.findMany({ where: { roomId: room.id } });
     if (players.length === 0) {
-        await Chisato.sendText(groupId, "❌ No players registered yet!\n\n@mention me to join: e.g. *@bot* then follow the prompts for your name and gender.");
+        await Chisato.sendText(groupId, "No players registered yet!\n\n@mention me to join: e.g. *@bot* then follow the prompts for your name and gender.");
         return;
     }
     if (players.length < 2) {
-        await Chisato.sendText(groupId, `⚠️ Only *1 player* registered (${players[0].name}). Need at least 2 to spin!\n\nOthers can @mention me to join.`);
+        await Chisato.sendText(groupId, `️ Only *1 player* registered (${players[0].name}). Need at least 2 to spin!\n\nOthers can @mention me to join.`);
         return;
     }
 
     const target = players[Math.floor(Math.random() * players.length)];
     const question = pickQuestion(target.gender, room);
 
-    await Chisato.sendText(groupId, "🍾 Spinning... 🔄");
+    await Chisato.sendText(groupId, "Spinning... ");
 
     // Wait slightly so the animation text shows before announcing the result.
     setTimeout(async () => {
@@ -95,7 +95,7 @@ export const performSpin = async (Chisato: any, groupId: string, room: any) => {
             
             await Chisato.sendText(
                 groupId,
-                `👉 @${target.userId.split("@")[0]} (*${target.name}*), the bottle landed on you!\n\n` +
+                `@${target.userId.split("@")[0]} (*${target.name}*), the bottle landed on you!\n\n` +
                 `*Question:*\n${question.text}\n\n` +
                 `Reply in the chat to continue!${sponsorText}`,
                 undefined,
@@ -142,12 +142,12 @@ export default {
             });
 
             if (!room) {
-                await Chisato.sendText(from, "❌ No active game in this group. Start one with `!startgame`.", message);
+                await Chisato.sendText(from, "No active game in this group. Start one with `!startgame`.", message);
                 return;
             }
 
             if (room.status === "waiting_for_reply") {
-                await Chisato.sendText(from, "⏳ Waiting for the current player to answer first!", message);
+                await Chisato.sendText(from, "Waiting for the current player to answer first!", message);
                 return;
             }
 
@@ -155,7 +155,7 @@ export default {
             await performSpin(Chisato, from, room);
         } catch (error) {
             logger.error(`spin: ${error instanceof Error ? error.message : String(error)}`);
-            await Chisato.sendText(from, "❌ Something went wrong. Please try again.", message);
+            await Chisato.sendText(from, "Something went wrong. Please try again.", message);
         }
     },
 } satisfies ConfigCommands;

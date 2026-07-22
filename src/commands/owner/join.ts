@@ -9,19 +9,19 @@ export default {
     usage: "[invite_link]",
     example: `*「 JOIN GROUP 」*
 
-👥 Make bot join a group via invite link
+Make bot join a group via invite link
 
-📝 *Usage:*
+*Usage:*
 {prefix}{command.name} <invite_link>
 
-💡 *Example:*
+*Example:*
 {prefix}{command.name} https://chat.whatsapp.com/xxxxx
 
-🔗 *Format:* Provide a valid WhatsApp group invite link`,
+*Format:* Provide a valid WhatsApp group invite link`,
     isOwner: true,
     async run({ Chisato, message, args, from }) {
         const msg = message;
-        await Chisato.sendReaction(from, "⏳", msg.key);
+        await Chisato.sendReaction(from, "", msg.key);
 
         const inviteLink = args[0];
 
@@ -30,14 +30,14 @@ export default {
 
         if (!match) {
             await Chisato.sendText(from,
-                `❌ *Invalid Invite Link!*\n\n` +
+                `*Invalid Invite Link!*\n\n` +
                     `Please provide a valid WhatsApp group invite link.\n\n` +
                     `*Format:*\n` +
                     `https://chat.whatsapp.com/xxxxx\n\n` +
                     `*Example:*\n` +
                     `.join https://chat.whatsapp.com/ABC123xyz456`,
             msg);
-            await Chisato.sendReaction(from, "❌", msg.key);
+            await Chisato.sendReaction(from, "", msg.key);
             return;
         }
 
@@ -51,13 +51,13 @@ export default {
                     const metadata = await Chisato.groupMetadata(groupInfo.id);
                     if (metadata) {
                         await Chisato.sendText(from,
-                            `⚠️ *Already in Group!*\n\n` +
+                            `️ *Already in Group!*\n\n` +
                                 `Bot is already a member of this group:\n\n` +
-                                `📋 *Group Name:* ${groupInfo.subject || "Unknown"}\n` +
-                                `👥 *Members:* ${groupInfo.size || 0}\n` +
-                                `🆔 *Group ID:* ${groupInfo.id}`,
+                                `*Group Name:* ${groupInfo.subject || "Unknown"}\n` +
+                                `*Members:* ${groupInfo.size || 0}\n` +
+                                `*Group ID:* ${groupInfo.id}`,
                         msg);
-                        await Chisato.sendReaction(from, "⚠️", msg.key);
+                        await Chisato.sendReaction(from, "️", msg.key);
                         return;
                     }
                 } catch (error) {}
@@ -66,15 +66,15 @@ export default {
             const result = await Chisato.groupAcceptInvite(inviteCode);
 
             await Chisato.sendText(from,
-                `✅ *Successfully Joined Group!*\n\n` +
+                `*Successfully Joined Group!*\n\n` +
                     `Bot has successfully joined the group:\n\n` +
-                    `📋 *Group Name:* ${groupInfo.subject || "Unknown"}\n` +
-                    `👥 *Members:* ${groupInfo.size || 0}\n` +
-                    `🆔 *Group ID:* ${result || groupInfo.id}\n\n` +
+                    `*Group Name:* ${groupInfo.subject || "Unknown"}\n` +
+                    `*Members:* ${groupInfo.size || 0}\n` +
+                    `*Group ID:* ${result || groupInfo.id}\n\n` +
                     `The bot is now active in this group!`,
             msg);
             
-            await Chisato.sendReaction(from, "✅", msg.key);
+            await Chisato.sendReaction(from, "", msg.key);
 
             setTimeout(async () => {
                 try {
@@ -83,10 +83,10 @@ export default {
                     await sleep(3000); 
                     
                     await Chisato.sendText(groupJid,
-                        `👋 *Hello Everyone!*\n\n` +
+                        `*Hello Everyone!*\n\n` +
                             `I'm ChisatoBot, thanks for inviting me to this group!\n\n` +
                             `Type *.menu* to see all available commands.\n\n` +
-                            `Let's have fun together! 🎉`
+                            `Let's have fun together! `
                     );
                 } catch (error) {
                     Chisato.logger.error("Note: Could not send greeting message to new group (this is normal)", error);
@@ -109,7 +109,7 @@ export default {
             }
 
             await Chisato.sendText(from,
-                `❌ *Failed to Join Group!*\n\n` +
+                `*Failed to Join Group!*\n\n` +
                     `${errorMessage}\n\n` +
                     `*Possible reasons:*\n` +
                     `• Invalid or expired invite link\n` +
@@ -118,7 +118,7 @@ export default {
                     `• Group no longer exists\n\n` +
                     `Please check the invite link and try again.`,
             msg);
-            await Chisato.sendReaction(from, "❌", msg.key);
+            await Chisato.sendReaction(from, "", msg.key);
         }
     },
 } satisfies ConfigCommands;

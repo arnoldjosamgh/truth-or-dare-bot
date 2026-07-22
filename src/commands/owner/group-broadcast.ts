@@ -35,12 +35,12 @@ export default {
     isOwner: true,
     example: `*「 GROUP BROADCAST 」*
 
-🔗 Send Broadcast to all groups
+Send Broadcast to all groups
 
-📝 *Usage:*
+*Usage:*
 {prefix}{command.name} [text]
 
-💡 *Example:*
+*Example:*
 {prefix}{command.name} Hello everyone! This is a group broadcast message!`,
     async run({ Chisato, query, command, from, message, prefix }) {
         const groupIds = Object.values(
@@ -50,7 +50,7 @@ export default {
         if (!groupIds.length) {
             await Chisato.sendText(
                 from,
-                "❌ Bot is not currently in any group.",
+                "Bot is not currently in any group.",
                 message
             );
             return;
@@ -88,11 +88,11 @@ export default {
 
             builder.buttons(
                 builder.button.url({
-                    display: "🌐 GitHub Repository",
+                    display: "GitHub Repository",
                     url: REPO_URL,
                 }),
                 builder.button.reply({
-                    display: "👤 Contact Owner",
+                    display: "Contact Owner",
                     id: ownerCmd,
                 })
             );
@@ -108,7 +108,7 @@ export default {
             );
             await Chisato.sendText(
                 from,
-                `❌ Failed to prepare broadcast template:\n${
+                `Failed to prepare broadcast template:\n${
                     err instanceof Error ? err.message : String(err)
                 }`,
                 message
@@ -118,7 +118,7 @@ export default {
 
         await Chisato.sendText(
             from,
-            `📡 Sending broadcast to ${groupIds.length} group(s)...`,
+            `Sending broadcast to ${groupIds.length} group(s)...`,
             message
         );
 
@@ -152,8 +152,8 @@ export default {
                 ) {
                     Chisato.sendText(
                         from,
-                        `📡 Progress: ${i + 1}/${groupIds.length} ` +
-                            `(✅ ${success} / ❌ ${failed})`,
+                        `Progress: ${i + 1}/${groupIds.length} ` +
+                            `(${success} / ${failed})`,
                         message
                     ).catch((err) =>
                         Chisato.logger.error(
@@ -170,7 +170,7 @@ export default {
 
             const elapsed = Math.round((Date.now() - startedAt) / 1000);
             const summary =
-                `✅ *Group Broadcast Done!*\n\n` +
+                `*Group Broadcast Done!*\n\n` +
                 `• Total   : ${groupIds.length}\n` +
                 `• Success : ${success}\n` +
                 `• Failed  : ${failed}\n` +
@@ -205,7 +205,7 @@ export default {
             );
             Chisato.sendText(
                 from,
-                `❌ Broadcast crashed: ${
+                `Broadcast crashed: ${
                     err instanceof Error ? err.message : String(err)
                 }`,
                 message

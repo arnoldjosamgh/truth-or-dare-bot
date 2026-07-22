@@ -13,30 +13,30 @@ export default {
         if (args.length > 0 && isNaN(parseInt(args[0]))) {
             const infoMessage = `*「 LEADERBOARD 」*
 
-🏆 See who's at the top!
+See who's at the top!
 
-💡 *Usage:*
+*Usage:*
 ${prefix}${command.name} - View top 10 users
 ${prefix}${command.name} [number] - View specific amount
 
-📋 *Example:*
+*Example:*
 ${prefix}${command.name}
 ${prefix}${command.name} 20`
             return Chisato.sendText(from, infoMessage, message);
         }
 
         try {
-            await Chisato.sendReaction(from, "⏳", message.key);
+            await Chisato.sendReaction(from, "", message.key);
             
             const limit = Math.min(parseInt(args[0]) || 10, 50);
             
             const allUsers = await Database.User.getAll();
             
             if (!allUsers || allUsers.length === 0) {
-                await Chisato.sendReaction(from, "❌", message.key);
+                await Chisato.sendReaction(from, "", message.key);
                 return Chisato.sendText(
                     from,
-                    `❌ No user data available yet!`,
+                    `No user data available yet!`,
                     message
                 );
             }
@@ -53,10 +53,10 @@ ${prefix}${command.name} 20`
                 .slice(0, limit);
             
             if (sortedUsers.length === 0) {
-                await Chisato.sendReaction(from, "❌", message.key);
+                await Chisato.sendReaction(from, "", message.key);
                 return Chisato.sendText(
                     from,
-                    `❌ No ranked users found!`,
+                    `No ranked users found!`,
                     message
                 );
             }
@@ -64,8 +64,8 @@ ${prefix}${command.name} 20`
             const currentUserIndex = sortedUsers.findIndex(u => u.userId === message.sender);
             const currentUserRank = currentUserIndex >= 0 ? currentUserIndex + 1 : null;
             
-            let text = `*「 🏆 LEADERBOARD 」*\n\n`;
-            text += `📊 Top ${sortedUsers.length} Users\n\n`;
+            let text = `*「 LEADERBOARD 」*\n\n`;
+            text += `Top ${sortedUsers.length} Users\n\n`;
             
             const mentions: string[] = [];
             
@@ -78,13 +78,13 @@ ${prefix}${command.name} 20`
                 );
                 
                 let medal = "";
-                if (position === 1) medal = "🥇";
-                else if (position === 2) medal = "🥈";
-                else if (position === 3) medal = "🥉";
+                if (position === 1) medal = "";
+                else if (position === 2) medal = "";
+                else if (position === 3) medal = "";
                 else medal = `${position}.`;
                 
                 const isCurrentUser = user.userId === message.sender;
-                const marker = isCurrentUser ? "👉 " : "";
+                const marker = isCurrentUser ? "" : "";
                 
                 mentions.push(user.userId);
                 
@@ -106,21 +106,21 @@ ${prefix}${command.name} 20`
                     );
                     
                     text += `\n\n${"─".repeat(30)}\n`;
-                    text += `👤 *Your Rank:* ${getPositionSuffix(currentUserRank)}\n`;
+                    text += `*Your Rank:* ${getPositionSuffix(currentUserRank)}\n`;
                     text += `${levelInfo.rankEmoji} Level ${levelInfo.level} • ${levelInfo.totalXp.toLocaleString()} XP`;
                 }
             }
             
-            text += `\n\n💡 Use commands to gain XP and climb the ranks!`;
+            text += `\n\nUse commands to gain XP and climb the ranks!`;
             
             await Chisato.sendText(from, text, message, { mentions });
-            await Chisato.sendReaction(from, "✅", message.key);
+            await Chisato.sendReaction(from, "", message.key);
         } catch (error) {
-            await Chisato.sendReaction(from, "❌", message.key);
+            await Chisato.sendReaction(from, "", message.key);
             Chisato.logger.error(`Leaderboard command error:`, error);
             await Chisato.sendText(
                 from,
-                "❌ Failed to retrieve leaderboard. Please try again.",
+                "Failed to retrieve leaderboard. Please try again.",
                 message
             );
         }

@@ -663,7 +663,7 @@ export class StickerGenerator {
             ctx.font = `bold ${Math.floor(30 * scaleFactor)}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText("👤", avatarX + avatarSize / 2, avatarY + avatarSize / 2);
+            ctx.fillText("", avatarX + avatarSize / 2, avatarY + avatarSize / 2);
         }
 
         return await canvas.encode("png");

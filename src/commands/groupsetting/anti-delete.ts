@@ -8,18 +8,18 @@ export default {
     usage: "[on/off]",
     example: `*「 ANTI-DELETE 」*
 
-🗑 Auto-resend deleted messages
+Auto-resend deleted messages
 
-📝 *Description:*
+*Description:*
 When a member deletes a message for everyone, the bot will repost the original
 content (text, image, video, sticker, audio, document, etc.) back to the group
 with an attribution header showing who sent it and who deleted it.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 
-⚠️ *Notes:*
+️ *Notes:*
 • Group-only feature.
 • Only catches messages received while the bot is online and online for ≤ 30 min.
 • Bot's own messages are skipped.`,
@@ -31,31 +31,31 @@ with an attribution header showing who sent it and who deleted it.
 
         if (["on", "enable", "true", "1"].includes(action)) {
             if (groupSetting?.antidelete) {
-                return Chisato.sendText(from, "❌ Anti-delete sudah *aktif*!", message);
+                return Chisato.sendText(from, "Anti-delete sudah *aktif*!", message);
             }
             await Database.Group.updateSettings(from, { antidelete: true });
             return Chisato.sendText(
                 from,
-                `*「 ANTI-DELETE ENABLED 」*\n\n✅ Anti-delete telah *diaktifkan* untuk grup ini.\n📝 Bot akan mengirim ulang pesan yang dihapus member.`,
+                `*「 ANTI-DELETE ENABLED 」*\n\nAnti-delete telah *diaktifkan* untuk grup ini.\nBot akan mengirim ulang pesan yang dihapus member.`,
                 message
             );
         }
 
         if (["off", "disable", "false", "0"].includes(action)) {
             if (!groupSetting?.antidelete) {
-                return Chisato.sendText(from, "❌ Anti-delete sudah *nonaktif*!", message);
+                return Chisato.sendText(from, "Anti-delete sudah *nonaktif*!", message);
             }
             await Database.Group.updateSettings(from, { antidelete: false });
             return Chisato.sendText(
                 from,
-                `*「 ANTI-DELETE DISABLED 」*\n\n✅ Anti-delete telah *dinonaktifkan*.`,
+                `*「 ANTI-DELETE DISABLED 」*\n\nAnti-delete telah *dinonaktifkan*.`,
                 message
             );
         }
 
         let text = `*「 INVALID ARGUMENT 」*\n\n`;
-        text += `❌ Gunakan *on* atau *off* sebagai argumen.\n\n`;
-        text += `💡 *Usage:*\n`;
+        text += `Gunakan *on* atau *off* sebagai argumen.\n\n`;
+        text += `*Usage:*\n`;
         text += `• ${prefix}antidelete on\n`;
         text += `• ${prefix}antidelete off`;
         return Chisato.sendText(from, text, message);

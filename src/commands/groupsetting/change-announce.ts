@@ -8,17 +8,17 @@ export default {
     usage: "[on/off]",
     example: `*「 ANNOUNCEMENT MODE 」*
 
-🔒 Toggle group announcement mode
+Toggle group announcement mode
 
-📝 *Description:*
+*Description:*
 When enabled, only admins can send messages to the group.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 {prefix}{command.name}
 
-🔒 *Note:* Bot must be admin to change this setting.`,
+*Note:* Bot must be admin to change this setting.`,
     isGroup: true,
     isGroupAdmin: true,
     isBotAdmin: true,
@@ -29,7 +29,7 @@ When enabled, only admins can send messages to the group.
             if (groupMetadata?.announce) {
                 return Chisato.sendText(
                     from,
-                    "❌ Announcement mode is already *enabled*!",
+                    "Announcement mode is already *enabled*!",
                     message
                 );
             }
@@ -37,15 +37,15 @@ When enabled, only admins can send messages to the group.
             await Chisato.groupSettingUpdate(from, "announcement");
 
             let text = `*「 ANNOUNCEMENT MODE ENABLED 」*\n\n`;
-            text += `✅ Announcement mode has been *enabled*!\n\n`;
-            text += `🔒 Only admins can now send messages to this group.`;
+            text += `Announcement mode has been *enabled*!\n\n`;
+            text += `Only admins can now send messages to this group.`;
 
             return Chisato.sendText(from, text, message);
         } else if (action === "off" || action === "disable" || action === "false" || action === "0") {
             if (!groupMetadata?.announce) {
                 return Chisato.sendText(
                     from,
-                    "❌ Announcement mode is already *disabled*!",
+                    "Announcement mode is already *disabled*!",
                     message
                 );
             }
@@ -53,14 +53,14 @@ When enabled, only admins can send messages to the group.
             await Chisato.groupSettingUpdate(from, "not_announcement");
 
             let text = `*「 ANNOUNCEMENT MODE DISABLED 」*\n\n`;
-            text += `✅ Announcement mode has been *disabled*!\n\n`;
-            text += `📝 All members can now send messages to this group.`;
+            text += `Announcement mode has been *disabled*!\n\n`;
+            text += `All members can now send messages to this group.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${prefix}announce on\n`;
             text += `• ${prefix}announce off`;
 

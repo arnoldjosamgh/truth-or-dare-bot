@@ -9,17 +9,17 @@ export default {
     usage: "[type]",
     example: `*「 ANTI-CALL 」*
 
-📞 Configure anti-call feature
+Configure anti-call feature
 
-📝 *Description:*
+*Description:*
 Anti-call feature helps manage incoming calls automatically.
 
-🎯 *Available Modes:*
+*Available Modes:*
 • *REJECT* - Automatically reject incoming calls
 • *BLOCK* - Reject and block the caller
 • *OFF* - Allow all calls (disabled)
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} reject
 {prefix}{command.name} block
 {prefix}{command.name} off`,
@@ -34,7 +34,7 @@ Anti-call feature helps manage incoming calls automatically.
                 if (config.call.status === "reject") {
                     return Chisato.sendText(
                         from,
-                        "❌ Anti-call is already set to *REJECT* mode!",
+                        "Anti-call is already set to *REJECT* mode!",
                         message
                     );
                 }
@@ -44,8 +44,8 @@ Anti-call feature helps manage incoming calls automatically.
                 });
 
                 let rejectText = `*「 ANTI-CALL: REJECT MODE 」*\n\n`;
-                rejectText += `✅ Anti-call has been set to *REJECT* mode!\n\n`;
-                rejectText += `📝 Bot will automatically reject all incoming calls without blocking the caller.`;
+                rejectText += `Anti-call has been set to *REJECT* mode!\n\n`;
+                rejectText += `Bot will automatically reject all incoming calls without blocking the caller.`;
 
                 return Chisato.sendText(from, rejectText, message);
 
@@ -53,7 +53,7 @@ Anti-call feature helps manage incoming calls automatically.
                 if (config.call.status === "block") {
                     return Chisato.sendText(
                         from,
-                        "❌ Anti-call is already set to *BLOCK* mode!",
+                        "Anti-call is already set to *BLOCK* mode!",
                         message
                     );
                 }
@@ -63,9 +63,9 @@ Anti-call feature helps manage incoming calls automatically.
                 });
 
                 let blockText = `*「 ANTI-CALL: BLOCK MODE 」*\n\n`;
-                blockText += `✅ Anti-call has been set to *BLOCK* mode!\n\n`;
-                blockText += `📝 Bot will automatically reject and block all incoming calls.\n\n`;
-                blockText += `⚠️ *Warning:* Callers will be permanently blocked!`;
+                blockText += `Anti-call has been set to *BLOCK* mode!\n\n`;
+                blockText += `Bot will automatically reject and block all incoming calls.\n\n`;
+                blockText += `️ *Warning:* Callers will be permanently blocked!`;
 
                 return Chisato.sendText(from, blockText, message);
 
@@ -74,7 +74,7 @@ Anti-call feature helps manage incoming calls automatically.
                 if (config.call.status === "off") {
                     return Chisato.sendText(
                         from,
-                        "❌ Anti-call is already *disabled*!",
+                        "Anti-call is already *disabled*!",
                         message
                     );
                 }
@@ -84,15 +84,15 @@ Anti-call feature helps manage incoming calls automatically.
                 });
 
                 let offText = `*「 ANTI-CALL DISABLED 」*\n\n`;
-                offText += `✅ Anti-call feature has been *disabled*!\n\n`;
-                offText += `📝 Bot will now allow all incoming calls.`;
+                offText += `Anti-call feature has been *disabled*!\n\n`;
+                offText += `Bot will now allow all incoming calls.`;
 
                 return Chisato.sendText(from, offText, message);
 
             default:
                 let errorText = `*「 INVALID MODE 」*\n\n`;
-                errorText += `❌ Invalid anti-call mode: *${type}*\n\n`;
-                errorText += `💡 *Available Modes:*\n`;
+                errorText += `Invalid anti-call mode: *${type}*\n\n`;
+                errorText += `*Available Modes:*\n`;
                 errorText += `• ${config.prefix}anticall reject\n`;
                 errorText += `• ${config.prefix}anticall block\n`;
                 errorText += `• ${config.prefix}anticall off`;

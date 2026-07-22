@@ -18,7 +18,7 @@ const loadStopRoasts = (): string[] => {
     } catch (err) {
         logger.error(`stop: failed to load stop-roasts.json — ${err instanceof Error ? err.message : String(err)}`);
     }
-    return ["Nice try! Only the host can stop the game 😂 The game continues!"];
+    return ["Nice try! Only the host can stop the game The game continues!"];
 };
 
 const randomUnauthorizedRoast = (): string => {
@@ -44,7 +44,7 @@ export default {
             });
 
             if (!room) {
-                await Chisato.sendText(from, "❌ There's no active game to stop right now.", message);
+                await Chisato.sendText(from, "There's no active game to stop right now.", message);
                 return;
             }
 
@@ -105,14 +105,14 @@ export default {
 
             await Chisato.sendText(
                 from,
-                `🛑 *Game over!* The host ended the session.\n\n` +
-                `Thanks for playing everyone! 🎉\n` +
+                `*Game over!* The host ended the session.\n\n` +
+                `Thanks for playing everyone! \n` +
                 `Start a new game anytime with *!startgame*`,
                 message
             );
         } catch (error) {
             logger.error(`stop: ${error instanceof Error ? error.message : String(error)}`);
-            await Chisato.sendText(from, "❌ Something went wrong while stopping the game. Please try again.", message);
+            await Chisato.sendText(from, "Something went wrong while stopping the game. Please try again.", message);
         }
     },
 } satisfies ConfigCommands;

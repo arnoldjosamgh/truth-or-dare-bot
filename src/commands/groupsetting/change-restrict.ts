@@ -8,17 +8,17 @@ export default {
     usage: "[on/off]",
     example: `*「 GROUP RESTRICT MODE 」*
 
-🔒 Lock/unlock group settings
+Lock/unlock group settings
 
-📝 *Description:*
+*Description:*
 When locked, only admins can edit group info (name, icon, description).
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 {prefix}{command.name}
 
-🔒 *Note:* Bot must be admin to change this setting.`,
+*Note:* Bot must be admin to change this setting.`,
     isGroup: true,
     isGroupAdmin: true,
     isBotAdmin: true,
@@ -31,7 +31,7 @@ When locked, only admins can edit group info (name, icon, description).
             if (groupSetting?.restrict) {
                 return Chisato.sendText(
                     from,
-                    "❌ Group settings are already *locked*!",
+                    "Group settings are already *locked*!",
                     message
                 );
             }
@@ -40,15 +40,15 @@ When locked, only admins can edit group info (name, icon, description).
             await Database.Group.update(from, { restrict: true });
 
             let text = `*「 GROUP SETTINGS LOCKED 」*\n\n`;
-            text += `✅ Group settings have been *locked*!\n\n`;
-            text += `🔒 Only admins can now edit group info.`;
+            text += `Group settings have been *locked*!\n\n`;
+            text += `Only admins can now edit group info.`;
 
             return Chisato.sendText(from, text, message);
         } else if (action === "off" || action === "disable" || action === "false" || action === "0" || action === "unlock") {
             if (!groupSetting?.restrict) {
                 return Chisato.sendText(
                     from,
-                    "❌ Group settings are already *unlocked*!",
+                    "Group settings are already *unlocked*!",
                     message
                 );
             }
@@ -57,14 +57,14 @@ When locked, only admins can edit group info (name, icon, description).
             await Database.Group.update(from, { restrict: false });
 
             let text = `*「 GROUP SETTINGS UNLOCKED 」*\n\n`;
-            text += `✅ Group settings have been *unlocked*!\n\n`;
-            text += `🔓 All members can now edit group info.`;
+            text += `Group settings have been *unlocked*!\n\n`;
+            text += `All members can now edit group info.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${prefix}restrict on\n`;
             text += `• ${prefix}restrict off`;
 

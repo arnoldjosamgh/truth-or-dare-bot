@@ -74,21 +74,21 @@ export const formatAnimeInfo = (anime: MalAnimeData): string => {
     const synopsis = anime.synopsis || "No synopsis available";
 
     return (
-        `📺 *${anime.title}*\n\n` +
-        `🆔 *MAL ID:* ${anime.mal_id}\n` +
-        `🌐 *English:* ${anime.title_english || "n/a"}\n` +
-        `🇯🇵 *Japanese:* ${anime.title_japanese || "n/a"}\n\n` +
-        `🏆 *Rank:* #${anime.rank}\n` +
-        `⭐ *Score:* ${anime.score}/10\n` +
-        `🌟 *Popularity:* #${anime.popularity}\n` +
-        `📊 *Type:* ${anime.type}\n` +
-        `📝 *Status:* ${anime.status}\n` +
-        `👥 *Listed Users:* ${numberWithCommas(anime.members)}\n` +
-        `🗳️ *Scored By:* ${numberWithCommas(anime.scored_by)}\n` +
-        `🎬 *Episodes:* ${anime.episodes || "n/a"}\n` +
-        `📅 *Aired:* ${anime.aired?.string || "n/a"}\n` +
-        `🎭 *Genres:* ${genres}\n\n` +
-        `📖 *Synopsis:*\n${synopsis}`
+        `*${anime.title}*\n\n` +
+        `*MAL ID:* ${anime.mal_id}\n` +
+        `*English:* ${anime.title_english || "n/a"}\n` +
+        `*Japanese:* ${anime.title_japanese || "n/a"}\n\n` +
+        `*Rank:* #${anime.rank}\n` +
+        `*Score:* ${anime.score}/10\n` +
+        `*Popularity:* #${anime.popularity}\n` +
+        `*Type:* ${anime.type}\n` +
+        `*Status:* ${anime.status}\n` +
+        `*Listed Users:* ${numberWithCommas(anime.members)}\n` +
+        `️ *Scored By:* ${numberWithCommas(anime.scored_by)}\n` +
+        `*Episodes:* ${anime.episodes || "n/a"}\n` +
+        `*Aired:* ${anime.aired?.string || "n/a"}\n` +
+        `*Genres:* ${genres}\n\n` +
+        `*Synopsis:*\n${synopsis}`
     );
 };
 
@@ -101,23 +101,23 @@ export const formatMangaInfo = (manga: MalMangaData): string => {
     const synopsis = manga.synopsis || "No synopsis available";
 
     return (
-        `📚 *${manga.title}*\n\n` +
-        `🆔 *MAL ID:* ${manga.mal_id}\n` +
-        `🌐 *English:* ${manga.title_english || "n/a"}\n` +
-        `🇯🇵 *Japanese:* ${manga.title_japanese || "n/a"}\n\n` +
-        `🏆 *Rank:* #${manga.rank}\n` +
-        `⭐ *Score:* ${manga.score}/10\n` +
-        `🌟 *Popularity:* #${manga.popularity}\n` +
-        `📊 *Type:* ${manga.type}\n` +
-        `📝 *Status:* ${manga.status}\n` +
-        `👥 *Listed Users:* ${numberWithCommas(manga.members)}\n` +
-        `🗳️ *Scored By:* ${numberWithCommas(manga.scored_by)}\n` +
-        `📖 *Chapters:* ${numberWithCommas(manga.chapters || 0) || "n/a"}\n` +
-        `📕 *Volumes:* ${numberWithCommas(manga.volumes || 0) || "n/a"}\n` +
-        `📅 *Published:* ${manga.published?.string || "n/a"}\n` +
-        `✍️ *Authors:* ${authors}\n` +
-        `🎭 *Genres:* ${genres}\n\n` +
-        `📖 *Synopsis:*\n${synopsis}`
+        `*${manga.title}*\n\n` +
+        `*MAL ID:* ${manga.mal_id}\n` +
+        `*English:* ${manga.title_english || "n/a"}\n` +
+        `*Japanese:* ${manga.title_japanese || "n/a"}\n\n` +
+        `*Rank:* #${manga.rank}\n` +
+        `*Score:* ${manga.score}/10\n` +
+        `*Popularity:* #${manga.popularity}\n` +
+        `*Type:* ${manga.type}\n` +
+        `*Status:* ${manga.status}\n` +
+        `*Listed Users:* ${numberWithCommas(manga.members)}\n` +
+        `️ *Scored By:* ${numberWithCommas(manga.scored_by)}\n` +
+        `*Chapters:* ${numberWithCommas(manga.chapters || 0) || "n/a"}\n` +
+        `*Volumes:* ${numberWithCommas(manga.volumes || 0) || "n/a"}\n` +
+        `*Published:* ${manga.published?.string || "n/a"}\n` +
+        `️ *Authors:* ${authors}\n` +
+        `*Genres:* ${genres}\n\n` +
+        `*Synopsis:*\n${synopsis}`
     );
 };
 

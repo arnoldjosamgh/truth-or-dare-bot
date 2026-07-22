@@ -4,20 +4,20 @@ import fs from "fs";
 import moment from "moment-timezone";
 
 const CATEGORY_ICON: Record<string, string> = {
-    general:      "🌐",
-    downloader:   "📥",
-    converter:    "🔄",
-    search:       "🔎",
-    anime:        "🎌",
-    news:         "📰",
-    wallpaper:    "🖼️",
-    group:        "👥",
-    groupsetting: "⚙️",
-    games:        "🎮",
-    misc:         "🎲",
-    lookup:       "🔍",
-    owner:        "👑",
-    debugging:    "🛠️",
+    general:      "",
+    downloader:   "",
+    converter:    "",
+    search:       "",
+    anime:        "",
+    news:         "",
+    wallpaper:    "️",
+    group:        "",
+    groupsetting: "️",
+    games:        "",
+    misc:         "",
+    lookup:       "",
+    owner:        "",
+    debugging:    "️",
 };
 
 const getGreeting = (timezone: string): string => {
@@ -62,42 +62,42 @@ export default {
         text += `        ✧ *${botName}* ✧\n`;
         text += `✦ ──────────────────── ✦\n\n`;
 
-        text += `${greeting}, *${pushName || "Stranger"}* 👋\n`;
+        text += `${greeting}, *${pushName || "Stranger"}* \n`;
         text += `_${now.format("dddd, DD MMMM YYYY • HH:mm")} (WIB)_\n\n`;
 
         // Stats 
-        text += `┌─────「 📊 *BOT STATS* 」\n`;
-        text += `│  🤖 *Bot*      : ${botName}\n`;
-        text += `│  🔑 *Prefix*   : ${prefix}\n`;
-        text += `│  📦 *Cmds*     : ${allCmds.length}\n`;
-        text += `│  🗂️ *Category* : ${catKeys.length}\n`;
-        text += `│  👥 *Users*    : ${totalUsers.length}\n`;
-        text += `│  🏢 *Groups*   : ${totalGroups.length}\n`;
+        text += `┌─────「 *BOT STATS* 」\n`;
+        text += `│  *Bot*      : ${botName}\n`;
+        text += `│  *Prefix*   : ${prefix}\n`;
+        text += `│  *Cmds*     : ${allCmds.length}\n`;
+        text += `│  ️ *Category* : ${catKeys.length}\n`;
+        text += `│  *Users*    : ${totalUsers.length}\n`;
+        text += `│  *Groups*   : ${totalGroups.length}\n`;
         text += `└${"─".repeat(24)}\n\n`;
 
         // Legend
-        text += `📌 *Legend:*\n`;
-        text += `  ⭐ Owner  💎 Team  👑 Admin  ✅ Public\n`;
-        text += `  〰️ = under maintenance\n\n`;
+        text += `*Legend:*\n`;
+        text += `  Owner  Team  Admin  Public\n`;
+        text += `  ️ = under maintenance\n\n`;
 
         const canSeeDebugging = isOwner || isTeam;
 
         // Categories
         for (const key of catKeys) {
             if (key === "debugging" && !canSeeDebugging) continue;
-            const icon   = CATEGORY_ICON[key] ?? "📂";
+            const icon   = CATEGORY_ICON[key] ?? "";
             const sorted = category[key].sort((a, b) => a.name.localeCompare(b.name));
 
             text += `┌─「 ${icon} *${key.toUpperCase()}* 」\n`;
 
             for (const v of sorted) {
                 const badge = v.isOwner
-                    ? "⭐"
+                    ? ""
                     : v.isTeam
-                    ? "💎"
+                    ? ""
                     : v.isGroupAdmin
-                    ? "👑"
-                    : "✅";
+                    ? ""
+                    : "";
                 const usage     = v.usage ? ` _${v.usage}_` : "";
                 const inMaint   = isMaintenance(v.name);
                 const cmdText   = inMaint

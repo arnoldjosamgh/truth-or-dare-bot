@@ -32,7 +32,7 @@ export async function announceWin(
     const roleReveal = [...game.players.values()]
         .map(
             (p) =>
-                `• ${fmt(p.jid)} → ${ROLE_INFO[p.role].emoji} *${ROLE_INFO[p.role].title}*${p.isAlive ? "" : " 💀"}`
+                `• ${fmt(p.jid)} → ${ROLE_INFO[p.role].emoji} *${ROLE_INFO[p.role].title}*${p.isAlive ? "" : " "}`
         )
         .join("\n");
 

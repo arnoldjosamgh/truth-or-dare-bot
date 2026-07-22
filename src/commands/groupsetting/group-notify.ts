@@ -8,23 +8,23 @@ export default {
     usage: "[on/off]",
     example: `*「 GROUP NOTIFICATIONS 」*
 
-🔔 Enable group event notifications
+Enable group event notifications
 
-📝 *Description:*
+*Description:*
 Group notifications will send alerts for group events like member changes, promotions, and demotions.
 
-💡 *Usage:*
+*Usage:*
 {prefix}{command.name} on
 {prefix}{command.name} off
 
-🔔 *Events:* Member join/leave, admin promote/demote, group changes.`,
+*Events:* Member join/leave, admin promote/demote, group changes.`,
     isGroup: true,
     isGroupAdmin: true,
     async run({ Chisato, from, args, message, Database, isBotAdmin, prefix }) {
         if (!isBotAdmin) {
             return Chisato.sendText(
                 from,
-                `⚠️ Bot must be a group admin for this feature to work!\n\n📝 Please promote bot to admin first.`,
+                `️ Bot must be a group admin for this feature to work!\n\nPlease promote bot to admin first.`,
                 message
             );
         }
@@ -37,7 +37,7 @@ Group notifications will send alerts for group events like member changes, promo
             if (groupSetting?.notify) {
                 return Chisato.sendText(
                     from,
-                    "❌ Group notifications are already *enabled*!",
+                    "Group notifications are already *enabled*!",
                     message
                 );
             }
@@ -45,15 +45,15 @@ Group notifications will send alerts for group events like member changes, promo
             await Database.Group.updateSettings(from, { notify: true });
 
             let text = `*「 GROUP NOTIFICATIONS ENABLED 」*\n\n`;
-            text += `✅ Group notifications have been *enabled*!\n\n`;
-            text += `🔔 Bot will now send notifications for group events.`;
+            text += `Group notifications have been *enabled*!\n\n`;
+            text += `Bot will now send notifications for group events.`;
 
             return Chisato.sendText(from, text, message);
         } else if (/(off|disable|false|0|nonaktif)/.test(action)) {
             if (!groupSetting?.notify) {
                 return Chisato.sendText(
                     from,
-                    "❌ Group notifications are already *disabled*!",
+                    "Group notifications are already *disabled*!",
                     message
                 );
             }
@@ -61,14 +61,14 @@ Group notifications will send alerts for group events like member changes, promo
             await Database.Group.updateSettings(from, { notify: false });
 
             let text = `*「 GROUP NOTIFICATIONS DISABLED 」*\n\n`;
-            text += `✅ Group notifications have been *disabled*!\n\n`;
-            text += `📝 Bot will no longer send group event notifications.`;
+            text += `Group notifications have been *disabled*!\n\n`;
+            text += `Bot will no longer send group event notifications.`;
 
             return Chisato.sendText(from, text, message);
         } else {
             let text = `*「 INVALID ARGUMENT 」*\n\n`;
-            text += `❌ Please use *on* or *off* as argument.\n\n`;
-            text += `💡 *Usage:*\n`;
+            text += `Please use *on* or *off* as argument.\n\n`;
+            text += `*Usage:*\n`;
             text += `• ${prefix}notify on\n`;
             text += `• ${prefix}notify off`;
 

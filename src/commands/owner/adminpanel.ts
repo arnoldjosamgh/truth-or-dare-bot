@@ -44,7 +44,7 @@ export default {
 
         if (!session && args.length === 0) {
             await Chisato.sendMessage(from, {
-                text: `🔐 *Dashboard Admin Management*\n\n` +
+                text: `*Dashboard Admin Management*\n\n` +
                     `Please choose an action:\n\n` +
                     `1️⃣ Create new admin account\n` +
                     `2️⃣ Reset admin password\n` +
@@ -68,7 +68,7 @@ export default {
 
                     if (existingByPhone) {
                         await Chisato.sendMessage(from, {
-                            text: `❌ *Phone Number Already Registered!*\n\n` +
+                            text: `*Phone Number Already Registered!*\n\n` +
                                 `Your phone number (${phoneNumber}) is already registered as admin.\n\n` +
                                 `If you need to reset the password, please select option 2.`,
                         }, { quoted: msg });
@@ -84,8 +84,8 @@ export default {
                         timestamp: Date.now(),
                     });
                     await Chisato.sendMessage(from, {
-                        text: `📱 *Phone Number Auto-Detected:* ${phoneNumber}\n\n` +
-                            `👤 *Create Admin Account - Step 1/2*\n\n` +
+                        text: `*Phone Number Auto-Detected:* ${phoneNumber}\n\n` +
+                            `*Create Admin Account - Step 1/2*\n\n` +
                             `Please enter the username:\n\n` +
                             `Requirements:\n` +
                             `• 3-20 characters\n` +
@@ -103,7 +103,7 @@ export default {
                         timestamp: Date.now(),
                     });
                     await Chisato.sendMessage(from, {
-                        text: `🔄 *Reset Admin Password - Step 1/2*\n\n` +
+                        text: `*Reset Admin Password - Step 1/2*\n\n` +
                             `Please enter the username to reset:\n\n` +
                             `Reply "cancel" to abort.`,
                     }, { quoted: msg });
@@ -117,7 +117,7 @@ export default {
                         timestamp: Date.now(),
                     });
                     await Chisato.sendMessage(from, {
-                        text: `🗑️ *Delete Admin Account*\n\n` +
+                        text: `️ *Delete Admin Account*\n\n` +
                             `Please enter the username to delete:\n\n` +
                             `Reply "cancel" to abort.`,
                     }, { quoted: msg });
@@ -138,7 +138,7 @@ export default {
 
                         if (admins.length === 0) {
                             await Chisato.sendMessage(from, {
-                                text: `❌ *No Admin Accounts Found!*\n\n` +
+                                text: `*No Admin Accounts Found!*\n\n` +
                                     `Create your first admin account by selecting option 1.`,
                             }, { quoted: msg });
                             return;
@@ -146,18 +146,18 @@ export default {
 
                         const adminList = admins.map((admin, index) => {
                             const date = new Date(admin.createdAt);
-                            return `${index + 1}. *${admin.username}*\n   📱 ${admin.phoneNumber}\n   📅 ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+                            return `${index + 1}. *${admin.username}*\n   ${admin.phoneNumber}\n   ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
                         }).join("\n\n");
 
                         await Chisato.sendMessage(from, {
-                            text: `📋 *Dashboard Admin Accounts*\n\n` +
+                            text: `*Dashboard Admin Accounts*\n\n` +
                                 `Total: ${admins.length} admin(s)\n\n` +
                                 `${adminList}`,
                         }, { quoted: msg });
                     } catch (error) {
                         console.error("List admin error:", error);
                         await Chisato.sendMessage(from, {
-                            text: `❌ Error listing admin accounts: ${error instanceof Error ? error.message : String(error)}`,
+                            text: `Error listing admin accounts: ${error instanceof Error ? error.message : String(error)}`,
                         }, { quoted: msg });
                     }
                     break;
@@ -165,13 +165,13 @@ export default {
                 case "5":
                 case "cancel": {
                     await Chisato.sendMessage(from, {
-                        text: `❌ Operation cancelled.`,
+                        text: `Operation cancelled.`,
                     }, { quoted: msg });
                     break;
                 }
                 default: {
                     await Chisato.sendMessage(from, {
-                        text: `❌ Invalid choice! Please reply with 1, 2, 3, 4, or 5.`,
+                        text: `Invalid choice! Please reply with 1, 2, 3, 4, or 5.`,
                     }, { quoted: msg });
                     break;
                 }
@@ -185,7 +185,7 @@ export default {
             if (input.toLowerCase() === "cancel") {
                 sessions.delete(userId);
                 await Chisato.sendMessage(from, {
-                    text: `❌ Operation cancelled.`,
+                    text: `Operation cancelled.`,
                 }, { quoted: msg });
                 return;
             }
@@ -204,7 +204,7 @@ export default {
                 console.error("Session error:", error);
                 sessions.delete(userId);
                 await Chisato.sendMessage(from, {
-                    text: `❌ An error occurred: ${error instanceof Error ? error.message : String(error)}\n\nSession cancelled.`,
+                    text: `An error occurred: ${error instanceof Error ? error.message : String(error)}\n\nSession cancelled.`,
                 }, { quoted: msg });
             }
         }
@@ -216,7 +216,7 @@ async function handleCreateSession(Chisato: any, msg: any, from: string, userId:
     if (session.step === 2) {
         if (!input.match(/^[a-zA-Z0-9_]{3,20}$/)) {
             await Chisato.sendMessage(from, {
-                text: `❌ Invalid username format!\n\n` +
+                text: `Invalid username format!\n\n` +
                     `Username must be:\n` +
                     `• 3-20 characters\n` +
                     `• Only letters, numbers, and underscore\n` +
@@ -232,7 +232,7 @@ async function handleCreateSession(Chisato: any, msg: any, from: string, userId:
 
         if (existingByUsername) {
             await Chisato.sendMessage(from, {
-                text: `❌ This username is already taken!\n\n` +
+                text: `This username is already taken!\n\n` +
                     `Please choose a different username or reply "cancel" to abort.`,
             }, { quoted: msg });
             return;
@@ -243,19 +243,19 @@ async function handleCreateSession(Chisato: any, msg: any, from: string, userId:
         sessions.set(userId, session);
 
         await Chisato.sendMessage(from, {
-            text: `✅ Username saved: ${input}\n\n` +
-                `🔐 *Create Admin Account - Step 2/2*\n\n` +
+            text: `Username saved: ${input}\n\n` +
+                `*Create Admin Account - Step 2/2*\n\n` +
                 `Please enter the password:\n\n` +
                 `Requirements:\n` +
                 `• Minimum 6 characters\n` +
                 `• Can contain letters, numbers, and symbols\n\n` +
-                `⚠️ *Important:* This password will be shown only once!\n\n` +
+                `️ *Important:* This password will be shown only once!\n\n` +
                 `Reply "cancel" to abort.`,
         }, { quoted: msg });
     } else if (session.step === 3) {
         if (input.length < 6) {
             await Chisato.sendMessage(from, {
-                text: `❌ Password too short!\n\n` +
+                text: `Password too short!\n\n` +
                     `Password must be at least 6 characters long.\n\n` +
                     `Please try again or reply "cancel" to abort.`,
             }, { quoted: msg });
@@ -277,13 +277,13 @@ async function handleCreateSession(Chisato: any, msg: any, from: string, userId:
         sessions.delete(userId);
 
         await Chisato.sendMessage(from, {
-            text: `✅ *Admin Account Created Successfully!*\n\n` +
-                `📱 Phone Number: ${session.data.phoneNumber}\n` +
-                `👤 Username: ${session.data.username}\n` +
-                `🔐 Password: ${input}\n\n` +
-                `⚠️ *IMPORTANT: Save these credentials now!*\n` +
+            text: `*Admin Account Created Successfully!*\n\n` +
+                `Phone Number: ${session.data.phoneNumber}\n` +
+                `Username: ${session.data.username}\n` +
+                `Password: ${input}\n\n` +
+                `️ *IMPORTANT: Save these credentials now!*\n` +
                 `The password is shown only this once and cannot be retrieved later.\n\n` +
-                `🌐 Login URL:\n` +
+                `Login URL:\n` +
                 `http://localhost:${process.env.DASHBOARD_PORT || 3000}/login.html`,
         }, { quoted: msg });
     }
@@ -298,7 +298,7 @@ async function handleResetSession(Chisato: any, msg: any, from: string, userId: 
 
         if (!admin) {
             await Chisato.sendMessage(from, {
-                text: `❌ Admin account not found!\n\n` +
+                text: `Admin account not found!\n\n` +
                     `No account with username "${input}" exists.\n\n` +
                     `Please try again or reply "cancel" to abort.`,
             }, { quoted: msg });
@@ -310,19 +310,19 @@ async function handleResetSession(Chisato: any, msg: any, from: string, userId: 
         sessions.set(userId, session);
 
         await Chisato.sendMessage(from, {
-            text: `✅ Username found: ${input}\n\n` +
-                `🔐 *Reset Password - Step 2/2*\n\n` +
+            text: `Username found: ${input}\n\n` +
+                `*Reset Password - Step 2/2*\n\n` +
                 `Please enter the new password:\n\n` +
                 `Requirements:\n` +
                 `• Minimum 6 characters\n` +
                 `• Can contain letters, numbers, and symbols\n\n` +
-                `⚠️ *Important:* This password will be shown only once!\n\n` +
+                `️ *Important:* This password will be shown only once!\n\n` +
                 `Reply "cancel" to abort.`,
         }, { quoted: msg });
     } else if (session.step === 2) {
         if (input.length < 6) {
             await Chisato.sendMessage(from, {
-                text: `❌ Password too short!\n\n` +
+                text: `Password too short!\n\n` +
                     `Password must be at least 6 characters long.\n\n` +
                     `Please try again or reply "cancel" to abort.`,
             }, { quoted: msg });
@@ -339,10 +339,10 @@ async function handleResetSession(Chisato: any, msg: any, from: string, userId: 
         sessions.delete(userId);
 
         await Chisato.sendMessage(from, {
-            text: `✅ *Password Reset Successfully!*\n\n` +
-                `👤 Username: ${session.data.username}\n` +
-                `🔐 New Password: ${input}\n\n` +
-                `⚠️ *IMPORTANT: Save this password now!*\n` +
+            text: `*Password Reset Successfully!*\n\n` +
+                `Username: ${session.data.username}\n` +
+                `New Password: ${input}\n\n` +
+                `️ *IMPORTANT: Save this password now!*\n` +
                 `The password is shown only this once and cannot be retrieved later.`,
         }, { quoted: msg });
     }
@@ -356,7 +356,7 @@ async function handleDeleteSession(Chisato: any, msg: any, from: string, userId:
 
     if (!admin) {
         await Chisato.sendMessage(from, {
-            text: `❌ Admin account not found!\n\n` +
+            text: `Admin account not found!\n\n` +
                 `No account with username "${input}" exists.\n\n` +
                 `Please try again or reply "cancel" to abort.`,
         }, { quoted: msg });
@@ -370,9 +370,9 @@ async function handleDeleteSession(Chisato: any, msg: any, from: string, userId:
     sessions.delete(userId);
 
     await Chisato.sendMessage(from, {
-        text: `✅ *Admin Account Deleted Successfully!*\n\n` +
-            `👤 Username: ${input}\n` +
-            `📱 Phone Number: ${admin.phoneNumber}\n\n` +
+        text: `*Admin Account Deleted Successfully!*\n\n` +
+            `Username: ${input}\n` +
+            `Phone Number: ${admin.phoneNumber}\n\n` +
             `The admin account has been permanently removed from the database.`,
     }, { quoted: msg });
 }

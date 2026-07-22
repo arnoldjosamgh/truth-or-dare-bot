@@ -10,14 +10,14 @@ export default {
     description: "Test welcome message with custom image (for debugging welcome/leave feature)",
     isOwner: true,
     async run({ Chisato, from, message }) {
-        await Chisato.sendReaction(from, "⏳", message.key);
+        await Chisato.sendReaction(from, "", message.key);
 
         try {
             // Get user info
             const sender = message.sender
             
             if (!sender) {
-                return Chisato.sendText(from, "❌ Cannot get sender information", message);
+                return Chisato.sendText(from, "Cannot get sender information", message);
             }
 
             // Get group info
@@ -54,17 +54,17 @@ export default {
             await Chisato.sendImage(
                 from,
                 welcomeBuffer,
-                `*WELCOME TEST* 🎉\n\n*User:* ${pushName}\n*Group:* ${groupName}\n*Members:* ${memberCount}\n\n_This is a test message for welcome/leave feature_`,
+                `*WELCOME TEST* \n\n*User:* ${pushName}\n*Group:* ${groupName}\n*Members:* ${memberCount}\n\n_This is a test message for welcome/leave feature_`,
                 message
             );
 
-            await Chisato.sendReaction(from, "✅", message.key);
+            await Chisato.sendReaction(from, "", message.key);
         } catch (error: any) {
-            await Chisato.sendReaction(from, "❌", message.key);
+            await Chisato.sendReaction(from, "", message.key);
             console.error("Welcome test error:", error);
             await Chisato.sendText(
                 from,
-                `❌ Failed to create welcome image.\n\nError: ${error.message}`,
+                `Failed to create welcome image.\n\nError: ${error.message}`,
                 message
             );
         }

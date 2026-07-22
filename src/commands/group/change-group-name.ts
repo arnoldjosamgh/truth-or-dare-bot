@@ -11,10 +11,10 @@ export default {
     isBotAdmin: true,
     example: `*「 CHANGE GROUP NAME 」*
 
-📝 *How to use:*
+*How to use:*
 {prefix}{command.name} [text]
 
-📌 *Example:*
+*Example:*
 {prefix}{command.name} Chisato Bot Official
 `,
     async run({ Chisato, query, from, message }) {

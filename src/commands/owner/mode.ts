@@ -9,13 +9,13 @@ export default {
     usage: "[mode]",
     example: `*「 BOT MODE STATUS 」*
 
-🌍 Change bot operation mode
+Change bot operation mode
 
-📝 *Available Modes:*
+*Available Modes:*
 • *PUBLIC* - Bot responds to all users
 • *SELF* - Bot only responds to owner
 
-💡 *Example:*
+*Example:*
 {prefix}{command.name}
 {prefix}{command.name} public
 {prefix}{command.name} self`,
@@ -25,19 +25,19 @@ export default {
 
         if (args.length === 0) {
             const mode = config.settings.selfbot ? "SELF" : "PUBLIC";
-            const emoji = config.settings.selfbot ? "👤" : "🌍";
+            const emoji = config.settings.selfbot ? "" : "";
             
             let text = `*「 BOT MODE STATUS 」*\n\n`;
             text += `${emoji} Current Mode: *${mode}*\n\n`;
-            text += `📝 *Description:*\n`;
+            text += `*Description:*\n`;
             text += config.settings.selfbot
                 ? `In SELF mode, bot only responds to messages from the bot owner's number.`
                 : `In PUBLIC mode, bot responds to all users who send commands.`;
             text += `\n\n`;
-            text += `🎯 *Available Modes:*\n`;
+            text += `*Available Modes:*\n`;
             text += `• *PUBLIC* - Bot responds to all users\n`;
             text += `• *SELF* - Bot only responds to owner\n\n`;
-            text += `💡 *Example:*\n`;
+            text += `*Example:*\n`;
             text += `${prefix}${command.name}\n`;
             text += `${prefix}${command.name} public\n`;
             text += `${prefix}${command.name} self`;
@@ -53,7 +53,7 @@ export default {
                 if (!config.settings.selfbot) {
                     return Chisato.sendText(
                         from,
-                        "❌ Bot is already in *PUBLIC* mode!",
+                        "Bot is already in *PUBLIC* mode!",
                         message
                     );
                 }
@@ -61,9 +61,9 @@ export default {
                 configService.updateSettings({ selfbot: false });
 
                 let publicText = `*「 MODE CHANGED: PUBLIC 」*\n\n`;
-                publicText += `✅ Bot mode has been changed to *PUBLIC*!\n\n`;
-                publicText += `📝 Bot will now respond to all users who send commands.\n\n`;
-                publicText += `🌍 *Active:* All users can use the bot.`;
+                publicText += `Bot mode has been changed to *PUBLIC*!\n\n`;
+                publicText += `Bot will now respond to all users who send commands.\n\n`;
+                publicText += `*Active:* All users can use the bot.`;
 
                 return Chisato.sendText(from, publicText, message);
 
@@ -73,7 +73,7 @@ export default {
                 if (config.settings.selfbot) {
                     return Chisato.sendText(
                         from,
-                        "❌ Bot is already in *SELF* mode!",
+                        "Bot is already in *SELF* mode!",
                         message
                     );
                 }
@@ -81,16 +81,16 @@ export default {
                 configService.updateSettings({ selfbot: true });
 
                 let selfText = `*「 MODE CHANGED: SELF 」*\n\n`;
-                selfText += `✅ Bot mode has been changed to *SELF*!\n\n`;
-                selfText += `📝 Bot will now only respond to messages from owner.\n\n`;
-                selfText += `👤 *Active:* Only owner can use the bot.`;
+                selfText += `Bot mode has been changed to *SELF*!\n\n`;
+                selfText += `Bot will now only respond to messages from owner.\n\n`;
+                selfText += `*Active:* Only owner can use the bot.`;
 
                 return Chisato.sendText(from, selfText, message);
 
             default:
                 let errorText = `*「 INVALID MODE 」*\n\n`;
-                errorText += `❌ Invalid mode: *${mode}*\n\n`;
-                errorText += `💡 *Available Modes:*\n`;
+                errorText += `Invalid mode: *${mode}*\n\n`;
+                errorText += `*Available Modes:*\n`;
                 errorText += `• ${config.prefix}mode public\n`;
                 errorText += `• ${config.prefix}mode self`;
 

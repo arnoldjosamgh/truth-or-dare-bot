@@ -12,8 +12,8 @@ export default {
         let str =
             `*「 GROUP INFORMATION 」*\n\n` +
             `• Name : ${groupMetadata.subject}\n` +
-            `└ 「 ${groupMetadata["isCommunity"] ? "✅" : "❌"} 」 is Community\n` +
-            `└ 「 ${groupMetadata["isCommunityAnnounce"] ? "✅" : "❌"} 」 is Community Announce\n` +
+            `└ 「 ${groupMetadata["isCommunity"] ? "" : ""} 」 is Community\n` +
+            `└ 「 ${groupMetadata["isCommunityAnnounce"] ? "" : ""} 」 is Community Announce\n` +
             `• Description : ${groupMetadata.desc || "-"}\n` +
             `• Member Count : ${groupMetadata.participants.length}\n` +
             `• Group Owner : @${groupMetadata.owner?.split("@")[0] || "-"}\n` +

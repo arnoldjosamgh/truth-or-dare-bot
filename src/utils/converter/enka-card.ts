@@ -655,7 +655,7 @@ function drawConstellationColumn(
                 // Lock indicator
                 ctx.fillStyle = "rgba(255,255,255,0.35)";
                 ctx.font = `10px ${FONT}`;
-                ctx.fillText("🔒", x + r + 8, cy + r - 4);
+                ctx.fillText("", x + r + 8, cy + r - 4);
             }
         }
     }

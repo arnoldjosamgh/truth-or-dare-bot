@@ -154,7 +154,7 @@ export async function handlePlayers(ctx: Ctx): Promise<void> {
 
     const m = messages(game.lang);
     const list = [...game.players.values()]
-        .map((p, i) => `${i + 1}. ${fmt(p.jid)}${p.isAlive ? "" : " 💀"}`)
+        .map((p, i) => `${i + 1}. ${fmt(p.jid)}${p.isAlive ? "" : " "}`)
         .join("\n");
 
     await Chisato.sendText(

@@ -19,15 +19,15 @@ export default {
         const isPremium = userMetadata.role === "premium";
         
         let caption = "*「 YOUR PROFILE 」*\n\n";
-        caption += `👤 *Name:* ${message.pushName}\n`;
-        caption += `📱 *Number:* ${sender.replace(/@s.whatsapp.net/g, "")}\n`;
-        caption += `📝 *Status:* ${fetchStatus?.status || "-"}\n`;
-        caption += `${isPremium ? "⭐ *Premium User*\n" : ""}`;
-        caption += `🎭 *Role:* ${isOwner ? "Owner" : userMetadata.role}\n`;
-        caption += `💎 *Limit:* ${isOwner ? "Unlimited" : isPremium ? "Unlimited" : userMetadata.limit}\n`;
+        caption += `*Name:* ${message.pushName}\n`;
+        caption += `*Number:* ${sender.replace(/@s.whatsapp.net/g, "")}\n`;
+        caption += `*Status:* ${fetchStatus?.status || "-"}\n`;
+        caption += `${isPremium ? "*Premium User*\n" : ""}`;
+        caption += `*Role:* ${isOwner ? "Owner" : userMetadata.role}\n`;
+        caption += `*Limit:* ${isOwner ? "Unlimited" : isPremium ? "Unlimited" : userMetadata.limit}\n`;
         
         if (isGroup && groupSettingData) {
-            caption += `🚫 *Banned:* ${groupSettingData.banned?.includes(sender) ? "YES" : "NO"}\n`;
+            caption += `*Banned:* ${groupSettingData.banned?.includes(sender) ? "YES" : "NO"}\n`;
         }
         
         caption += `\n*「 LEVEL & RANK 」*\n\n`;
@@ -36,8 +36,8 @@ export default {
         // Stats
         const stats = userMetadata.stats;
         caption += `\n\n*「 STATISTICS 」*\n\n`;
-        caption += `📊 *Total Commands:* ${stats?.totalCommands || 0}\n`;
-        caption += `📅 *Join Date:* ${stats?.joinedAt ? new Date(stats.joinedAt * 1000).toLocaleDateString() : "Unknown"}\n`;
+        caption += `*Total Commands:* ${stats?.totalCommands || 0}\n`;
+        caption += `*Join Date:* ${stats?.joinedAt ? new Date(stats.joinedAt * 1000).toLocaleDateString() : "Unknown"}\n`;
         
         // Top 3 most used commands
         if (stats?.commandsUsed && stats.commandsUsed.length > 0) {
@@ -45,13 +45,13 @@ export default {
                 .sort((a: any, b: any) => b.count - a.count)
                 .slice(0, 3);
             
-            caption += `\n🏅 *Most Used Commands:*\n`;
+            caption += `\n*Most Used Commands:*\n`;
             sortedCommands.forEach((cmd: any, idx: number) => {
                 caption += `${idx + 1}. ${cmd.command} - ${cmd.count}x\n`;
             });
         }
         
-        caption += `\n💡 Use commands to gain XP and level up!`;
+        caption += `\nUse commands to gain XP and level up!`;
 
         try {
             const profile = await Chisato.profilePictureUrl(sender, "image");

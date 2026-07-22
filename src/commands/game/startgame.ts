@@ -28,20 +28,20 @@ export default {
 
             await Chisato.sendText(
                 from,
-                `🍾 *BOTTLE SPINNING GAME* 🍾\n\n` +
-                `A game lobby is open! Everyone click the link below to join 👇\n\n` +
-                `🔗 *${gameUrl}*\n\n` +
+                `*BOTTLE SPINNING GAME* \n\n` +
+                `A game lobby is open! Everyone click the link below to join \n\n` +
+                `*${gameUrl}*\n\n` +
                 `The link will ask for your name and gender.\n` +
                 `You can also join here in chat:\n` +
-                `➕ \`!join <Name> <M/F/O>\`  e.g. \`!join John M\`\n\n` +
-                `🔑 Room Code: *${room.roomId}*\n` +
-                `▶️ Host spins with: \`!spin\`\n` +
-                `🛑 Host stops with: \`!stop\``,
+                `\`!join <Name> <M/F/O>\`  e.g. \`!join John M\`\n\n` +
+                `Room Code: *${room.roomId}*\n` +
+                `️ Host spins with: \`!spin\`\n` +
+                `Host stops with: \`!stop\``,
                 message
             );
         } catch (error) {
             logger.error(`startgame: ${error instanceof Error ? error.message : String(error)}`);
-            await Chisato.sendText(from, "❌ Could not create a game room. Please check the database connection.", message);
+            await Chisato.sendText(from, "Could not create a game room. Please check the database connection.", message);
         }
     },
 } satisfies ConfigCommands;

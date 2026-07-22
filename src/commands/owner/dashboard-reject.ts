@@ -13,13 +13,13 @@ export default {
         const approvalId = args?.[0];
 
         if (!approvalId) {
-            return Chisato.sendText(from, "❌ Approval ID tidak ditemukan.", message);
+            return Chisato.sendText(from, "Approval ID tidak ditemukan.", message);
         }
 
         const actorPhone = sender?.split("@")[0] || "unknown";
         const result = await handleLoginApproval(approvalId, "block", actorPhone);
 
-        await Chisato.sendText(from, result.ok ? `✅ ${result.message}` : `❌ ${result.message}`, message);
+        await Chisato.sendText(from, result.ok ? `${result.message}` : `${result.message}`, message);
 
         // Out-of-band notice for the team member if owner just blocked them.
         await notifyTeamApprovalDecision(result);
