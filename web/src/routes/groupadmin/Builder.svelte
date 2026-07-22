@@ -128,8 +128,8 @@
 </script>
 
 <div class="flex gap-2 mb-4 flex-wrap items-center">
-    <button class="btn btn-sm" class:btn-primary={variant === "welcome"} onclick={() => setVariant("welcome")}>👋 Welcome</button>
-    <button class="btn btn-sm" class:btn-primary={variant === "leave"} onclick={() => setVariant("leave")}>🚪 Leave</button>
+    <button class="btn btn-sm" class:btn-primary={variant === "welcome"} onclick={() => setVariant("welcome")}><i class="fas fa-hand-wave"></i> Welcome</button>
+    <button class="btn btn-sm" class:btn-primary={variant === "leave"} onclick={() => setVariant("leave")}><i class="fas fa-sign-out-alt"></i> Leave</button>
     <span class="flex-1"></span>
     <button class="btn btn-sm" onclick={loadLayout}><i class="fas fa-rotate-left"></i> Reset</button>
     <button class="btn btn-primary btn-sm" disabled={saving} onclick={save}>

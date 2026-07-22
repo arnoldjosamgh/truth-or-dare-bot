@@ -8,101 +8,101 @@
         tavern: {
             id: "tavern",
             name: "Castle Tavern",
-            icon: "🏰",
+            icon: "⚔",
             fontFamily: "'Cinzel', Georgia, serif",
             titleFont: "'Cinzel Decorative', serif",
-            bottleEmoji: "🍾",
+            bottleEmoji: "⚗",
             bottleStyle: "filter: drop-shadow(0 0 15px rgba(240, 192, 96, 0.8));",
-            particles: ["✦", "⚔️", "🍾", "✨", "🍷", "🛡️", "🔮", "⚡"],
+            particles: ["✦", "⚔", "⚗", "✧", "◈", "▣", "◉", "ϟ"],
             accentColor: "#f0c060",
             glowColor: "rgba(240, 192, 96, 0.5)",
-            spinIcon: "⚔️",
+            spinIcon: "⚔",
             spinText: "SPIN THE BOTTLE",
-            joinIcon: "⚔️",
+            joinIcon: "⚔",
             joinText: "Join the Battle →",
             namePlaceholder: "e.g. Arthur",
-            classLabel: "🛡️ Warrior Class",
-            genderLabels: ["♂ Knight", "♀ Sorceress", "⚡ Rogue"],
+            classLabel: "▣ Warrior Class",
+            genderLabels: ["♂ Knight", "♀ Sorceress", "ϟ Rogue"],
             title: "Spin the Bottle"
         },
         cyberpunk: {
             id: "cyberpunk",
             name: "Cyber Neon",
-            icon: "🧬",
+            icon: "◈",
             fontFamily: "'Share Tech Mono', monospace",
             titleFont: "'Orbitron', sans-serif",
-            bottleEmoji: "🧪",
+            bottleEmoji: "◉",
             bottleStyle: "filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.9));",
-            particles: ["⚡", "💻", "💾", "🤖", "🌐", "🔋", "👾", "▲", "✖"],
+            particles: ["ϟ", "▲", "◈", "◉", "◆", "▣", "✖", "▲", "✖"],
             accentColor: "#ff007f",
             glowColor: "rgba(0, 243, 255, 0.6)",
-            spinIcon: "⚡",
+            spinIcon: "ϟ",
             spinText: "ACTIVATE SPINNER",
-            joinIcon: "🔌",
+            joinIcon: "◆",
             joinText: "Connect to Cybernet →",
             namePlaceholder: "e.g. Netrunner_01",
-            classLabel: "⚡ Agent Class",
-            genderLabels: ["♂ Hacker", "♀ Cyborg", "🤖 Synth"],
+            classLabel: "ϟ Agent Class",
+            genderLabels: ["♂ Hacker", "♀ Cyborg", "◈ Synth"],
             title: "Cyber Spinner"
         },
         spooky: {
             id: "spooky",
             name: "Haunted Mansion",
-            icon: "🎃",
+            icon: "✦",
             fontFamily: "'Cinzel', Georgia, serif",
             titleFont: "'Creepster', cursive, serif",
-            bottleEmoji: "💀",
+            bottleEmoji: "☽",
             bottleStyle: "filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.8));",
-            particles: ["🎃", "🦇", "👻", "🕷️", "🕸️", "⚰️", "🔮", "🧪"],
+            particles: ["✦", "✧", "☽", "◈", "✖", "▲", "◉", "◆"],
             accentColor: "#a855f7",
             glowColor: "rgba(168, 85, 247, 0.6)",
-            spinIcon: "🔮",
+            spinIcon: "◉",
             spinText: "SPIN THE FATE",
-            joinIcon: "🕸️",
+            joinIcon: "✦",
             joinText: "Enter the Mansion →",
             namePlaceholder: "e.g. Casper",
-            classLabel: "🔮 Entity Class",
-            genderLabels: ["♂ Vampire", "♀ Witch", "👻 Phantom"],
+            classLabel: "◉ Entity Class",
+            genderLabels: ["♂ Vampire", "♀ Witch", "✦ Phantom"],
             title: "Fate Spinner"
         },
         cosmic: {
             id: "cosmic",
             name: "Cosmic Voyage",
-            icon: "🚀",
+            icon: "✺",
             fontFamily: "'Space Grotesk', sans-serif",
             titleFont: "'Space Grotesk', sans-serif",
-            bottleEmoji: "🛸",
+            bottleEmoji: "✺",
             bottleStyle: "filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8));",
-            particles: ["🌌", "🛸", "🪐", "🌟", "☄️", "🛰️", "🚀", "☀️"],
+            particles: ["✺", "✦", "✧", "◈", "☆", "◉", "▲", "☀"],
             accentColor: "#3b82f6",
             glowColor: "rgba(59, 130, 246, 0.6)",
-            spinIcon: "🛸",
+            spinIcon: "✺",
             spinText: "INITIATE ORBIT",
-            joinIcon: "🚀",
+            joinIcon: "▲",
             joinText: "Board the Spacecraft →",
             namePlaceholder: "e.g. Neil",
-            classLabel: "👨‍🚀 Specialist Class",
-            genderLabels: ["♂ Captain", "♀ Pilot", "👽 Alien"],
+            classLabel: "✺ Specialist Class",
+            genderLabels: ["♂ Captain", "♀ Pilot", "◈ Alien"],
             title: "Cosmic Orbit"
         },
         arcade: {
             id: "arcade",
             name: "Retro Arcade",
-            icon: "🕹️",
+            icon: "▶",
             fontFamily: "'Press Start 2P', monospace",
             titleFont: "'Press Start 2P', monospace",
-            bottleEmoji: "👾",
+            bottleEmoji: "▶",
             bottleStyle: "filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.8)); image-rendering: pixelated;",
-            particles: ["👾", "🍒", "🪙", "⭐", "🔔", "👻", "❤️", "🕹️"],
+            particles: ["▶", "◆", "▣", "★", "▲", "✖", "♡", "▷"],
             accentColor: "#fbbf24",
             glowColor: "rgba(251, 191, 36, 0.6)",
-            spinIcon: "🕹️",
+            spinIcon: "▶",
             spinText: "PRESS START",
-            joinIcon: "👾",
+            joinIcon: "▶",
             joinText: "Insert Coin & Play →",
             namePlaceholder: "e.g. Player_1",
-            classLabel: "🕹️ Character Select",
-            genderLabels: ["♂ Hero", "♀ Princess", "👾 Boss"],
+            classLabel: "▶ Character Select",
+            genderLabels: ["♂ Hero", "♀ Princess", "▶ Boss"],
             title: "Pixel Spinner"
         }
     };
@@ -292,10 +292,10 @@
     
     <div class="realm-nav-actions">
         <button class="realm-nav-action-btn" on:click={toggleQuestLog} title="How to Play">
-            📜 <span class="action-label">Quest Log</span>
+            <i class="fas fa-scroll"></i> <span class="action-label">Quest Log</span>
         </button>
         <button class="realm-nav-action-btn" on:click={exitQuest} title="Return to Citadel">
-            🚪 <span class="action-label">Exit</span>
+            <i class="fas fa-sign-out-alt"></i> <span class="action-label">Exit</span>
         </button>
     </div>
 </header>
@@ -305,7 +305,7 @@
 <div class="quest-modal-overlay" on:click={toggleQuestLog}>
     <div class="quest-modal-card" on:click|stopPropagation>
         <div class="quest-modal-header">
-            <h3>📜 Quest Log: Instructions</h3>
+            <h3><i class="fas fa-scroll"></i> Quest Log: Instructions</h3>
             <button class="close-btn" on:click={toggleQuestLog}>&times;</button>
         </div>
         <div class="quest-modal-body">
@@ -371,7 +371,7 @@
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.127 1.528 5.877L0 24l6.266-1.513A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.372l-.36-.214-3.72.898.938-3.63-.235-.375A9.818 9.818 0 1112 21.818z"/>
                 </svg>
-                ⚔️ Open WhatsApp
+                <i class="fas fa-comment-dots"></i> Open WhatsApp
             </button>
 
             <button on:click={skipToJoin} class="rpg-btn rpg-btn-ghost">
@@ -420,7 +420,7 @@
             </div>
 
             {#if joinError}
-                <p class="error-text">⚠️ {joinError}</p>
+                <p class="error-text"><i class="fas fa-exclamation-triangle"></i> {joinError}</p>
             {/if}
 
             <button on:click={submitJoin} disabled={joining} class="rpg-btn rpg-btn-primary w-full mt-5">
@@ -511,7 +511,7 @@
             disabled={isSpinning || players.length < 2}
             class="rpg-btn rpg-btn-spin"
         >
-            {isSpinning ? "✨ SPINNING..." : `${activeTheme.spinIcon} ${activeTheme.spinText}`}
+            {isSpinning ? "⟳ SPINNING..." : `${activeTheme.spinIcon} ${activeTheme.spinText}`}
         </button>
 
         {#if players.length < 2}

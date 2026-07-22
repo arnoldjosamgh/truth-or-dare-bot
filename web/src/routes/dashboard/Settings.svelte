@@ -91,7 +91,7 @@
                 method: "PATCH",
                 body: JSON.stringify({ sponsorText: config.settings.sponsorText ?? "" }),
             });
-            toast("Sponsor saved! 🎉", "ok");
+            toast("Sponsor saved!", "ok");
         } catch (e) {
             toast(e.message, "err");
         }
@@ -137,7 +137,7 @@
             <label class="lbl">Sponsor text / link</label>
             <input
                 class="field mb-3"
-                placeholder="e.g. Brought to you by Jomish Tech Hub 🔗 https://yourlink.com"
+                placeholder="e.g. Brought to you by Jomish Tech Hub https://yourlink.com"
                 bind:value={config.settings.sponsorText}
                 disabled={!isOwner}
             />
